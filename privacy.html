@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Notch‑Tasker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css"> </head>
+<body class="static-page-body"> <canvas id="dotted-matrix-canvas"></canvas> <header>
+    <div class="logo-placeholder">
+      <a href="index.html"><img src="assets/logo.svg" alt="Notch‑Tasker Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo&font=inter';"/></a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle-button">
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav id="main-nav"> <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      <a href="terms.html"><i class="fas fa-file-contract"></i>Terms</a>
+    </nav>
+  </header>
+
+  <main class="static-page-main"> <div class="breadcrumb">
+      <a href="index.html">Home</a> &gt; Privacy Policy
+    </div>
+
+    <h1>Privacy Policy</h1>
+
+    <div class="content-section">
+      <p><strong>Last Updated: <span id="lastUpdated"></span></strong></p>
+
+      <p>Welcome to Notch‑Tasker ("us", "we", or "our"). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application Notch‑Tasker (the "Application") and our website (collectively, the "Services"). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application or services.</p>
+
+      <h2>1. Information We Collect</h2>
+      <p>We may collect information about you in a variety of ways. The information we may collect via the Application depends on the content and materials you use, and includes:</p>
+      <ul>
+        <li><strong>Personal Data:</strong> Personally identifiable information, such as your name, email address, and other contact details that you voluntarily give to us when choosing to participate in various activities related to the Application, such as account registration, support requests, or newsletter subscriptions.</li>
+        <li><strong>Usage Data:</strong> Information our servers automatically collect when you access the Application, such as your IP address, browser type, operating system, access times, and the pages you have viewed directly before and after accessing the Application.</li>
+        <li><strong>Application Data:</strong> If you connect your account to third-party services, we may collect information necessary to facilitate this connection. Any data stored within the Notch-Tasker application (e.g., tasks, notes) is stored locally on your device or, if you choose to use a cloud sync service (not provided by us by default), then by that third-party service.</li>
+      </ul>
+
+      <h2>2. How We Use Your Information</h2>
+      <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Application to:</p>
+      <ul>
+        <li>Create and manage your account.</li>
+        <li>Email you regarding your account or order.</li>
+        <li>Enable user-to-user communications (if applicable).</li>
+        <li>Improve the Application and troubleshoot issues.</li>
+        <li>Request feedback and contact you about your use of the Application.</li>
+        <li>Send you a newsletter or other promotional materials (if you opt-in).</li>
+        <li>Respond to product and customer service requests.</li>
+      </ul>
+
+      <h2>3. Disclosure of Your Information</h2>
+      <p>We may share information we have collected about you in certain situations. Your information may be disclosed as follows:</p>
+      <ul>
+        <li><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</li>
+        <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance. (Specify if this is not the case, e.g., "We do not share your personal information with third-party service providers for marketing purposes.")</li>
+        <li><strong>Business Transfers:</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
+      </ul>
+      <p>We do not sell your personal information to third parties.</p>
+
+      <h2>4. Security of Your Information</h2>
+      <p>We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.</p>
+
+      <h2>5. Policy for Children</h2>
+      <p>We do not knowingly solicit information from or market to children under the age of 13 (or higher age as required by applicable law). If you become aware of any data we have collected from children, please contact us using the contact information provided below.</p>
+
+      <h2>6. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+      <h2>7. Contact Us</h2>
+      <p>If you have questions or comments about this Privacy Policy, please contact us at:</p>
+      <p>Tech Inaayra<br>
+      Email: techinaayra@gmail.com</p>
+    </div>
+  </main>
+
+  <footer id="contact" class="static-page-footer"> <div class="footer-content">
+          <p><i class="fas fa-envelope"></i> techinaayra@gmail.com</p>
+          <div class="footer-links">
+            <a href="index.html"><i class="fas fa-home"></i>Home</a>
+            <a href="terms.html"><i class="fas fa-file-contract"></i>Terms</a>
+          </div>
+      </div>
+      <div class="trademark">
+          &copy; <span id="current-year"></span> Tech Inaayra. All rights reserved.
+      </div>
+  </footer>
+
+  <script>
+    // Script for current year and last updated
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    // Basic mobile menu toggle (if you use the #main-nav and #menu-toggle-button)
+    const menuToggleButton = document.getElementById('menu-toggle-button');
+    const mainNav = document.getElementById('main-nav');
+
+    if (menuToggleButton && mainNav) {
+        menuToggleButton.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            if (mainNav.classList.contains('active')) {
+                menuToggleButton.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                menuToggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        // Close menu when a link is clicked (for SPA-like behavior on the same page)
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active') && !link.getAttribute('href').includes('.html')) { // Only for internal # links
+                    mainNav.classList.remove('active');
+                    menuToggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+    }
+
+
+    // Dotted Matrix Animation Script (Copied from index.html)
+    const canvas = document.getElementById('dotted-matrix-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let dotsArray;
+        let animationFrameId;
+        let dotSize = 1.2;
+        let dotSpacing = 35;
+        let dotBaseColor, dotMinOpacity, dotMaxOpacity, baseBgColor;
+
+        function updateCSSVariables() {
+            dotBaseColor = getComputedStyle(document.documentElement).getPropertyValue('--dot-color').trim();
+            dotMinOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
+            dotMaxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
+            baseBgColor = getComputedStyle(document.documentElement).getPropertyValue('--light-bg').trim();
+        }
+
+        function setupCanvas() {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            updateCSSVariables();
+            createDots();
+            animateDots();
+        }
+
+        class Dot {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = dotSize;
+                updateCSSVariables(); // Ensure opacities are current
+                this.opacity = Math.random() * (dotMaxOpacity - dotMinOpacity) + dotMinOpacity;
+                this.pulseSpeed = (Math.random() * 0.01) + 0.005;
+                this.pulseDirection = Math.random() < 0.5 ? 1 : -1;
+            }
+
+            draw() {
+                const match = dotBaseColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+                if (match) {
+                    ctx.fillStyle = `rgba(${match[1]}, ${match[2]}, ${match[3]}, ${this.opacity})`;
+                } else {
+                    ctx.fillStyle = `rgba(245, 158, 11, ${this.opacity})`; // Fallback
+                }
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            update() {
+                this.opacity += this.pulseSpeed * this.pulseDirection;
+                // Re-read current opacities for responsive changes (e.g. theme switch)
+                const currentMinOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
+                const currentMaxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
+
+                if (this.opacity > currentMaxOpacity || this.opacity < currentMinOpacity) {
+                    this.opacity = Math.max(currentMinOpacity, Math.min(currentMaxOpacity, this.opacity));
+                    this.pulseDirection *= -1;
+                }
+                this.draw();
+            }
+        }
+
+        function createDots() {
+            dotsArray = [];
+            updateCSSVariables(); // Ensure bg color is current
+            ctx.fillStyle = baseBgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let x = dotSpacing / 2; x < canvas.width + dotSpacing; x += dotSpacing) {
+                for (let y = dotSpacing / 2; y < canvas.height + dotSpacing; y += dotSpacing) {
+                    dotsArray.push(new Dot(x, y));
+                }
+            }
+        }
+
+        function animateDots() {
+            updateCSSVariables(); // Ensure bg color is current for clearing
+            ctx.fillStyle = baseBgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            if (dotsArray) {
+                 for (let i = 0; i < dotsArray.length; i++) {
+                    dotsArray[i].update();
+                }
+            }
+            animationFrameId = requestAnimationFrame(animateDots);
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        };
+
+        const debouncedSetupCanvas = debounce(setupCanvas, 150);
+        window.addEventListener('resize', debouncedSetupCanvas);
+        
+        // Ensure DOM is fully loaded before trying to read CSS variables for the first time
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCSSVariables(); // Initial fetch of CSS variables
+            setupCanvas(); // Then setup canvas
+        });
+        // Fallback if DOMContentLoaded already fired
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            updateCSSVariables();
+            setupCanvas();
+        }
+
+
+    } else {
+        console.error("Dotted matrix canvas element not found.");
+    }
+  </script>
+</body>
+</html>

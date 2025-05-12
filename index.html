@@ -6,585 +6,7 @@
   <title>Notch‑Tasker | Modern Productivity Suite</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    /* CSS Variables for theming */
-    :root {
-      /* --- Updated Colors --- */
-      /* Define gradient start and end points */
-      --accent-gradient-start: #f43f5e; /* Rose 500 */
-      --accent-gradient-end: #f59e0b;   /* Amber 500 */
-      /* Use END color for solid accents where gradient isn't suitable */
-      --accent-color-solid: var(--accent-gradient-end); /* CHANGED */
-
-      --light-bg: #ffffff; /* White background */
-      /* Update dot color to match gradient END color (Amber 500) */
-      --dot-color: rgba(245, 158, 11, 1); /* CHANGED */
-
-      /* Dotted Matrix Colors */
-      --dot-pulse-min-opacity: 0.05; /* Adjusted for light background */
-      --dot-pulse-max-opacity: 0.4; /* Adjusted for light background */
-
-      --text-dark: #1f2937; /* Dark primary text for light bg */
-      --text-dark-secondary: #6b7280; /* Dark secondary text for light bg */
-      --text-light: #ffffff; /* Light text (used on colored backgrounds like buttons) */
-
-      --border-radius: 0.75rem;
-      --border-radius-lg: 1.5rem;
-      /* Adjusted shadows for light theme */
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
-
-      /* B&W Theme Variables adjusted for Light Theme */
-      --app-section-bg: #f9fafb; /* Slightly off-white for section */
-      --app-element-bg: #ffffff; /* White for elements inside */
-      --app-element-border: #e5e7eb; /* Light grey border */
-      --app-text-primary: var(--text-dark); /* Use main dark text */
-      --app-text-secondary: var(--text-dark-secondary); /* Use main secondary dark text */
-      /* Update icon color to solid accent (now end color) */
-      --app-icon-color: var(--accent-color-solid); /* Uses end color now */
-      --app-shadow-color: rgba(0, 0, 0, 0.1); /* Lighter shadow */
-      --app-video-panel-bg: #f3f4f6; /* Light grey for video panel background */
-    }
-
-    /* Basic Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth; /* Enable smooth scrolling for anchor links */
-    }
-
-    body {
-      background-color: var(--light-bg); /* Use light background */
-      color: var(--text-dark); /* Use dark text */
-      line-height: 1.6;
-      position: relative; /* Needed if z-index is used on children for stacking context */
-    }
-
-    /* Dotted Matrix Background Canvas */
-    #dotted-matrix-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1; /* Places canvas behind all other content */
-    }
-
-    /* Fixed Header Styling */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 6%;
-      position: fixed; /* Fix header to the top */
-      width: 100%;
-      top: 0;
-      background: rgba(255, 255, 255, 0.85); /* Semi-transparent light background */
-      backdrop-filter: blur(14px); /* Frosted glass effect */
-      z-index: 1000; /* Ensure header stays on top */
-      transform: translateY(-100%); /* Initially hidden for animation */
-      animation: slideDown 0.5s ease forwards; /* Animate entrance */
-      box-shadow: var(--shadow-md); /* Subtle shadow */
-      min-height: 80px; /* Set a minimum height */
-      border-bottom: 1px solid #e5e7eb; /* Light border */
-    }
-
-    /* Header slide-down animation */
-    @keyframes slideDown {
-      to {
-        transform: translateY(0);
-      }
-    }
-
-    /* Logo Styling */
-    .logo-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      height: auto;
-      background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-      width: auto;
-      transition: transform 0.3s ease;
-    }
-
-    .logo-placeholder img {
-      height: 50px; /* Adjust logo size */
-      width: auto;
-      max-height: 60px; /* Ensure it doesn't exceed header height */
-      display: block;
-    }
-
-    .logo-placeholder:hover {
-      transform: scale(1.04); /* Slight zoom on hover */
-    }
-
-    /* Navigation Styling */
-    nav {
-      display: flex;
-      align-items: center;
-    }
-
-    nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: var(--text-dark); /* Dark text for nav links */
-      font-weight: 500;
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem; /* Space between icon and text */
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--accent-color-solid); /* Use solid accent (end) color on hover */
-    }
-
-    /* Underline effect for nav links */
-    nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -0.75rem;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: var(--accent-color-solid); /* Use solid accent (end) color for underline */
-      transition: width 0.3s ease;
-      border-radius: 1.5px;
-    }
-
-    nav a:hover::after {
-      width: 100%; /* Expand underline on hover */
-    }
-
-    /* Sections will overlay the global canvas */
-    .hero, .app-section, footer {
-        position: relative;
-        z-index: 1; /* Ensure sections are above the background canvas */
-    }
-
-    /* Hero Section Styling */
-    .hero {
-      margin-top: 80px; /* Offset for the 80px fixed header */
-      min-height: 85vh; /* Minimum height relative to viewport height */
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center content horizontally */
-      justify-content: center; /* Center content vertically */
-      text-align: center; /* Center text within content */
-      padding: 3rem; /* Padding around the content */
-      background-color: transparent; /* Let the dotted matrix show through */
-    }
-
-    /* Hero Text Container */
-    .hero-text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-    /* Hero Title Styling */
-    .hero-text h1 {
-      font-size: 4rem; /* Large font size */
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.04em; /* Tighten letter spacing */
-      text-shadow: 0px 1px 3px rgba(0,0,0,0.1); /* Lighter text shadow */
-      color: var(--text-dark); /* Use primary dark text color */
-    }
-
-    /* Hero Subtitle/Paragraph Styling */
-    .hero-text p {
-      color: var(--text-dark-secondary); /* Use secondary dark text color */
-      font-size: 1.4rem;
-      max-width: 800px; /* Limit line length for readability */
-      margin: 2rem auto; /* Spacing above and below */
-      line-height: 1.75; /* Generous line spacing */
-      text-shadow: 0px 1px 2px rgba(0,0,0,0.05); /* Very subtle shadow */
-    }
-
-    /* General Section Styling */
-    section {
-      padding: 4rem 8%; /* Padding top/bottom and left/right */
-      scroll-margin-top: 80px; /* Offset for anchor links due to fixed header */
-    }
-
-    /* Section Title Styling */
-    .section-title {
-        font-size: 2.8rem;
-        font-weight: 600;
-        color: var(--text-dark); /* Dark text */
-        text-align: center;
-        margin-bottom: 3rem;
-        letter-spacing: -0.03em;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Subtle shadow */
-    }
-
-    /* App Section Light Theme */
-    .app-section {
-      background: var(--app-section-bg); /* Slightly off-white background */
-      color: var(--app-text-primary); /* Primary dark text */
-      border-radius: var(--border-radius-lg); /* Large rounded corners */
-      padding: 3rem;
-      margin: 3rem auto; /* Center section with margins */
-      max-width: 90%; /* Limit maximum width */
-      box-shadow: var(--shadow-lg); /* Adjusted shadow */
-      border: 1px solid var(--app-element-border); /* Light border */
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem; /* Space between elements inside */
-    }
-
-    /* Top Row within App Section (Info + Features) */
-    .app-top-row {
-      display: flex;
-      flex-direction: row; /* Arrange columns side-by-side */
-      gap: 3rem; /* Space between columns */
-      width: 100%;
-    }
-
-    /* App Info Column (Left) */
-    .app-info-column {
-      flex: 6; /* Take up more space */
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center items */
-      text-align: center;
-      gap: 1.5rem;
-      background: var(--app-element-bg); /* White background */
-      padding: 2rem;
-      border-radius: var(--border-radius); /* Standard rounded corners */
-      box-shadow: var(--shadow-md); /* Adjusted shadow */
-      border: 1px solid var(--app-element-border);
-    }
-
-    /* App Icon Container */
-    .app-icon {
-      width: 140px;
-      height: 140px;
-      border-radius: 25px; /* Rounded square */
-      overflow: hidden; /* Clip image to border */
-      /* border: 1px solid var(--app-element-border); /* REMOVED border */
-      box-shadow: var(--shadow-sm); /* Optionally add a subtle shadow */
-    }
-
-    .app-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensure image covers the area */
-      display: block;
-    }
-
-    /* App Title in Info Column */
-    .app-info-column h2 {
-      font-size: 2.2rem;
-      color: var(--app-text-primary); /* Use primary dark text */
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    /* Ensure icon next to title uses solid accent (end) color */
-    .app-info-column h2 i.fas {
-        color: var(--app-icon-color); /* Use solid accent (end) color */
-    }
-
-    /* App Description in Info Column */
-    .app-info-column p {
-      font-size: 1.1rem;
-      color: var(--app-text-secondary); /* Secondary dark text color */
-    }
-
-    /* App Features Column (Right) */
-    .app-features-column {
-      flex: 4; /* Take up less space */
-      background: var(--app-element-bg); /* White background */
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-md); /* Adjusted shadow */
-      border: 1px solid var(--app-element-border);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    /* Features Title */
-    .app-features-column h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--app-text-primary); /* Primary dark text */
-      text-align: center;
-      font-weight: 600;
-    }
-
-    /* Features List */
-    .app-features-column ul {
-      list-style: none; /* Remove default bullets */
-      padding-left: 0;
-    }
-
-    .app-features-column ul li {
-      margin-bottom: 1.25rem;
-      font-size: 1.05rem;
-      color: var(--app-text-secondary); /* Secondary dark text */
-      display: flex;
-      align-items: flex-start; /* Align icon with top of text */
-      gap: 0.85rem; /* Space between icon and text */
-      line-height: 1.5;
-    }
-
-    /* Feature Icons */
-    .app-features-column ul li i.fas {
-      color: var(--app-icon-color); /* Solid accent (end) color for icons */
-      font-size: 1.2rem;
-      margin-top: 0.2em; /* Align icon vertically */
-      width: 20px; /* Fixed width for alignment */
-      text-align: center;
-    }
-
-    /* App Video/Image Panel */
-    .app-video-panel {
-      width: 100%;
-      aspect-ratio: 16 / 9; /* Maintain widescreen aspect ratio */
-      background: var(--app-video-panel-bg); /* Light grey background */
-      border-radius: var(--border-radius);
-      overflow: hidden; /* Clip video/poster */
-      box-shadow: var(--shadow-sm); /* Lighter shadow for inset look */
-      border: 1px solid var(--app-element-border);
-    }
-
-    .app-video-panel video, .app-video-panel img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Cover the panel area */
-      display: block;
-    }
-
-    /* Download Button Styling */
-    .download-button {
-      /* Gradient remains the same */
-      background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
-      color: var(--text-light); /* Light text on button */
-      padding: 1rem 2.5rem;
-      border-radius: 50px; /* Pill shape */
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex; /* Align icon and text */
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1.1rem;
-      border: none; /* Remove border */
-      /* Shadow can still use start color, or switch to end color - keeping start for now */
-      box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; /* Smooth transitions */
-    }
-
-    .download-button:hover {
-      transform: translateY(-3px) scale(1.03); /* Lift and scale effect */
-      box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4); /* Enhanced shadow on hover */
-    }
-    /* Ensure icon color matches button text */
-    .download-button i.fas {
-        color: var(--text-light); /* Light color for icon */
-    }
-
-    /* Footer Styling */
-    footer {
-      background: rgba(249, 250, 251, 0.9); /* Very light, slightly transparent background */
-      color: var(--text-dark-secondary); /* Use secondary dark text */
-      padding: 3rem 8%;
-      display: flex;
-      flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-      justify-content: space-between; /* Space out content */
-      align-items: center;
-      font-size: 0.95rem;
-      border-top: 1px solid #e5e7eb; /* Light top border */
-      gap: 1rem; /* Space between items if they wrap */
-    }
-
-    /* Footer Email Paragraph */
-    footer p {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    footer p i.fas {
-        color: var(--text-dark-secondary); /* Ensure icon matches text */
-    }
-
-    /* Footer Links Container (Privacy, Terms) */
-    .footer-links {
-      display: flex;
-      gap: 2rem; /* Space between links */
-    }
-
-    /* Individual Footer Links */
-    .footer-links a {
-      color: var(--text-dark-secondary); /* Dark secondary color */
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem; /* Space between icon and text */
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-color-solid); /* Solid accent (end) color on hover */
-    }
-     .footer-links a i.fas {
-        color: var(--text-dark-secondary); /* Match icon color */
-        transition: color 0.3s ease;
-    }
-     .footer-links a:hover i.fas {
-        color: var(--accent-color-solid); /* Solid accent (end) color on hover */
-    }
-
-    /* Hamburger Menu Toggle (for mobile) */
-    .menu-toggle {
-         display: none; /* Hidden by default on larger screens */
-         color: var(--text-dark); /* Dark color for icon */
-         font-size: 1.5rem;
-         cursor: pointer;
-         padding: 0.5rem; /* Add padding for easier tapping */
-     }
-
-    /* Responsive adjustments */
-
-    /* Tablet and Smaller Desktops */
-    @media (max-width: 1024px) {
-        .app-top-row {
-            flex-direction: column; /* Stack app info/features columns */
-        }
-        .app-info-column, .app-features-column {
-            flex: 1 1 100%; /* Make columns full width when stacked */
-        }
-        .app-features-column {
-            margin-top: 2rem; /* Add space when stacked */
-        }
-        .hero-text h1 {
-            font-size: 3.2rem; /* Slightly smaller title */
-        }
-        .hero-text p {
-            font-size: 1.25rem; /* Slightly smaller text */
-        }
-        .section-title {
-            font-size: 2.4rem;
-        }
-         header {
-            padding: 1.2rem 4%; /* Reduce header padding */
-        }
-        nav a {
-            margin-left: 1.2rem; /* Reduce nav spacing */
-            font-size: 1rem;
-        }
-    }
-
-    /* Mobile Devices */
-    @media (max-width: 768px) {
-      .hero-text h1 {
-        font-size: 2.5rem; /* Smaller title for mobile */
-      }
-      .hero-text p {
-        font-size: 1.1rem; /* Smaller text for mobile */
-        max-width: 95%; /* Allow text to use more width */
-      }
-      /* Mobile Navigation */
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute; /* Position below header */
-        background: rgba(255, 255, 255, 0.98); /* Light background when open */
-        top: 100%; /* Position below the header (adjust if header height changes) */
-        left: 0;
-        width: 100%;
-        padding: 1rem 4%;
-        display: none; /* Hidden by default */
-        border-bottom: 1px solid #e5e7eb;
-        box-shadow: var(--shadow-md);
-      }
-      nav.active {
-        display: flex; /* Show when active */
-      }
-      nav a {
-        margin-left: 0;
-        margin-bottom: 1rem; /* Space between stacked links */
-        width: 100%; /* Make links full width */
-        padding: 0.5rem 0;
-      }
-       nav a::after { /* Adjust underline position for vertical nav */
-           bottom: -0.25rem;
-       }
-      .menu-toggle {
-        display: block; /* Show hamburger icon */
-      }
-      header {
-        padding: 1rem 5%; /* Adjust header padding */
-      }
-       /* Adjust header content alignment when toggle is visible */
-       header .logo-placeholder {
-           flex-grow: 1; /* Allow logo to take space */
-       }
-       header nav#main-nav:not(.active) { /* Hide full nav when toggle is shown and menu closed */
-           display: none;
-       }
-      footer {
-        flex-direction: column; /* Stack footer items */
-        text-align: center;
-        padding: 2.5rem 6%; /* Adjust footer padding */
-      }
-      .footer-links {
-        margin-top: 1rem;
-        flex-direction: column; /* Stack privacy/terms links */
-        gap: 1rem; /* Adjust gap for stacked links */
-      }
-      .app-section {
-        padding: 1.5rem; /* Reduce padding */
-        margin: 2rem auto; /* Adjust margin */
-        max-width: 95%;
-      }
-       .app-info-column, .app-features-column {
-           padding: 1.5rem; /* Reduce padding */
-       }
-       .app-icon {
-           width: 100px;
-           height: 100px;
-       }
-       .app-info-column h2 {
-           font-size: 1.8rem;
-       }
-       .app-features-column h2 {
-           font-size: 1.5rem;
-       }
-       .download-button {
-           padding: 0.8rem 2rem;
-           font-size: 1rem;
-       }
-      .hero {
-        min-height: 75vh; /* Slightly reduce hero height */
-        padding: 2rem 1rem;
-      }
-      .section-title {
-        font-size: 2rem; /* Reduce section title size */
-        margin-bottom: 2rem;
-      }
-      section {
-        padding: 3rem 6%; /* Reduce section padding */
-      }
-    }
-
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="dotted-matrix-canvas"></canvas>
@@ -602,63 +24,76 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>We focus on simple things.</h1>
-      <p>At Tech Inaayra, we believe technology should empower, not overwhelm. That's why we dedicate ourselves to crafting elegant, intuitive applications that seamlessly integrate into your workflow. Our mission is to simplify complexity, enhance your daily productivity, and provide tools that are both simple and a effective to use.</p>
-    </div>
-  </section>
-
-  <section id="app" class="app-section">
-    <h2 class="section-title">Our Apps</h2>
-    <div class="app-top-row">
-      <div class="app-info-column">
-        <div class="app-icon">
-          <img src="assets/icon.png" alt="App Icon" onerror="this.onerror=null;this.src='https://placehold.co/140x140/f3f4f6/6b7280?text=Icon&font=inter';"/>
+  <main>
+      <section class="hero">
+        <div class="hero-text">
+          <h1>We focus on simple things.</h1>
+          <p>At Tech Inaayra, we believe technology should empower, not overwhelm. That's why we dedicate ourselves to crafting elegant, intuitive applications that seamlessly integrate into your workflow. Our mission is to simplify complexity, enhance your daily productivity, and provide tools that are both simple and a effective to use.</p>
         </div>
-        <h2><i class="fas fa-rocket"></i> Notch‑Tasker</h2>
-        <p>
-          Neural-enhanced task management with real-time collaboration and system integration. Experience the future of productivity.
-        </p>
-        <a href="#" class="download-button"><i class="fas fa-download"></i> Download for macOS</a>
-      </div>
+      </section>
 
-      <div class="app-features-column">
-        <h2>Key Features</h2>
-        <ul>
-          <li><i class="fas fa-mouse-pointer"></i>Seamless Access: Launch via hover-activated notch or convenient menu bar app.</li>
-          <li><i class="fas fa-list-check"></i>Effortless Organization: Intuitively create and manage your to-do lists.</li>
-          <li><i class="fas fa-eye"></i>At-a-Glance Clarity: Easily add tasks and view your entire workflow instantly.</li>
-        </ul>
-      </div>
-    </div>
+      <section id="app" class="app-section">
+        <h2 class="section-title">Our Apps</h2>
+        <div class="app-top-row">
+          <div class="app-info-column">
+            <div class="app-icon">
+              <img src="assets/icon.png" alt="App Icon" onerror="this.onerror=null;this.src='https://placehold.co/140x140/f3f4f6/6b7280?text=Icon&font=inter';"/>
+            </div>
+            <h2><i class="fas fa-rocket"></i> Notch‑Tasker</h2>
+            <p>
+              Neural-enhanced task management with real-time collaboration and system integration. Experience the future of productivity.
+            </p>
+            <a href="#" class="download-button"><i class="fas fa-download"></i> Download for macOS</a>
+          </div>
 
-    <div class="app-video-panel">
-      <video controls poster="assets/timeline.png" onerror="this.onerror=null; this.parentElement.innerHTML = '<img src=\'https://placehold.co/1600x900/f3f4f6/6b7280?text=Video+Preview&font=inter\' alt=\'Video Preview Placeholder\'>';">
-        <source src="assets/demo.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </section>
+          <div class="app-features-column">
+            <h2>Key Features</h2>
+            <ul>
+              <li><i class="fas fa-mouse-pointer"></i>Seamless Access: Launch via hover-activated notch or convenient menu bar app.</li>
+              <li><i class="fas fa-list-check"></i>Effortless Organization: Intuitively create and manage your to-do lists.</li>
+              <li><i class="fas fa-eye"></i>At-a-Glance Clarity: Easily add tasks and view your entire workflow instantly.</li>
+            </ul>
+          </div>
+        </div>
 
+        <div class="app-video-panel">
+          <video controls poster="assets/timeline.png" onerror="this.onerror=null; this.parentElement.innerHTML = '<img src=\'https://placehold.co/1600x900/f3f4f6/6b7280?text=Video+Preview&font=inter\' alt=\'Video Preview Placeholder\'>';">
+            <source src="assets/demp.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+  </main>
   <footer id="contact">
-    <p><i class="fas fa-envelope"></i> techinaayra@gmail.com</p>
-    <div class="footer-links">
-      <a href="#"><i class="fas fa-shield-alt"></i>Privacy</a>
-      <a href="#"><i class="fas fa-file-contract"></i>Terms</a>
-    </div>
+      <div class="footer-content">
+          <p><i class="fas fa-envelope"></i> techinaayra@gmail.com</p>
+          <div class="footer-links">
+            <a href="privacy.html"><i class="fas fa-shield-alt"></i>Privacy</a>
+            <a href="terms.html"><i class="fas fa-file-contract"></i>Terms</a>
+          </div>
+      </div>
+      <div class="trademark">
+          &copy; <span id="current-year"></span> Tech Inaayra. All rights reserved.
+      </div>
   </footer>
 
   <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
     // Smooth scroll for navigation links
     document.querySelectorAll('nav a[href^="#"], .hero a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            // Only prevent default for internal links
+            // Only prevent default for internal links starting with #
             if (href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = href;
-                const targetElement = document.querySelector(targetId);
+                // Special case for #contact to scroll to footer
+                const targetElement = (targetId === '#contact')
+                    ? document.getElementById('contact')
+                    : document.querySelector(targetId);
+
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth'
@@ -673,6 +108,7 @@
                     if(menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                 }
             }
+            // Allow default behavior for external links (like privacy.html, terms.html)
         });
     });
 
@@ -735,7 +171,6 @@
                 this.y = y; // Y position
                 this.size = dotSize; // Dot size
                 // Calculate a random initial opacity within the allowed pulse range
-                // Need to read min/max opacity here as they are needed for calculation
                 const minOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
                 const maxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
                 this.opacity = Math.random() * (maxOpacity - minOpacity) + minOpacity;
