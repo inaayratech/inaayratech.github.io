@@ -6,8 +6,7 @@
   <title>Notch‑Tasker | Modern Productivity Suite</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css">
-</head>
+  <link rel="stylesheet" href="style.css"> </head>
 <body>
   <canvas id="dotted-matrix-canvas"></canvas>
 
@@ -19,12 +18,11 @@
         <i class="fas fa-bars"></i>
     </div>
     <nav id="main-nav">
-      <a href="#app"><i class="fas fa-mobile-alt"></i>Apps</a>
-      <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
+      <a href="#app"><i class="fas fa-desktop"></i>App</a> <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
     </nav>
   </header>
 
-<main>
+  <main>
       <section class="hero">
         <div class="hero-text">
           <h1>We focus on simple things.</h1>
@@ -32,37 +30,68 @@
         </div>
       </section>
 
-      <section id="app" class="app-section">
-        <div class="app-top-row">
-          <div class="app-info-column">
-            <div class="app-icon">
-              <img src="assets/icon.png" alt="App Icon" onerror="this.onerror=null;this.src='https://placehold.co/140x140/f3f4f6/6b7280?text=Icon&font=inter';"/>
+      <section id="app" class="app-showcase-section">
+          <div class="app-showcase-header">
+            <div class="app-showcase-icon">
+              <img src="assets/icon.png" alt="Notch-Tasker App Icon" onerror="this.onerror=null;this.src='https://placehold.co/72x72/ffffff/333333?text=Icon&font=inter';"/>
             </div>
-            <h2><i class="fas fa-rocket"></i> Notch‑Tasker</h2>
-            <p>
-              Neural-enhanced task management with real-time collaboration and system integration. Experience the future of productivity.
+            <h1 class="app-showcase-title">Notch‑Tasker</h1>
+            <p class="app-showcase-tagline">
+              The elegant, neural-enhanced task manager that seamlessly integrates with your macOS workflow. Boost productivity with effortless organization.
             </p>
             <a href="#" class="download-button"><i class="fas fa-download"></i> Download for macOS</a>
           </div>
 
-          <div class="app-features-column">
-            <h2>Key Features</h2>
-            <ul>
-              <li><i class="fas fa-mouse-pointer"></i>Seamless Access: Launch via hover-activated notch or convenient menu bar app.</li>
-              <li><i class="fas fa-list-check"></i>Effortless Organization: Intuitively create and manage your to-do lists.</li>
-              <li><i class="fas fa-eye"></i>At-a-Glance Clarity: Easily add tasks and view your entire workflow instantly.</li>
+          <div class="app-showcase-visual">
+            <video controls poster="assets/timeline.png" onerror="this.onerror=null; this.parentElement.innerHTML = '<img src=\'https://placehold.co/1100x618/f3f4f6/6b7280?text=App+Preview&font=inter\' alt=\'Video Preview Placeholder\'>';">
+              <source src="assets/demp.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <div class="app-showcase-features">
+            <h2 class="app-showcase-features-title">Discover What Makes Notch‑Tasker Unique</h2>
+            <ul class="app-features-list">
+              <li class="feature-point">
+                <i class="fas fa-mouse-pointer fa-fw"></i>
+                <div class="feature-point-text">
+                  <strong>Seamless Access:</strong> Launch via hover-activated notch or the convenient menu bar app for instant task management.
+                </div>
+              </li>
+              <li class="feature-point">
+                <i class="fas fa-list-check fa-fw"></i>
+                <div class="feature-point-text">
+                  <strong>Effortless Organization:</strong> Intuitively create, manage, and categorize your to-do lists with a clean, focused interface.
+                </div>
+              </li>
+              <li class="feature-point">
+                <i class="fas fa-eye fa-fw"></i>
+                <div class="feature-point-text">
+                  <strong>At-a-Glance Clarity:</strong> Easily add tasks and view your entire workflow instantly, keeping you on top of your priorities.
+                </div>
+              </li>
+               <li class="feature-point">
+                <i class="fas fa-brain fa-fw"></i>
+                 <div class="feature-point-text">
+                   <strong>Neural-Enhanced:</strong> Smart suggestions and categorization powered by local AI to streamline your task input.
+                </div>
+              </li>
+              <li class="feature-point">
+                 <i class="fas fa-users fa-fw"></i>
+                 <div class="feature-point-text">
+                   <strong>Real-time Collaboration:</strong> Share lists and collaborate on tasks with your team seamlessly (optional cloud sync).
+                 </div>
+               </li>
+               <li class="feature-point">
+                 <i class="fas fa-cogs fa-fw"></i>
+                 <div class="feature-point-text">
+                   <strong>Deep System Integration:</strong> Works harmoniously with macOS, offering a native and responsive experience.
+                </div>
+              </li>
             </ul>
           </div>
-        </div>
-
-        <div class="app-video-panel">
-          <video controls poster="assets/timeline.png" onerror="this.onerror=null; this.parentElement.innerHTML = '<img src=\'https://placehold.co/1600x900/f3f4f6/6b7280?text=Video+Preview&font=inter\' alt=\'Video Preview Placeholder\'>';">
-            <source src="assets/demp.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
       </section>
-  </main>
+      </main>
 
   <footer id="contact">
       <div class="footer-content">
@@ -92,12 +121,23 @@
                 // Special case for #contact to scroll to footer
                 const targetElement = (targetId === '#contact')
                     ? document.getElementById('contact')
-                    : document.querySelector(targetId);
+                    : document.querySelector(targetId); // Scrolls to the top of the section
 
                 if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
+                     // Calculate offset for fixed header
+                    const headerOffset = 80; // Height of your fixed header
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                         top: offsetPosition,
+                         behavior: "smooth"
                     });
+
+                     // If it's the #app section, also ensure the section itself doesn't have focus outline if browser adds one
+                     if(targetId === '#app') {
+                        targetElement.blur(); // Remove focus outline if any
+                    }
                 }
                 // Close mobile menu if open after clicking a link
                 const nav = document.getElementById('main-nav');
@@ -126,135 +166,109 @@
                 menuToggleButton.innerHTML = '<i class="fas fa-bars"></i>';
             }
         });
+         // Close menu when clicking outside the nav or toggle button on mobile
+         document.addEventListener('click', function(event) {
+            if (mainNav.classList.contains('active')) {
+                const isClickInsideNav = mainNav.contains(event.target);
+                const isClickOnToggle = menuToggleButton.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnToggle) {
+                    mainNav.classList.remove('active');
+                    menuToggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
     }
 
     // Dotted Matrix Animation Script
     const canvas = document.getElementById('dotted-matrix-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        let dotsArray; // Array to hold all dot objects
-        let animationFrameId; // To control animation loop
-
-        // --- Dot Properties ---
+        let dotsArray;
+        let animationFrameId;
         let dotSize = 1.2;
         let dotSpacing = 35;
-        // Read properties from CSS variables
-        let dotBaseColor = getComputedStyle(document.documentElement).getPropertyValue('--dot-color').trim();
-        let dotMinOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
-        let dotMaxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
-        let baseBgColor = getComputedStyle(document.documentElement).getPropertyValue('--light-bg').trim(); // Read background color
+        let dotBaseColor, dotMinOpacity, dotMaxOpacity, baseBgColor;
 
-        // Function to set up the canvas dimensions and create dots
-        function setupCanvas() {
-            // Stop previous animation frame if running
-            if (animationFrameId) {
-                cancelAnimationFrame(animationFrameId);
-            }
-
-            canvas.width = window.innerWidth; // Set canvas width to window width
-            canvas.height = window.innerHeight; // Set canvas height to window height
-
-            // Re-read CSS variables in case they changed (e.g., theme switch)
+        function updateCSSVariables() {
             dotBaseColor = getComputedStyle(document.documentElement).getPropertyValue('--dot-color').trim();
             dotMinOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
             dotMaxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
             baseBgColor = getComputedStyle(document.documentElement).getPropertyValue('--light-bg').trim();
-
-            createDots(); // Initialize the dots
-            animateDots(); // Start animation
         }
 
-        // Dot class definition
+        function setupCanvas() {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            updateCSSVariables();
+            createDots();
+            animateDots();
+        }
+
         class Dot {
             constructor(x, y) {
-                this.x = x; // X position
-                this.y = y; // Y position
-                this.size = dotSize; // Dot size
-                // Calculate a random initial opacity within the allowed pulse range
-                const minOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
-                const maxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
-                this.opacity = Math.random() * (maxOpacity - minOpacity) + minOpacity;
-                this.pulseSpeed = (Math.random() * 0.01) + 0.005; // Random speed for pulsing effect
-                this.pulseDirection = Math.random() < 0.5 ? 1 : -1; // Random initial pulse direction (in or out)
+                this.x = x;
+                this.y = y;
+                this.size = dotSize;
+                updateCSSVariables();
+                this.opacity = Math.random() * (dotMaxOpacity - dotMinOpacity) + dotMinOpacity;
+                this.pulseSpeed = (Math.random() * 0.01) + 0.005;
+                this.pulseDirection = Math.random() < 0.5 ? 1 : -1;
             }
 
-            // Method to draw the dot
             draw() {
-                // Extract RGB values from the baseColor string to apply opacity
                 const match = dotBaseColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
                 if (match) {
-                    // Use extracted RGB with current opacity
                     ctx.fillStyle = `rgba(${match[1]}, ${match[2]}, ${match[3]}, ${this.opacity})`;
                 } else {
-                    // Fallback color if regex fails - Updated to new dot color (Amber 500)
-                    ctx.fillStyle = `rgba(245, 158, 11, ${this.opacity})`; // CHANGED
+                    ctx.fillStyle = `rgba(245, 158, 11, ${this.opacity})`; // Fallback
                 }
-
-                // Draw the circle
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
 
-            // Method to update the dot's opacity for pulsing effect
             update() {
-                // Change opacity based on speed and direction
                 this.opacity += this.pulseSpeed * this.pulseDirection;
-
-                // Re-read min/max opacity in case they change dynamically
                 const currentMinOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
                 const currentMaxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
 
-
-                // Reverse direction if opacity goes out of bounds
                 if (this.opacity > currentMaxOpacity || this.opacity < currentMinOpacity) {
-                    // Clamp opacity to ensure it stays within bounds
                     this.opacity = Math.max(currentMinOpacity, Math.min(currentMaxOpacity, this.opacity));
-                    this.pulseDirection *= -1; // Reverse pulse direction
+                    this.pulseDirection *= -1;
                 }
-                this.draw(); // Redraw the dot with updated opacity
+                this.draw();
             }
         }
 
-        // Function to create the grid of dots
         function createDots() {
-            dotsArray = []; // Reset the array
-            ctx.fillStyle = baseBgColor; // Set canvas background color
-            ctx.fillRect(0, 0, canvas.width, canvas.height); // Draw canvas background
+            dotsArray = [];
+            updateCSSVariables();
+            ctx.fillStyle = baseBgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Re-read min/max opacity for initial dot creation
-             const minOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
-             const maxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
-
-
-            // Loop through grid positions to create dots
             for (let x = dotSpacing / 2; x < canvas.width + dotSpacing; x += dotSpacing) {
                 for (let y = dotSpacing / 2; y < canvas.height + dotSpacing; y += dotSpacing) {
-                    // Add a new dot to the array
                     dotsArray.push(new Dot(x, y));
                 }
             }
         }
 
-        // Animation loop function
         function animateDots() {
-            // Clear the canvas by drawing the background color
+            updateCSSVariables();
             ctx.fillStyle = baseBgColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-
-            // Update and draw each dot in the array
-            if (dotsArray) { // Ensure dotsArray is initialized
+            if (dotsArray) {
                  for (let i = 0; i < dotsArray.length; i++) {
                     dotsArray[i].update();
                 }
             }
-
-            // Request the next frame
             animationFrameId = requestAnimationFrame(animateDots);
         }
 
-        // Debounce function to limit resize event calls
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -267,12 +281,18 @@
             };
         };
 
-        // Event listener to resize the canvas and recreate dots when window size changes
-        const debouncedSetupCanvas = debounce(setupCanvas, 150); // Adjust wait time (ms) as needed
+        const debouncedSetupCanvas = debounce(setupCanvas, 150);
         window.addEventListener('resize', debouncedSetupCanvas);
 
-        // Initial setup
-        setupCanvas();
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCSSVariables();
+            setupCanvas();
+        });
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+             // Already loaded, run setup (needed for cached pages or fast loads)
+             updateCSSVariables();
+             setupCanvas();
+        }
 
     } else {
         console.error("Dotted matrix canvas element not found.");
