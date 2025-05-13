@@ -31,7 +31,7 @@
 
   /* Theme Variables for App Showcase */
   --showcase-bg: #f9fafb; /* Light grey background for the section */
-  --showcase-element-bg: #ffffff; /* Background for elements like video panel */
+  --showcase-element-bg: #ffffff; /* Background for elements like video panel, feature boxes */
   --showcase-border-color: #e5e7eb; /* Light border color */
   --showcase-text-primary: var(--text-dark);
   --showcase-text-secondary: var(--text-dark-secondary);
@@ -100,15 +100,14 @@ header {
   }
 }
 
-/* Updated animation for tagline to be continuous and subtle */
 @keyframes continuousWordAnimation {
-  0%, 100% { /* Defines the start and end state of the animation loop */
-    opacity: 0.6; /* Word is slightly dimmed */
-    transform: translateY(3px); /* Word is slightly lower */
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(3px);
   }
-  50% { /* Defines the mid-point of the animation loop */
-    opacity: 1; /* Word is fully visible */
-    transform: translateY(0); /* Word is at its normal vertical position */
+  50% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -150,7 +149,7 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--accent-color-solid); /* Will now be Rose 400 on hover */
+  color: var(--accent-color-solid);
 }
 
 nav a::after {
@@ -160,7 +159,7 @@ nav a::after {
   left: 0;
   width: 0;
   height: 3px;
-  background: var(--accent-color-solid); /* Underline on hover will now be Rose 400 */
+  background: var(--accent-color-solid);
   transition: width 0.3s ease;
   border-radius: 1.5px;
 }
@@ -169,13 +168,11 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* Sections overlay the global canvas */
-.hero, .app-showcase-section, .static-page-main { /* Updated for app-showcase-section */
+.hero, .app-showcase-section, .static-page-main {
     position: relative;
     z-index: 1;
 }
 
-/* Hero Section Styling */
 .hero {
   padding-top: 80px;
   min-height: 85vh;
@@ -207,26 +204,20 @@ nav a:hover::after {
   color: var(--text-dark);
 }
 
-/* --- Updated styles for animated tagline --- */
 .animated-tagline span {
-    display: inline-block; /* Allows transform and respects inline flow */
-    /* Initial opacity and transform are now handled by the animation keyframes directly */
-    animation-name: continuousWordAnimation; /* Apply the new continuous animation */
-    animation-duration: 3s; /* Duration of one cycle of the animation */
-    animation-timing-function: ease-in-out; /* Smooth easing for the animation */
-    animation-iteration-count: infinite; /* Makes the animation loop indefinitely */
-    /* animation-fill-mode: forwards; is removed to allow continuous looping */
-    /* Staggered animation-delay for each word is handled by nth-child rules below */
+    display: inline-block;
+    animation-name: continuousWordAnimation;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }
 
-/* Stagger the animation for each word */
 .animated-tagline span:nth-child(1) { animation-delay: 0.1s; }
 .animated-tagline span:nth-child(2) { animation-delay: 0.2s; }
 .animated-tagline span:nth-child(3) { animation-delay: 0.3s; }
 .animated-tagline span:nth-child(4) { animation-delay: 0.4s; }
 .animated-tagline span:nth-child(5) { animation-delay: 0.5s; }
-.animated-tagline span:nth-child(6) { animation-delay: 0.6s; } /* For the exclamation mark */
-/* --- End of updated styles for animated tagline --- */
+.animated-tagline span:nth-child(6) { animation-delay: 0.6s; }
 
 
 .hero-text p {
@@ -238,13 +229,12 @@ nav a:hover::after {
   text-shadow: 0px 1px 2px rgba(0,0,0,0.05);
 }
 
-/* General Section Styling */
 section {
-  padding: 4rem 6%; /* Adjusted horizontal padding */
+  padding: 4rem 6%;
   scroll-margin-top: 80px;
 }
-section.hero { /* Override for hero */
-    padding: 80px 3rem 3rem 3rem; /* Keep hero padding */
+section.hero {
+    padding: 80px 3rem 3rem 3rem;
 }
 
 
@@ -253,16 +243,16 @@ section.hero { /* Override for hero */
 /* ======================================== */
 .app-showcase-section {
   background-color: var(--showcase-bg);
-  padding: 4rem 4%; /* Generous padding */
+  padding: 4rem 4%;
   margin: 3rem auto;
-  border-radius: var(--border-radius-xl); /* Softer, larger radius */
+  border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--showcase-border-color);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content horizontally */
-  gap: 3.5rem; /* Space between header, visual, and features */
-  max-width: 1400px; /* Allow it to be wider */
+  align-items: center;
+  gap: 3.5rem;
+  max-width: 1400px;
   width: 95%;
 }
 
@@ -272,13 +262,13 @@ section.hero { /* Override for hero */
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  max-width: 800px; /* Keep header content readable */
+  max-width: 800px;
 }
 
 .app-showcase-icon {
   width: 72px;
   height: 72px;
-  border-radius: 18px; /* Consistent with Mac app icon styles */
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   background-color: var(--showcase-element-bg);
@@ -290,7 +280,7 @@ section.hero { /* Override for hero */
 }
 
 .app-showcase-title {
-  font-size: 2.8rem; /* Prominent title */
+  font-size: 2.8rem;
   font-weight: 700;
   color: var(--showcase-text-primary);
   letter-spacing: -0.02em;
@@ -302,41 +292,41 @@ section.hero { /* Override for hero */
   line-height: 1.6;
   max-width: 65ch;
 }
-/* Download button style is reused from .download-button */
+
 .app-showcase-header .download-button {
-    padding: 0.9rem 2.2rem; /* Slightly adjust if needed for context */
+    padding: 0.9rem 2.2rem;
     font-size: 1.05rem;
 }
 
 
 .app-showcase-visual {
   width: 100%;
-  max-width: 1100px; /* Max width for the visual */
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  aspect-ratio: 16 / 9.5; /* Cinematic, common for desktop/Mac apps. Adjust if needed (e.g., 16/9) */
-  background-color: var(--showcase-element-bg); /* Fallback bg */
-  border-radius: var(--border-radius-lg); /* Slightly smaller radius than section */
+  aspect-ratio: 16 / 9.5;
+  background-color: var(--showcase-element-bg);
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-xl); /* More prominent shadow for the visual */
+  box-shadow: var(--shadow-xl);
   border: 1px solid var(--showcase-border-color);
 }
 .app-showcase-visual video,
 .app-showcase-visual img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Fill the container, may crop */
+  object-fit: cover;
   display: block;
 }
 
 
-/* --- Features List Styles --- */
+/* --- MODIFIED Features Styles --- */
 .app-showcase-features {
   width: 100%;
-  max-width: 800px; /* Constrain width for single column list */
-  margin-top: 1rem; /* Space above features */
-  margin-left: auto; /* Center the features block */
+  max-width: 1100px; /* Align with visual element */
+  margin-left: auto;
   margin-right: auto;
+  /* The section's gap handles spacing from video panel, so margin-top here is relative to its title */
 }
 
 .app-showcase-features-title {
@@ -344,29 +334,75 @@ section.hero { /* Override for hero */
   font-weight: 600;
   color: var(--showcase-text-primary);
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.5rem; /* Space before the grid of features */
 }
 
+.app-features-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+  justify-content: center; /* Center boxes if they wrap or don't fill all space */
+  gap: 1.5rem; /* Space between feature boxes */
+  width: 100%;
+}
+
+.feature-box {
+  background-color: var(--showcase-element-bg); /* e.g., white */
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--showcase-border-color);
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 280px; /* Preferred starting width for each box */
+  max-width: 350px; /* Max width to maintain good proportions */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem; /* Space between icon, title, and text within the box */
+  box-sizing: border-box;
+}
+
+.feature-box i.fas {
+  color: var(--showcase-icon-color); /* Accent color */
+  font-size: 2rem; /* Icon size */
+  margin-bottom: 0.25rem;
+}
+
+.feature-box h3 {
+  font-size: 1.15rem;
+  color: var(--showcase-text-primary);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.feature-box p {
+  font-size: 0.9rem;
+  color: var(--showcase-text-secondary);
+  line-height: 1.5;
+}
+
+/* --- OLD Features List Styles (Commented Out) --- */
+/*
 .app-features-list {
-  list-style: none; /* Remove default bullets */
+  list-style: none;
   padding-left: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem; /* Space between list items */
+  gap: 1.75rem;
 }
 
 .feature-point {
   display: flex;
-  align-items: flex-start; /* Align icon to top of text block */
-  gap: 1.25rem; /* Space between icon and text block */
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 
 .feature-point i.fas {
-  color: var(--showcase-icon-color); /* Accent color, now Rose 400 */
-  font-size: 1.5rem; /* Icon size */
-  /* fa-fw in HTML ensures fixed width */
-  margin-top: 0.1em; /* Fine-tune vertical alignment */
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  color: var(--showcase-icon-color);
+  font-size: 1.5rem;
+  margin-top: 0.1em;
+  flex-shrink: 0;
 }
 
 .feature-point-text {
@@ -376,15 +412,15 @@ section.hero { /* Override for hero */
 }
 
 .feature-point-text strong {
-  color: var(--showcase-text-primary); /* Darker color for the bold part */
+  color: var(--showcase-text-primary);
   font-weight: 600;
-  margin-right: 0.3em; /* Small space after bold title */
+  margin-right: 0.3em;
 }
-/* --- End of Features List Styles --- */
+*/
+/* --- End of Features Styles --- */
 
 
 /* Download Button Styling (General - Keep this) */
-/* The download button uses the gradient, which is now updated for a pinkish feel. */
 .download-button {
   background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
   color: var(--text-light);
@@ -397,18 +433,16 @@ section.hero { /* Override for hero */
   gap: 0.75rem;
   font-size: 1.1rem;
   border: none;
-  /* Shadow color is based on --accent-gradient-start (Rose 500), which is consistent with the new gradient */
   box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3); 
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .download-button:hover {
   transform: translateY(-3px) scale(1.03);
-  /* Shadow color on hover is also based on --accent-gradient-start (Rose 500) */
   box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4); 
 }
 .download-button i.fas {
-    color: var(--text-light); /* Icon inside download button remains light */
+    color: var(--text-light);
 }
 
 /* Footer Styling */
@@ -459,14 +493,14 @@ footer p i.fas {
 }
 
 .footer-links a:hover {
-  color: var(--accent-color-solid); /* Will now be Rose 400 on hover */
+  color: var(--accent-color-solid);
 }
  .footer-links a i.fas {
     color: var(--text-dark-secondary);
     transition: color 0.3s ease;
 }
  .footer-links a:hover i.fas {
-    color: var(--accent-color-solid); /* Will now be Rose 400 on hover */
+    color: var(--accent-color-solid);
 }
 
 .trademark {
@@ -508,7 +542,7 @@ footer p i.fas {
   font-size: 2.5rem;
   color: var(--text-dark);
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--accent-color-solid); /* Border will now be Rose 400 */
+  border-bottom: 2px solid var(--accent-color-solid);
   padding-bottom: 0.5rem;
 }
 
@@ -548,7 +582,7 @@ footer p i.fas {
 }
 
 .breadcrumb a {
-  color: var(--accent-color-solid); /* Will now be Rose 400 */
+  color: var(--accent-color-solid);
   text-decoration: none;
 }
 
@@ -592,9 +626,11 @@ footer p i.fas {
         max-width: 90%;
         aspect-ratio: 16/10;
     }
-    .app-showcase-features { max-width: 90%; } /* Allow list to be wider */
+    .app-showcase-features {
+        max-width: 90%; /* Container for features takes 90% width */
+    }
     .app-showcase-features-title { font-size: 1.6rem; margin-bottom: 2rem; }
-    .app-features-list { gap: 1.5rem; } /* Adjust gap */
+    /* Feature boxes will wrap naturally due to flex-wrap and flex-basis */
 }
 
 @media (max-width: 768px) {
@@ -622,7 +658,7 @@ footer p i.fas {
   .trademark { margin-top: 1.5rem; }
 
   .hero { min-height: auto; padding-top: calc(70px + 2rem); padding-bottom: 3rem; }
-  section { padding: 3rem 5%; } /* Unified mobile padding */
+  section { padding: 3rem 5%; } 
   section.hero { padding: calc(70px + 2rem) 5% 3rem 5%; }
 
   /* Static Page Mobile */
@@ -635,26 +671,37 @@ footer p i.fas {
 
   /* --- Mobile Adjustments for App Showcase Section --- */
   .app-showcase-section {
-      padding: 2.5rem 5%; /* Use consistent mobile padding */
+      padding: 2.5rem 5%;
       gap: 2rem;
-      border-radius: var(--border-radius-lg); /* Slightly smaller radius on mobile */
+      border-radius: var(--border-radius-lg);
   }
   .app-showcase-icon { width: 60px; height: 60px; border-radius: 14px; }
   .app-showcase-title { font-size: 2rem; }
   .app-showcase-tagline { font-size: 1.05rem; }
-  .app-showcase-header .download-button { width: 100%; max-width: 320px; justify-content: center;} /* Full width button on mobile */
+  .app-showcase-header .download-button { width: 100%; max-width: 320px; justify-content: center;}
 
   .app-showcase-visual {
-    max-width: 100%; /* Full width on mobile */
-    aspect-ratio: 16/9; /* Standard mobile video aspect ratio */
+    max-width: 100%;
+    aspect-ratio: 16/9;
     border-radius: var(--border-radius);
   }
-  .app-showcase-features { max-width: 100%; } /* Full width list */
+  .app-showcase-features {
+      max-width: 100%; /* Features container full width */
+  }
   .app-showcase-features-title { font-size: 1.4rem; margin-bottom: 1.5rem;}
-  .app-features-list { gap: 1.25rem; }
-  .feature-point { gap: 1rem; }
-  .feature-point i.fas { font-size: 1.3rem; }
-  .feature-point-text { font-size: 1rem; }
+
+  .app-features-grid {
+    flex-direction: column; /* Stack feature boxes vertically */
+    align-items: center; /* Center stacked boxes */
+    gap: 1.25rem; /* Adjust gap for stacked boxes */
+  }
+  .feature-box {
+    flex-basis: auto; /* Reset flex-basis */
+    flex-grow: 0; /* Don't allow growing when stacked */
+    width: 90%;  /* Make boxes take up most of the container width */
+    max-width: 400px; /* Cap width for better readability */
+  }
+  .feature-box h3 { font-size: 1.1rem; }
 
 
   /* Mobile Download Button (general) */
