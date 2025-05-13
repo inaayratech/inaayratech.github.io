@@ -1,12 +1,14 @@
 /* CSS Variables for theming */
 :root {
   /* --- Updated Colors --- */
-  --accent-gradient-start: #f43f5e; /* Rose 500 */
-  --accent-gradient-end: #f59e0b;   /* Amber 500 */
-  --accent-color-solid: var(--accent-gradient-end);
+  --accent-gradient-start: #f43f5e; /* Rose 500 - Matches SVG gradient stop 1, Start of button gradient */
+  --accent-gradient-end: #fb7185;   /* Rose 400 - Matches SVG radiating waves, End of button gradient for pinkish feel */
+  --accent-color-solid: #fb7185;   /* Rose 400 - Matches SVG radiating waves, Used for solid accents */
 
   --light-bg: #ffffff; /* White background */
-  --dot-color: rgba(245, 158, 11, 1); /* Amber 500 for dots */
+  /* --dot-color: rgba(245, 158, 11, 1); /* Amber 500 for dots - Kept original for dots, or could be changed to a rose tone if desired */
+  --dot-color: rgba(251, 113, 133, 0.8); /* Rose 400 with some opacity for dots, to match new accent theme */
+
 
   /* Dotted Matrix Colors */
   --dot-pulse-min-opacity: 0.05;
@@ -33,7 +35,7 @@
   --showcase-border-color: #e5e7eb; /* Light border color */
   --showcase-text-primary: var(--text-dark);
   --showcase-text-secondary: var(--text-dark-secondary);
-  --showcase-icon-color: var(--accent-color-solid); /* Accent for icons */
+  --showcase-icon-color: var(--accent-color-solid); /* Accent for icons, now Rose 400 */
 }
 
 /* Basic Reset */
@@ -148,7 +150,7 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--accent-color-solid);
+  color: var(--accent-color-solid); /* Will now be Rose 400 on hover */
 }
 
 nav a::after {
@@ -158,7 +160,7 @@ nav a::after {
   left: 0;
   width: 0;
   height: 3px;
-  background: var(--accent-color-solid);
+  background: var(--accent-color-solid); /* Underline on hover will now be Rose 400 */
   transition: width 0.3s ease;
   border-radius: 1.5px;
 }
@@ -360,7 +362,7 @@ section.hero { /* Override for hero */
 }
 
 .feature-point i.fas {
-  color: var(--showcase-icon-color); /* Accent color */
+  color: var(--showcase-icon-color); /* Accent color, now Rose 400 */
   font-size: 1.5rem; /* Icon size */
   /* fa-fw in HTML ensures fixed width */
   margin-top: 0.1em; /* Fine-tune vertical alignment */
@@ -382,6 +384,7 @@ section.hero { /* Override for hero */
 
 
 /* Download Button Styling (General - Keep this) */
+/* The download button uses the gradient, which is now updated for a pinkish feel. */
 .download-button {
   background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
   color: var(--text-light);
@@ -394,16 +397,18 @@ section.hero { /* Override for hero */
   gap: 0.75rem;
   font-size: 1.1rem;
   border: none;
-  box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
+  /* Shadow color is based on --accent-gradient-start (Rose 500), which is consistent with the new gradient */
+  box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3); 
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .download-button:hover {
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4);
+  /* Shadow color on hover is also based on --accent-gradient-start (Rose 500) */
+  box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4); 
 }
 .download-button i.fas {
-    color: var(--text-light);
+    color: var(--text-light); /* Icon inside download button remains light */
 }
 
 /* Footer Styling */
@@ -454,14 +459,14 @@ footer p i.fas {
 }
 
 .footer-links a:hover {
-  color: var(--accent-color-solid);
+  color: var(--accent-color-solid); /* Will now be Rose 400 on hover */
 }
  .footer-links a i.fas {
     color: var(--text-dark-secondary);
     transition: color 0.3s ease;
 }
  .footer-links a:hover i.fas {
-    color: var(--accent-color-solid);
+    color: var(--accent-color-solid); /* Will now be Rose 400 on hover */
 }
 
 .trademark {
@@ -503,7 +508,7 @@ footer p i.fas {
   font-size: 2.5rem;
   color: var(--text-dark);
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--accent-color-solid);
+  border-bottom: 2px solid var(--accent-color-solid); /* Border will now be Rose 400 */
   padding-bottom: 0.5rem;
 }
 
@@ -543,7 +548,7 @@ footer p i.fas {
 }
 
 .breadcrumb a {
-  color: var(--accent-color-solid);
+  color: var(--accent-color-solid); /* Will now be Rose 400 */
   text-decoration: none;
 }
 
