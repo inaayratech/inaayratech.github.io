@@ -91,11 +91,25 @@ header {
   border-bottom: 1px solid var(--showcase-border-color);
 }
 
+/* Keyframes for animations */
 @keyframes slideDown {
   to {
     transform: translateY(0);
   }
 }
+
+/* Updated animation for tagline to be continuous and subtle */
+@keyframes continuousWordAnimation {
+  0%, 100% { /* Defines the start and end state of the animation loop */
+    opacity: 0.6; /* Word is slightly dimmed */
+    transform: translateY(3px); /* Word is slightly lower */
+  }
+  50% { /* Defines the mid-point of the animation loop */
+    opacity: 1; /* Word is fully visible */
+    transform: translateY(0); /* Word is at its normal vertical position */
+  }
+}
+
 
 .logo-placeholder {
   display: flex;
@@ -190,6 +204,28 @@ nav a:hover::after {
   text-shadow: 0px 1px 3px rgba(0,0,0,0.1);
   color: var(--text-dark);
 }
+
+/* --- Updated styles for animated tagline --- */
+.animated-tagline span {
+    display: inline-block; /* Allows transform and respects inline flow */
+    /* Initial opacity and transform are now handled by the animation keyframes directly */
+    animation-name: continuousWordAnimation; /* Apply the new continuous animation */
+    animation-duration: 3s; /* Duration of one cycle of the animation */
+    animation-timing-function: ease-in-out; /* Smooth easing for the animation */
+    animation-iteration-count: infinite; /* Makes the animation loop indefinitely */
+    /* animation-fill-mode: forwards; is removed to allow continuous looping */
+    /* Staggered animation-delay for each word is handled by nth-child rules below */
+}
+
+/* Stagger the animation for each word */
+.animated-tagline span:nth-child(1) { animation-delay: 0.1s; }
+.animated-tagline span:nth-child(2) { animation-delay: 0.2s; }
+.animated-tagline span:nth-child(3) { animation-delay: 0.3s; }
+.animated-tagline span:nth-child(4) { animation-delay: 0.4s; }
+.animated-tagline span:nth-child(5) { animation-delay: 0.5s; }
+.animated-tagline span:nth-child(6) { animation-delay: 0.6s; } /* For the exclamation mark */
+/* --- End of updated styles for animated tagline --- */
+
 
 .hero-text p {
   color: var(--text-dark-secondary);
