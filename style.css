@@ -475,6 +475,10 @@ footer {
   padding: 0.5rem;
 }
 
+.menu-toggle > i {
+    pointer-events: none;
+}
+
 /* Styles for Static Pages (Privacy, Terms) */
 .static-page-body {
   padding-top: 80px;
