@@ -173,17 +173,17 @@ nav a:hover::after {
     z-index: 1;
 }
 
+/* Hero Section Styling */
 .hero {
-  padding-top: 80px;
-  min-height: 85vh;
+  padding-top: 80px; /* Remains, for fixed header offset */
+  min-height: 75vh; /* MODIFIED: Reduced from 85vh to make the section shorter */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding-left: 3rem;
-  padding-right: 3rem;
-  padding-bottom: 3rem;
+  padding-right: 3rem; 
   background-color: transparent;
 }
 
@@ -234,7 +234,7 @@ section {
   scroll-margin-top: 80px;
 }
 section.hero {
-    padding: 80px 3rem 3rem 3rem;
+    padding: 80px 3rem 0rem 3rem;
 }
 
 
