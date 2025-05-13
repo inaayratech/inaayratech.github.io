@@ -6,20 +6,25 @@
   <title>Privacy Policy | Notch‑Tasker</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css"> </head>
-<body class="static-page-body"> <canvas id="dotted-matrix-canvas"></canvas> <header>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="static-page-body">
+  <canvas id="animated-bg-canvas"></canvas>
+  <header>
     <div class="logo-placeholder">
       <a href="index.html"><img src="assets/logo.svg" alt="Notch‑Tasker Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo&font=inter';"/></a>
     </div>
     <div class="menu-toggle" id="menu-toggle-button">
-        <i class="fas fa-bars"></i>
+      <i class="fas fa-bars"></i>
     </div>
-    <nav id="main-nav"> <a href="index.html"><i class="fas fa-home"></i>Home</a>
-      <a href="terms.html"><i class="fas fa-file-contract"></i>Terms</a>
+    <nav id="main-nav">
+      <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      <a href="terms.html"><i class="fas fa-file-contract"></i>Terms of Service</a>
     </nav>
   </header>
 
-  <main class="static-page-main"> <div class="breadcrumb">
+  <main class="static-page-main">
+    <div class="breadcrumb">
       <a href="index.html">Home</a> &gt; Privacy Policy
     </div>
 
@@ -80,7 +85,7 @@
       <div class="footer-info">
         <p><i class="fas fa-envelope"></i> <a href="mailto:inaayratech@gmail.com">inaayratech@gmail.com</a></p>
         <div class="footer-links">
-          <a href="index.html"><i class="fas fa-shield-alt"></i> Home</a>
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
           <a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
         </div>
       </div>
@@ -90,156 +95,14 @@
     </div>
   </footer>
 
-  <script>
-    // Script for current year and last updated
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-    // Basic mobile menu toggle (if you use the #main-nav and #menu-toggle-button)
-    const menuToggleButton = document.getElementById('menu-toggle-button');
-    const mainNav = document.getElementById('main-nav');
-
-    if (menuToggleButton && mainNav) {
-        menuToggleButton.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            if (mainNav.classList.contains('active')) {
-                menuToggleButton.innerHTML = '<i class="fas fa-times"></i>';
-            } else {
-                menuToggleButton.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-        // Close menu when a link is clicked (for SPA-like behavior on the same page)
-        mainNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (mainNav.classList.contains('active') && !link.getAttribute('href').includes('.html')) { // Only for internal # links
-                    mainNav.classList.remove('active');
-                    menuToggleButton.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            });
-        });
+ <script>
+    // Page-specific script for "Last Updated" date
+    const lastUpdatedEl = document.getElementById('lastUpdated');
+    if (lastUpdatedEl) {
+        lastUpdatedEl.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     }
-
-
-    // Dotted Matrix Animation Script (Copied from index.html)
-    const canvas = document.getElementById('dotted-matrix-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let dotsArray;
-        let animationFrameId;
-        let dotSize = 1.2;
-        let dotSpacing = 35;
-        let dotBaseColor, dotMinOpacity, dotMaxOpacity, baseBgColor;
-
-        function updateCSSVariables() {
-            dotBaseColor = getComputedStyle(document.documentElement).getPropertyValue('--dot-color').trim();
-            dotMinOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
-            dotMaxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
-            baseBgColor = getComputedStyle(document.documentElement).getPropertyValue('--light-bg').trim();
-        }
-
-        function setupCanvas() {
-            if (animationFrameId) {
-                cancelAnimationFrame(animationFrameId);
-            }
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            updateCSSVariables();
-            createDots();
-            animateDots();
-        }
-
-        class Dot {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = dotSize;
-                updateCSSVariables(); // Ensure opacities are current
-                this.opacity = Math.random() * (dotMaxOpacity - dotMinOpacity) + dotMinOpacity;
-                this.pulseSpeed = (Math.random() * 0.01) + 0.005;
-                this.pulseDirection = Math.random() < 0.5 ? 1 : -1;
-            }
-
-            draw() {
-                const match = dotBaseColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-                if (match) {
-                    ctx.fillStyle = `rgba(${match[1]}, ${match[2]}, ${match[3]}, ${this.opacity})`;
-                } else {
-                    ctx.fillStyle = `rgba(245, 158, 11, ${this.opacity})`; // Fallback
-                }
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            update() {
-                this.opacity += this.pulseSpeed * this.pulseDirection;
-                // Re-read current opacities for responsive changes (e.g. theme switch)
-                const currentMinOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-min-opacity'));
-                const currentMaxOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-pulse-max-opacity'));
-
-                if (this.opacity > currentMaxOpacity || this.opacity < currentMinOpacity) {
-                    this.opacity = Math.max(currentMinOpacity, Math.min(currentMaxOpacity, this.opacity));
-                    this.pulseDirection *= -1;
-                }
-                this.draw();
-            }
-        }
-
-        function createDots() {
-            dotsArray = [];
-            updateCSSVariables(); // Ensure bg color is current
-            ctx.fillStyle = baseBgColor;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            for (let x = dotSpacing / 2; x < canvas.width + dotSpacing; x += dotSpacing) {
-                for (let y = dotSpacing / 2; y < canvas.height + dotSpacing; y += dotSpacing) {
-                    dotsArray.push(new Dot(x, y));
-                }
-            }
-        }
-
-        function animateDots() {
-            updateCSSVariables(); // Ensure bg color is current for clearing
-            ctx.fillStyle = baseBgColor;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            if (dotsArray) {
-                 for (let i = 0; i < dotsArray.length; i++) {
-                    dotsArray[i].update();
-                }
-            }
-            animationFrameId = requestAnimationFrame(animateDots);
-        }
-
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        };
-
-        const debouncedSetupCanvas = debounce(setupCanvas, 150);
-        window.addEventListener('resize', debouncedSetupCanvas);
-        
-        // Ensure DOM is fully loaded before trying to read CSS variables for the first time
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCSSVariables(); // Initial fetch of CSS variables
-            setupCanvas(); // Then setup canvas
-        });
-        // Fallback if DOMContentLoaded already fired
-        if (document.readyState === "complete" || document.readyState === "interactive") {
-            updateCSSVariables();
-            setupCanvas();
-        }
-
-
-    } else {
-        console.error("Dotted matrix canvas element not found.");
-    }
+    // Footer current year and mobile menu logic are now handled by the global script.js
   </script>
+  <script src="script.js"></script>
 </body>
 </html>

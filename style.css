@@ -2,17 +2,16 @@
 :root {
   /* --- Updated Colors --- */
   --accent-gradient-start: #f43f5e; /* Rose 500 - Matches SVG gradient stop 1, Start of button gradient */
-  --accent-gradient-end: #fb7185;   /* Rose 400 - Matches SVG radiating waves, End of button gradient for pinkish feel */
-  --accent-color-solid: #fb7185;   /* Rose 400 - Matches SVG radiating waves, Used for solid accents */
+  --accent-gradient-end: #fb7185; /* Rose 400 - Matches SVG radiating waves, End of button gradient for pinkish feel */
+  --accent-color-solid: #fb7185; /* Rose 400 - Matches SVG radiating waves, Used for solid accents */
 
   --light-bg: #ffffff; /* White background */
-  /* --dot-color: rgba(245, 158, 11, 1); /* Amber 500 for dots - Kept original for dots, or could be changed to a rose tone if desired */
-  --dot-color: rgba(251, 113, 133, 0.8); /* Rose 400 with some opacity for dots, to match new accent theme */
+  /* Changed for circle animation: Original --dot-color was rgba(251, 113, 133, 0.8) */
+  --circle-color: rgba(251, 113, 133, 1); /* Rose 400, full opacity for base color, JS handles animation opacity */
 
-
-  /* Dotted Matrix Colors */
-  --dot-pulse-min-opacity: 0.05;
-  --dot-pulse-max-opacity: 0.4;
+  /* Circle Animation Colors & Opacity (formerly Dotted Matrix Colors) */
+  --circle-pulse-min-opacity: 0.1; /* Min target opacity for a circle, was 0.05 */
+  --circle-pulse-max-opacity: 0.5; /* Max target opacity for a circle, was 0.4 */
 
   --text-dark: #1f2937; /* Dark primary text for light bg */
   --text-dark-secondary: #6b7280; /* Dark secondary text for light bg */
@@ -27,7 +26,6 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
   --shadow-inset: inset 0 2px 4px 0 rgba(0,0,0,0.05);
-
 
   /* Theme Variables for App Showcase */
   --showcase-bg: #f9fafb; /* Light grey background for the section */
@@ -61,17 +59,17 @@ body {
 }
 
 main {
-   flex-grow: 1;
+  flex-grow: 1;
 }
 
-/* Dotted Matrix Background Canvas */
-#dotted-matrix-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+/* Animated Background Canvas */
+#animated-bg-canvas { /* Changed from #dotted-matrix-canvas */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 /* Fixed Header Styling */
@@ -110,7 +108,6 @@ header {
     transform: translateY(0);
   }
 }
-
 
 .logo-placeholder {
   display: flex;
@@ -169,30 +166,30 @@ nav a:hover::after {
 }
 
 .hero, .app-showcase-section, .static-page-main {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero Section Styling */
 .hero {
   padding-top: 80px; /* Remains, for fixed header offset */
-  min-height: 75vh; /* MODIFIED: Reduced from 85vh to make the section shorter */
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding-left: 3rem;
-  padding-right: 3rem; 
+  padding-right: 3rem;
   background-color: transparent;
 }
 
 .hero-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .hero-text h1 {
@@ -205,11 +202,11 @@ nav a:hover::after {
 }
 
 .animated-tagline span {
-    display: inline-block;
-    animation-name: continuousWordAnimation;
-    animation-duration: 3s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+  display: inline-block;
+  animation-name: continuousWordAnimation;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
 .animated-tagline span:nth-child(1) { animation-delay: 0.1s; }
@@ -218,7 +215,6 @@ nav a:hover::after {
 .animated-tagline span:nth-child(4) { animation-delay: 0.4s; }
 .animated-tagline span:nth-child(5) { animation-delay: 0.5s; }
 .animated-tagline span:nth-child(6) { animation-delay: 0.6s; }
-
 
 .hero-text p {
   color: var(--text-dark-secondary);
@@ -234,12 +230,11 @@ section {
   scroll-margin-top: 80px;
 }
 section.hero {
-    padding: 80px 3rem 0rem 3rem;
+  padding: 80px 3rem 0rem 3rem;
 }
 
-
 /* ======================================== */
-/* New App Showcase Section Styles          */
+/* New App Showcase Section Styles        */
 /* ======================================== */
 .app-showcase-section {
   background-color: var(--showcase-bg);
@@ -294,10 +289,9 @@ section.hero {
 }
 
 .app-showcase-header .download-button {
-    padding: 0.9rem 2.2rem;
-    font-size: 1.05rem;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.05rem;
 }
-
 
 .app-showcase-visual {
   width: 100%;
@@ -319,14 +313,12 @@ section.hero {
   display: block;
 }
 
-
 /* --- MODIFIED Features Styles --- */
 .app-showcase-features {
   width: 100%;
   max-width: 1100px; /* Align with visual element */
   margin-left: auto;
   margin-right: auto;
-  /* The section's gap handles spacing from video panel, so margin-top here is relative to its title */
 }
 
 .app-showcase-features-title {
@@ -382,44 +374,6 @@ section.hero {
   line-height: 1.5;
 }
 
-/* --- OLD Features List Styles (Commented Out) --- */
-/*
-.app-features-list {
-  list-style: none;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-.feature-point {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-}
-
-.feature-point i.fas {
-  color: var(--showcase-icon-color);
-  font-size: 1.5rem;
-  margin-top: 0.1em;
-  flex-shrink: 0;
-}
-
-.feature-point-text {
-  font-size: 1.05rem;
-  color: var(--showcase-text-secondary);
-  line-height: 1.65;
-}
-
-.feature-point-text strong {
-  color: var(--showcase-text-primary);
-  font-weight: 600;
-  margin-right: 0.3em;
-}
-*/
-/* --- End of Features Styles --- */
-
-
 /* Download Button Styling (General - Keep this) */
 .download-button {
   background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
@@ -433,16 +387,16 @@ section.hero {
   gap: 0.75rem;
   font-size: 1.1rem;
   border: none;
-  box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3); 
+  box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .download-button:hover {
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4); 
+  box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4);
 }
 .download-button i.fas {
-    color: var(--text-light);
+  color: var(--text-light);
 }
 
 /* Footer Styling */
@@ -514,16 +468,16 @@ footer {
 
 /* Hamburger Menu Toggle */
 .menu-toggle {
-     display: none;
-     color: var(--text-dark);
-     font-size: 1.5rem;
-     cursor: pointer;
-     padding: 0.5rem;
- }
+  display: none;
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
 
 /* Styles for Static Pages (Privacy, Terms) */
 .static-page-body {
-    padding-top: 80px;
+  padding-top: 80px;
 }
 
 .static-page-main {
@@ -596,42 +550,55 @@ footer {
   text-align: center;
 }
 .static-page-footer .footer-links a {
-    margin: 0 0.75rem;
+  margin: 0 0.75rem;
 }
-
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-    /* General Responsive Styles */
-    .hero-text h1 { font-size: 3.2rem; }
-    .hero-text p { font-size: 1.25rem; }
-    header { padding: 1.2rem 4%; }
-    nav a { margin-left: 1.2rem; font-size: 1rem; }
-    footer { justify-content: center; }
-    .trademark { margin-left: 0; width: 100%; text-align: center; margin-top: 1rem; }
-    .footer-content { justify-content: center; width: 100%; }
+  /* General Responsive Styles */
+  .hero-text h1 { font-size: 3.2rem; }
+  .hero-text p { font-size: 1.25rem; }
+  header { padding: 1.2rem 4%; }
+  nav a { margin-left: 1.2rem; font-size: 1rem; }
+  /* footer { justify-content: center; } /* This line might be an issue if .footer-wrapper is the flex container */
+  .footer-wrapper { /* Assuming .footer-wrapper is the flex container in the footer */
+    justify-content: center;
+  }
+  .trademark { margin-left: 0; width: 100%; text-align: center; margin-top: 1rem; } /* .trademark class was not in original HTML, perhaps .footer-trademark? */
+  .footer-trademark { /* Adjusted to use existing class */
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  /* .footer-content { justify-content: center; width: 100%; } /* .footer-content class was not in original HTML, perhaps .footer-info or .footer-wrapper? */
+  .footer-info { /* Adjusted to existing class, if this was the intent */
+    justify-content: center;
+    width: 100%;
+  }
 
-    /* Static Page Responsive */
-    .static-page-main { padding: 1.5rem 4%; }
-    .static-page-main h1 { font-size: 2.2rem; }
-    .static-page-main h2 { font-size: 1.6rem; }
 
-    /* --- Responsive Adjustments for App Showcase Section --- */
-    .app-showcase-section {
-      padding: 3rem 5%;
-      gap: 2.5rem;
-    }
-    .app-showcase-title { font-size: 2.4rem; }
-    .app-showcase-tagline { font-size: 1.2rem; }
-    .app-showcase-visual {
-        max-width: 90%;
-        aspect-ratio: 16/10;
-    }
-    .app-showcase-features {
-        max-width: 90%; /* Container for features takes 90% width */
-    }
-    .app-showcase-features-title { font-size: 1.6rem; margin-bottom: 2rem; }
-    /* Feature boxes will wrap naturally due to flex-wrap and flex-basis */
+  /* Static Page Responsive */
+  .static-page-main { padding: 1.5rem 4%; }
+  .static-page-main h1 { font-size: 2.2rem; }
+  .static-page-main h2 { font-size: 1.6rem; }
+
+  /* --- Responsive Adjustments for App Showcase Section --- */
+  .app-showcase-section {
+    padding: 3rem 5%;
+    gap: 2.5rem;
+  }
+  .app-showcase-title { font-size: 2.4rem; }
+  .app-showcase-tagline { font-size: 1.2rem; }
+  .app-showcase-visual {
+    max-width: 90%;
+    aspect-ratio: 16/10;
+  }
+  .app-showcase-features {
+    max-width: 90%; /* Container for features takes 90% width */
+  }
+  .app-showcase-features-title { font-size: 1.6rem; margin-bottom: 2rem; }
+  /* Feature boxes will wrap naturally due to flex-wrap and flex-basis */
 }
 
 /* ---------------------------------------- */
@@ -645,8 +612,8 @@ footer {
     justify-content: space-between;
   }
   .logo-placeholder {
-    flex-grow: 0 !important;
-    justify-content: flex-start !important;
+    flex-grow: 0 !important; /* Kept from original, but consider if !important is necessary */
+    justify-content: flex-start !important; /* Kept from original */
     margin-right: auto;
   }
   .menu-toggle {
@@ -664,20 +631,20 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-    top: 100%;
+    top: 100%; /* Positioned below the header */
     left: 0;
     width: 100%;
     padding: 1rem 4%;
     background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid var(--showcase-border-color);
     box-shadow: var(--shadow-md);
-    display: none;
+    display: none; /* Hidden by default */
   }
   nav.active {
-    display: flex;
+    display: flex; /* Shown when active */
   }
   nav a {
-    margin: 0 0 1rem 0;
+    margin: 0 0 1rem 0; /* Stack links vertically */
     width: 100%;
     padding: 0.5rem 0;
     font-size: 1rem;
@@ -685,6 +652,7 @@ footer {
   nav a::after {
     bottom: -0.25rem;
   }
+  /* This rule seems redundant if nav.active controls display, but kept from original logic */
   header nav#main-nav:not(.active) {
     display: none;
   }
@@ -692,15 +660,13 @@ footer {
   /* Hero & Sections */
   .hero {
     min-height: auto;
-    /* bumped the top padding from 2rem to 4rem below the 70px header */
-    padding-top: calc(70px + 4rem);
+    padding-top: calc(70px + 4rem); /* 70px header + 4rem spacing */
     padding-bottom: 3rem;
   }
   section {
     padding: 3rem 5%;
   }
-  section.hero {
-    /* ensure the larger hero padding is applied here too */
+  section.hero { /* Ensure hero padding overrides general section padding */
     padding: calc(70px + 4rem) 5% 3rem 5%;
   }
 
@@ -767,8 +733,9 @@ footer {
     flex-direction: column;
     gap: 1rem;
   }
-  .footer-trademark {
+  .footer-trademark { /* This was already adjusted for 1024px, ensuring it's also centered here */
     margin-top: 1.5rem;
     width: 100%;
+    text-align: center; /* Ensures centering if not already covered by parent */
   }
 }
