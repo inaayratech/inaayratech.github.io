@@ -512,30 +512,6 @@ footer {
   text-align: right;
 }
 
-/* Responsive adjustments for footer */
-@media (max-width: 768px) {
-  footer {
-    padding: 2.5rem 5%;
-    text-align: center;
-  }
-  .footer-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-info {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .footer-links {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .footer-trademark {
-    margin-top: 1.5rem;
-    width: 100%;
-  }
-}
-
 /* Hamburger Menu Toggle */
 .menu-toggle {
      display: none;
@@ -658,77 +634,141 @@ footer {
     /* Feature boxes will wrap naturally due to flex-wrap and flex-basis */
 }
 
+/* ---------------------------------------- */
+/* Mobile Styles (replace entire section)   */
+/* ---------------------------------------- */
 @media (max-width: 768px) {
-  /* General Mobile Styles */
-  .hero-text h1 { font-size: 2.5rem; }
-  .hero-text p { font-size: 1.1rem; max-width: 95%; }
+  /* Header */
+  header {
+    padding: 1rem 5%;
+    min-height: 70px;
+    justify-content: space-between;
+  }
+  .logo-placeholder {
+    flex-grow: 0 !important;
+    justify-content: flex-start !important;
+    margin-right: auto;
+  }
+  .menu-toggle {
+    display: block;
+    padding: 0.8rem;
+    z-index: 1100;
+    transition: transform 0.2s ease;
+  }
+  .menu-toggle:active {
+    transform: scale(0.9);
+  }
+
+  /* Mobile Nav */
   nav {
-    flex-direction: column; align-items: flex-start; position: absolute;
-    background: rgba(255, 255, 255, 0.98); top: 100%; left: 0;
-    width: 100%; padding: 1rem 4%; display: none;
-    border-bottom: 1px solid var(--showcase-border-color); box-shadow: var(--shadow-md);
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 4%;
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--showcase-border-color);
+    box-shadow: var(--shadow-md);
+    display: none;
   }
-  nav.active { display: flex; }
-  nav a { margin-left: 0; margin-bottom: 1rem; width: 100%; padding: 0.5rem 0; }
-  nav a::after { bottom: -0.25rem; }
-  .menu-toggle { display: block; }
-  header { padding: 1rem 5%; min-height: 70px; }
-  header .logo-placeholder { flex-grow: 1; }
-  header nav#main-nav:not(.active) { display: none; }
-  body.static-page-body { padding-top: 70px; }
+  nav.active {
+    display: flex;
+  }
+  nav a {
+    margin: 0 0 1rem 0;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+  nav a::after {
+    bottom: -0.25rem;
+  }
+  header nav#main-nav:not(.active) {
+    display: none;
+  }
 
-  footer { flex-direction: column; text-align: center; padding: 2.5rem 6%; }
-  .footer-content { flex-direction: column; gap: 1rem; align-items: center; }
-  .footer-links { margin-top: 1rem; flex-direction: column; gap: 1rem; }
-  .trademark { margin-top: 1.5rem; }
+  /* Hero & Sections */
+  .hero {
+    min-height: auto;
+    /* bumped the top padding from 2rem to 4rem below the 70px header */
+    padding-top: calc(70px + 4rem);
+    padding-bottom: 3rem;
+  }
+  section {
+    padding: 3rem 5%;
+  }
+  section.hero {
+    /* ensure the larger hero padding is applied here too */
+    padding: calc(70px + 4rem) 5% 3rem 5%;
+  }
 
-  .hero { min-height: auto; padding-top: calc(70px + 2rem); padding-bottom: 3rem; }
-  section { padding: 3rem 5%; } 
-  section.hero { padding: calc(70px + 2rem) 5% 3rem 5%; }
-
-  /* Static Page Mobile */
-  .static-page-main { padding: 1.5rem 5%; margin-top: 1rem; margin-bottom: 1rem; }
-  .static-page-main h1 { font-size: 2rem; }
-  .static-page-main h2 { font-size: 1.5rem; }
-  .static-page-body header nav { display: none; }
-  .static-page-body .menu-toggle { display: block; }
-  .static-page-body header nav#main-nav:not(.active) { display: none; }
-
-  /* --- Mobile Adjustments for App Showcase Section --- */
+  /* App Showcase */
   .app-showcase-section {
-      padding: 2.5rem 5%;
-      gap: 2rem;
-      border-radius: var(--border-radius-lg);
+    padding: 2.5rem 5%;
+    gap: 2rem;
+    border-radius: var(--border-radius-lg);
   }
-  .app-showcase-icon { width: 60px; height: 60px; border-radius: 14px; }
-  .app-showcase-title { font-size: 2rem; }
-  .app-showcase-tagline { font-size: 1.05rem; }
-  .app-showcase-header .download-button { width: 100%; max-width: 320px; justify-content: center;}
-
+  .app-showcase-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+  }
+  .app-showcase-title {
+    font-size: 2rem;
+  }
+  .app-showcase-tagline {
+    font-size: 1.05rem;
+  }
+  .app-showcase-header .download-button {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
   .app-showcase-visual {
     max-width: 100%;
     aspect-ratio: 16/9;
     border-radius: var(--border-radius);
   }
   .app-showcase-features {
-      max-width: 100%; /* Features container full width */
+    max-width: 100%;
   }
-  .app-showcase-features-title { font-size: 1.4rem; margin-bottom: 1.5rem;}
-
+  .app-showcase-features-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
   .app-features-grid {
-    flex-direction: column; /* Stack feature boxes vertically */
-    align-items: center; /* Center stacked boxes */
-    gap: 1.25rem; /* Adjust gap for stacked boxes */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
   }
   .feature-box {
-    flex-basis: auto; /* Reset flex-basis */
-    flex-grow: 0; /* Don't allow growing when stacked */
-    width: 90%;  /* Make boxes take up most of the container width */
-    max-width: 400px; /* Cap width for better readability */
+    flex-basis: auto;
+    flex-grow: 0;
+    width: 90%;
+    max-width: 400px;
   }
-  .feature-box h3 { font-size: 1.1rem; }
 
-
-  /* Mobile Download Button (general) */
-  .download-button { padding: 0.8rem 2rem; font-size: 1rem; }
+  /* Footer */
+  footer {
+    padding: 2.5rem 5%;
+    text-align: center;
+  }
+  .footer-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-info {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer-trademark {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
 }
