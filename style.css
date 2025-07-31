@@ -579,6 +579,7 @@ footer {
   padding: 1.5rem 2rem;
   border-radius: var(--radius-md);
   margin: 1rem 0;
+  list-style: none;
 }
 
 .static-page-main .content-section ul li {
@@ -641,33 +642,36 @@ footer {
     text-align: center;
     margin-top: 1rem;
   }
-  /* Footer responsive adjustments */
+  /* Footer responsive adjustments for tablets */
+  footer {
+    padding: 2.5rem 4%;
+  }
+  
   .footer-wrapper {
-    gap: 1.5rem;
+    gap: 2rem;
   }
   
   .footer-info {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 2rem;
     width: 100%;
   }
   
   .footer-contact {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 0.5rem;
-    width: 100%;
-  }
-  
-  .footer-contact p {
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 2rem;
+    text-align: left;
   }
   
   .footer-links {
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  
+  .footer-trademark {
     text-align: center;
+    width: 100%;
   }
 
 
@@ -809,45 +813,58 @@ footer {
     max-width: 400px;
   }
 
-  /* Footer */
+  /* Footer - Mobile First Approach */
   footer {
-    padding: 2.5rem 5%;
-    text-align: center;
+    padding: 2rem 1.5rem;
+    background: rgba(249, 250, 251, 0.95);
   }
+  
   .footer-wrapper {
-    gap: 1.5rem;
-    padding: 0 1rem;
+    gap: 2rem;
+    padding: 0;
+    max-width: 100%;
   }
   
   .footer-info {
-    gap: 1.5rem;
+    gap: 2rem;
+    align-items: flex-start;
+    width: 100%;
   }
   
   .footer-contact {
     grid-template-columns: 1fr;
-    text-align: center;
-    gap: 0.6rem;
+    text-align: left;
+    gap: 0.75rem;
+    width: 100%;
   }
   
   .footer-contact p {
-    justify-content: center;
-    font-size: 0.95rem;
+    justify-content: flex-start;
+    font-size: 0.9rem;
+    color: var(--text-dark-secondary);
+  }
+  
+  .footer-contact p i {
+    min-width: 1.5rem;
   }
   
   .footer-links {
-    flex-direction: row;
-    gap: 1.5rem;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+    width: 100%;
   }
   
   .footer-links a {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    padding: 0.25rem 0;
   }
   
   .footer-trademark {
-    font-size: 0.85rem;
-    padding-top: 1rem;
+    font-size: 0.8rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    color: var(--text-dark-secondary);
+    opacity: 0.8;
   }
 }
