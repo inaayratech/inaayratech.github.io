@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notch‑Tasker | Modern Productivity Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="animated-bg-canvas"></canvas>
+
+  <header>
+    <div class="logo-placeholder">
+      <img src="assets/logo.svg" alt="Notch-Tasker Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo&font=inter';"/>
+    </div>
+    <div class="menu-toggle" id="menu-toggle-button">
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav id="main-nav">
+      <a href="#app"><i class="fas fa-desktop"></i>Apps</a> <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
+    </nav>
+  </header>
+
+  <main>
+      <section class="hero">
+        <div class="hero-text">
+          <h1 class="animated-tagline">
+            <span>We</span> <span>focus</span> <span>on</span> <span>simple</span> <span>things</span> <span>!</span>
+          </h1>
+          <p>At Inaayra Tech, we make your day-to-day tasks easier with simple, intuitive apps. We believe technology should be a helpful partner, not a puzzle. Our apps are designed to fit right into your flow, helping you get things done with less effort.</p>
+        </div>
+      </section>
+
+      <section id="app" class="app-showcase-section">
+          <div class="app-showcase-header">
+            <div class="app-showcase-icon">
+              <img src="assets/icon.png" alt="Notch-Tasker App Icon" onerror="this.onerror=null;this.src='https://placehold.co/72x72/ffffff/333333?text=Icon&font=inter';"/>
+            </div>
+            <h1 class="app-showcase-title">Notch‑Tasker</h1>
+            <p class="app-showcase-tagline">
+              A simple Task Management app for macOS, easily accessed from the notch or menu bar. Its intuitive design makes it easy to quickly jot down your tasks and view them on the fly.
+            </p>
+            <a href="#" class="download-button disabled" onclick="return false;" style="cursor: not-allowed; opacity: 0.6;"><i class="fas fa-clock"></i> Coming Soon</a>
+          </div>
+
+          <div class="app-showcase-visual">
+            <video controls poster="assets/timeline.png" onerror="this.onerror=null; this.parentElement.innerHTML = '<img src=\'https://placehold.co/1100x618/f3f4f6/6b7280?text=App+Preview&font=inter\' alt=\'Video Preview Placeholder\'>';">
+              <source src="assets/demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <div class="app-showcase-features">
+            <h2 class="app-showcase-features-title">Discover What Makes Notch‑Tasker Unique</h2>
+            <div class="app-features-grid">
+              <div class="feature-box">
+                <i class="fas fa-mouse-pointer fa-fw"></i>
+                <h3>Seamless Access</h3>
+                <p>Launch via hover-activated notch or the convenient menu bar app for instant task management.</p>
+              </div>
+              <div class="feature-box">
+                <i class="fas fa-list-check fa-fw"></i>
+                <h3>Effortless Organization</h3>
+                <p>Intuitively create, manage, and categorize your to-do lists with a clean, focused interface.</p>
+              </div>
+              <div class="feature-box">
+                <i class="fas fa-eye fa-fw"></i>
+                <h3>At-a-Glance Clarity</h3>
+                <p>Easily add tasks and view your entire workflow instantly, keeping you on top of your priorities.</p>
+              </div>
+            </div>
+          </div>
+          </section>
+      </main>
+
+  <footer id="contact">
+    <div class="footer-wrapper">
+      <div class="footer-info">
+        <p><i class="fas fa-envelope"></i> <a href="mailto:inaayratech@gmail.com">inaayratech@gmail.com</a></p>
+        <div class="footer-links">
+          <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+          <a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-trademark">
+        &copy; <span id="current-year"></span> Inaayra Tech. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

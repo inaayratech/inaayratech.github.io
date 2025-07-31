@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Inaayra Tech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="static-page-body">
+  <canvas id="animated-bg-canvas"></canvas>
+  <header>
+    <div class="logo-placeholder">
+      <a href="index.html"><img src="assets/logo.svg" alt="Notch‑Tasker Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo&font=inter';"/></a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle-button">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav id="main-nav">
+      <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      <a href="terms.html"><i class="fas fa-file-contract"></i>Terms of Service</a>
+    </nav>
+  </header>
+
+  <main class="static-page-main">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> &gt; Privacy Policy
+    </div>
+
+    <h1>Privacy Policy</h1>
+
+    <div class="content-section">
+      <p class="legal-meta"><strong>Effective Date:</strong> <span id="lastUpdated"></span><br>
+      <strong>Version:</strong> 1.0</p>
+
+      <h2>Introduction</h2>
+      <p>Inaayra Tech LLC ("Company," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains our data practices for all applications developed and distributed by Inaayra Tech.</p>
+
+      <h2>1. Information Collection</h2>
+      <h3>1.1 No Data Collection</h3>
+      <p>We do not collect, store, process, or transmit any personal information from our applications. This includes:</p>
+      <ul>
+        <li>No user analytics or usage statistics</li>
+        <li>No crash reports or diagnostic data</li>
+        <li>No personal identifiers or device information</li>
+        <li>No location data or network information</li>
+      </ul>
+
+      <h3>1.2 Local Storage Only</h3>
+      <p>All data created within our applications remains exclusively on your device:</p>
+      <ul>
+        <li>Application content and user-generated data</li>
+        <li>Preferences and settings</li>
+        <li>Application state and cache</li>
+      </ul>
+
+      <h2>2. Data Security</h2>
+      <p>Since we do not collect or have access to your data, the security of your information depends entirely on your device's security measures. We recommend keeping your device and operating system updated.</p>
+
+      <h2>3. Third-Party Services</h2>
+      <p>Our applications do not integrate with any third-party services, analytics platforms, or external APIs that would have access to your data.</p>
+
+      <h2>4. Children's Privacy</h2>
+      <p>Our applications do not collect information from anyone, including children. All data remains locally stored on the user's device.</p>
+
+      <h2>5. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Any changes will be reflected in the "Effective Date" above. Continued use of our applications after changes constitutes acceptance of the updated policy.</p>
+
+      <h2>6. Your Rights</h2>
+      <p>Since we don't collect any data, there is no personal information for you to access, correct, or delete from our servers. All your data is under your complete control on your device.</p>
+
+      <h2>7. Contact Information</h2>
+      <p>For questions or concerns regarding this Privacy Policy, please contact us:</p>
+      <p><strong>Inaayra Tech LLC</strong><br>
+      Email: inaayratech@gmail.com<br>
+      Website: www.inaayratech.com</p>
+    </div>
+  </main>
+
+ <footer id="contact">
+    <div class="footer-wrapper">
+      <div class="footer-info">
+        <p><i class="fas fa-envelope"></i> <a href="mailto:inaayratech@gmail.com">inaayratech@gmail.com</a></p>
+        <div class="footer-links">
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-trademark">
+        &copy; <span id="current-year"></span> Inaayra Tech. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+ <script>
+    // Page-specific script for "Last Updated" date
+    const lastUpdatedEl = document.getElementById('lastUpdated');
+    if (lastUpdatedEl) {
+        lastUpdatedEl.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+    // Footer current year and mobile menu logic are now handled by the global script.js
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

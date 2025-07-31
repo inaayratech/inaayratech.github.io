@@ -1,0 +1,791 @@
+/* CSS Variables for theming */
+:root {
+  /* --- Updated Colors --- */
+  --accent-gradient-start: #f43f5e; /* Rose 500 - Matches SVG gradient stop 1, Start of button gradient */
+  --accent-gradient-end: #fb7185; /* Rose 400 - Matches SVG radiating waves, End of button gradient for pinkish feel */
+  --accent-color-solid: #fb7185; /* Rose 400 - Matches SVG radiating waves, Used for solid accents */
+
+  --light-bg: #ffffff; /* White background */
+  /* Changed for circle animation: Original --dot-color was rgba(251, 113, 133, 0.8) */
+  --circle-color: rgba(251, 113, 133, 1); /* Rose 400, full opacity for base color, JS handles animation opacity */
+
+  /* Circle Animation Colors & Opacity (formerly Dotted Matrix Colors) */
+  --circle-pulse-min-opacity: 0.1; /* Min target opacity for a circle, was 0.05 */
+  --circle-pulse-max-opacity: 0.5; /* Max target opacity for a circle, was 0.4 */
+
+  --text-dark: #1f2937; /* Dark primary text for light bg */
+  --text-dark-secondary: #6b7280; /* Dark secondary text for light bg */
+  --text-light: #ffffff; /* Light text (used on colored backgrounds like buttons) */
+
+  --border-radius: 0.75rem;
+  --border-radius-lg: 1.5rem; /* For larger elements like section containers */
+  --border-radius-xl: 2rem; /* For very prominent elements */
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  --shadow-inset: inset 0 2px 4px 0 rgba(0,0,0,0.05);
+
+  /* Theme Variables for App Showcase */
+  --showcase-bg: #f9fafb; /* Light grey background for the section */
+  --showcase-element-bg: #ffffff; /* Background for elements like video panel, feature boxes */
+  --showcase-border-color: #e5e7eb; /* Light border color */
+  --showcase-text-primary: var(--text-dark);
+  --showcase-text-secondary: var(--text-dark-secondary);
+  --showcase-icon-color: var(--accent-color-solid); /* Accent for icons, now Rose 400 */
+}
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* Animated Background Canvas */
+#animated-bg-canvas { /* Changed from #dotted-matrix-canvas */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Fixed Header Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 6%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  z-index: 1000;
+  transform: translateY(-100%);
+  animation: slideDown 0.5s ease forwards;
+  box-shadow: var(--shadow-md);
+  min-height: 80px;
+  border-bottom: 1px solid var(--showcase-border-color);
+}
+
+/* Keyframes for animations */
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes continuousWordAnimation {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(3px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.logo-placeholder img {
+  height: 50px;
+  width: auto;
+  max-height: 60px;
+  display: block;
+}
+
+.logo-placeholder:hover {
+  transform: scale(1.04);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent-color-solid);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--accent-color-solid);
+  transition: width 0.3s ease;
+  border-radius: 1.5px;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.hero, .app-showcase-section, .static-page-main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero Section Styling */
+.hero {
+  padding-top: 80px; /* Remains, for fixed header offset */
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background-color: transparent;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+  text-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+  color: var(--text-dark);
+}
+
+.animated-tagline span {
+  display: inline-block;
+  animation-name: continuousWordAnimation;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.animated-tagline span:nth-child(1) { animation-delay: 0.1s; }
+.animated-tagline span:nth-child(2) { animation-delay: 0.2s; }
+.animated-tagline span:nth-child(3) { animation-delay: 0.3s; }
+.animated-tagline span:nth-child(4) { animation-delay: 0.4s; }
+.animated-tagline span:nth-child(5) { animation-delay: 0.5s; }
+.animated-tagline span:nth-child(6) { animation-delay: 0.6s; }
+
+.hero-text p {
+  color: var(--text-dark-secondary);
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  line-height: 1.75;
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.05);
+}
+
+section {
+  padding: 4rem 6%;
+  scroll-margin-top: 80px;
+}
+section.hero {
+  padding: 80px 3rem 0rem 3rem;
+}
+
+/* ======================================== */
+/* New App Showcase Section Styles        */
+/* ======================================== */
+.app-showcase-section {
+  background-color: var(--showcase-bg);
+  padding: 4rem 4%;
+  margin: 3rem auto;
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--showcase-border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
+  max-width: 1400px;
+  width: 95%;
+}
+
+.app-showcase-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 800px;
+}
+
+.app-showcase-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background-color: var(--showcase-element-bg);
+}
+.app-showcase-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-showcase-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--showcase-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.app-showcase-tagline {
+  font-size: 1.3rem;
+  color: var(--showcase-text-secondary);
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+.app-showcase-header .download-button {
+  padding: 0.9rem 2.2rem;
+  font-size: 1.05rem;
+}
+
+.app-showcase-visual {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 16 / 9.5;
+  background-color: var(--showcase-element-bg);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--showcase-border-color);
+}
+.app-showcase-visual video,
+.app-showcase-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- MODIFIED Features Styles --- */
+.app-showcase-features {
+  width: 100%;
+  max-width: 1100px; /* Align with visual element */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-showcase-features-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--showcase-text-primary);
+  text-align: center;
+  margin-bottom: 2.5rem; /* Space before the grid of features */
+}
+
+.app-features-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+  justify-content: center; /* Center boxes if they wrap or don't fill all space */
+  gap: 1.5rem; /* Space between feature boxes */
+  width: 100%;
+}
+
+.feature-box {
+  background-color: var(--showcase-element-bg); /* e.g., white */
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--showcase-border-color);
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 280px; /* Preferred starting width for each box */
+  max-width: 350px; /* Max width to maintain good proportions */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem; /* Space between icon, title, and text within the box */
+  box-sizing: border-box;
+}
+
+.feature-box i.fas {
+  color: var(--showcase-icon-color); /* Accent color */
+  font-size: 2rem; /* Icon size */
+  margin-bottom: 0.25rem;
+}
+
+.feature-box h3 {
+  font-size: 1.15rem;
+  color: var(--showcase-text-primary);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.feature-box p {
+  font-size: 0.9rem;
+  color: var(--showcase-text-secondary);
+  line-height: 1.5;
+}
+
+/* Download Button Styling (General - Keep this) */
+.download-button {
+  background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
+  color: var(--text-light);
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  border: none;
+  box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.download-button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4);
+}
+.download-button i.fas {
+  color: var(--text-light);
+}
+
+/* Footer Styling */
+footer {
+  background: rgba(249, 250, 251, 0.9);
+  color: var(--text-dark-secondary);
+  padding: 2rem 6%;
+}
+
+.footer-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-info p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-info p a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-info p a:hover {
+  color: var(--accent-color-solid);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: var(--text-dark-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent-color-solid);
+}
+
+.footer-trademark {
+  font-size: 0.9rem;
+  color: var(--text-dark-secondary);
+  text-align: right;
+}
+
+/* Hamburger Menu Toggle */
+.menu-toggle {
+  display: none;
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.menu-toggle > i {
+    pointer-events: none;
+}
+
+/* Styles for Static Pages (Privacy, Terms) */
+.static-page-body {
+  padding-top: 80px;
+}
+
+.static-page-main {
+  flex-grow: 1;
+  padding: 2rem 6%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: var(--border-radius);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.static-page-main h1 {
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent-color-solid);
+  padding-bottom: 0.5rem;
+}
+
+.static-page-main h2 {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.static-page-main p,
+.static-page-main ul {
+  color: var(--text-dark-secondary);
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.static-page-main ul {
+  padding-left: 20px;
+}
+
+.static-page-main li {
+  margin-bottom: 0.5rem;
+}
+
+.static-page-main .content-section {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 2rem;
+  box-shadow: none;
+}
+
+/* Professional legal document styling */
+.static-page-main h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary-color);
+}
+
+.legal-meta {
+  background-color: rgba(244, 63, 94, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--accent-color-solid);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.static-page-main .content-section ul {
+  background-color: rgba(0, 0, 0, 0.02);
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-md);
+  margin: 1rem 0;
+}
+
+.static-page-main .content-section ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.static-page-main .content-section ul li:before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color-solid);
+  font-weight: bold;
+}
+
+.static-page-main .content-section h2 {
+  border-bottom: 2px solid rgba(244, 63, 94, 0.1);
+  padding-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.breadcrumb {
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  color: var(--accent-color-solid);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.static-page-footer {
+  padding: 2rem 6%;
+  text-align: center;
+}
+.static-page-footer .footer-links a {
+  margin: 0 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  /* General Responsive Styles */
+  .hero-text h1 { font-size: 3.2rem; }
+  .hero-text p { font-size: 1.25rem; }
+  header { padding: 1.2rem 4%; }
+  nav a { margin-left: 1.2rem; font-size: 1rem; }
+  /* footer { justify-content: center; } /* This line might be an issue if .footer-wrapper is the flex container */
+  .footer-wrapper { /* Assuming .footer-wrapper is the flex container in the footer */
+    justify-content: center;
+  }
+  .trademark { margin-left: 0; width: 100%; text-align: center; margin-top: 1rem; } /* .trademark class was not in original HTML, perhaps .footer-trademark? */
+  .footer-trademark { /* Adjusted to use existing class */
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  /* .footer-content { justify-content: center; width: 100%; } /* .footer-content class was not in original HTML, perhaps .footer-info or .footer-wrapper? */
+  .footer-info { /* Adjusted to existing class, if this was the intent */
+    justify-content: center;
+    width: 100%;
+  }
+
+
+  /* Static Page Responsive */
+  .static-page-main { padding: 1.5rem 4%; }
+  .static-page-main h1 { font-size: 2.2rem; }
+  .static-page-main h2 { font-size: 1.6rem; }
+
+  /* --- Responsive Adjustments for App Showcase Section --- */
+  .app-showcase-section {
+    padding: 3rem 5%;
+    gap: 2.5rem;
+  }
+  .app-showcase-title { font-size: 2.4rem; }
+  .app-showcase-tagline { font-size: 1.2rem; }
+  .app-showcase-visual {
+    max-width: 90%;
+    aspect-ratio: 16/10;
+  }
+  .app-showcase-features {
+    max-width: 90%; /* Container for features takes 90% width */
+  }
+  .app-showcase-features-title { font-size: 1.6rem; margin-bottom: 2rem; }
+  /* Feature boxes will wrap naturally due to flex-wrap and flex-basis */
+}
+
+/* ---------------------------------------- */
+/* Mobile Styles (replace entire section)   */
+/* ---------------------------------------- */
+@media (max-width: 768px) {
+  /* Header */
+  header {
+    padding: 1rem 5%;
+    min-height: 70px;
+    justify-content: space-between;
+  }
+  .logo-placeholder {
+    flex-grow: 0 !important; /* Kept from original, but consider if !important is necessary */
+    justify-content: flex-start !important; /* Kept from original */
+    margin-right: auto;
+  }
+  .menu-toggle {
+    display: block;
+    padding: 0.8rem;
+    z-index: 1100;
+    transition: transform 0.2s ease;
+  }
+  .menu-toggle:active {
+    transform: scale(0.9);
+  }
+
+  /* Mobile Nav */
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%; /* Positioned below the header */
+    left: 0;
+    width: 100%;
+    padding: 1rem 4%;
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--showcase-border-color);
+    box-shadow: var(--shadow-md);
+    display: none; /* Hidden by default */
+  }
+  nav.active {
+    display: flex; /* Shown when active */
+  }
+  nav a {
+    margin: 0 0 1rem 0; /* Stack links vertically */
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+  nav a::after {
+    bottom: -0.25rem;
+  }
+  /* This rule seems redundant if nav.active controls display, but kept from original logic */
+  header nav#main-nav:not(.active) {
+    display: none;
+  }
+
+  /* Hero & Sections */
+  .hero {
+    min-height: auto;
+    padding-top: calc(70px + 4rem); /* 70px header + 4rem spacing */
+    padding-bottom: 3rem;
+  }
+  section {
+    padding: 3rem 5%;
+  }
+  section.hero { /* Ensure hero padding overrides general section padding */
+    padding: calc(70px + 4rem) 5% 3rem 5%;
+  }
+
+  /* App Showcase */
+  .app-showcase-section {
+    padding: 2.5rem 5%;
+    gap: 2rem;
+    border-radius: var(--border-radius-lg);
+  }
+  .app-showcase-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+  }
+  .app-showcase-title {
+    font-size: 2rem;
+  }
+  .app-showcase-tagline {
+    font-size: 1.05rem;
+  }
+  .app-showcase-header .download-button {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+  .app-showcase-visual {
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: var(--border-radius);
+  }
+  .app-showcase-features {
+    max-width: 100%;
+  }
+  .app-showcase-features-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .app-features-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .feature-box {
+    flex-basis: auto;
+    flex-grow: 0;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 2.5rem 5%;
+    text-align: center;
+  }
+  .footer-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-info {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer-trademark { /* This was already adjusted for 1024px, ensuring it's also centered here */
+    margin-top: 1.5rem;
+    width: 100%;
+    text-align: center; /* Ensures centering if not already covered by parent */
+  }
+}
