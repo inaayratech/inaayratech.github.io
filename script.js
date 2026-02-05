@@ -70,6 +70,22 @@ if (menuToggleButton && mainNav) {
 }
 
 
+// Peacock fan animation — fans open on enter, stacks back on scroll past
+(function() {
+  const phones = document.querySelector('.app-showcase-phones');
+  if (!phones) return;
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        phones.classList.add('fanned');
+      } else {
+        phones.classList.remove('fanned');
+      }
+    });
+  }, { threshold: 0.15 });
+  obs.observe(phones);
+})();
+
 // --- Circle Animation Script (v3.2 - Slower Speed, Reduced Quantity) ---
 console.log("Circle Animation Script: Starting (v3.2 - Slower Speed, Reduced Quantity)");
 

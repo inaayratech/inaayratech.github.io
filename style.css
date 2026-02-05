@@ -313,6 +313,76 @@ section.hero {
   display: block;
 }
 
+/* --- Fanned Phone Stack (Peacock · 7 phones) --- */
+.app-showcase-phones {
+  width: 100%;
+  max-width: 1200px;
+  height: 540px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase-phone {
+  position: absolute;
+  width: 200px;
+  background: #2C2C2E;
+  border-radius: 38px;
+  padding: 5px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center bottom;
+}
+
+.showcase-phone img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 33px;
+}
+
+.showcase-phone::before {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 22%;
+  width: 3px;
+  height: 12%;
+  background: #2C2C2E;
+  border-radius: 0 3px 3px 0;
+}
+
+.showcase-phone::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 20%;
+  width: 3px;
+  height: 14px;
+  background: #2C2C2E;
+  border-radius: 3px 0 0 3px;
+  box-shadow: 0 20px 0 0 #2C2C2E;
+}
+
+/* Stacked (initial) — all piled center */
+.showcase-phone:nth-child(1) { z-index:4; transform: rotate(-1.5deg) translate(-6px, 2px); }
+.showcase-phone:nth-child(2) { z-index:3; transform: rotate(1deg) translate(4px, -1px); }
+.showcase-phone:nth-child(3) { z-index:5; transform: rotate(-0.5deg) translate(-2px, 0); }
+.showcase-phone:nth-child(4) { z-index:7; transform: translate(0, -4px); }
+.showcase-phone:nth-child(5) { z-index:6; transform: rotate(0.5deg) translate(2px, 1px); }
+.showcase-phone:nth-child(6) { z-index:2; transform: rotate(1.5deg) translate(6px, 3px); }
+.showcase-phone:nth-child(7) { z-index:1; transform: rotate(-1deg) translate(-4px, 4px); }
+
+/* Fanned (peacock spread) */
+.app-showcase-phones.fanned .showcase-phone:nth-child(1) { transform: translateX(-420px) rotate(-18deg); }
+.app-showcase-phones.fanned .showcase-phone:nth-child(2) { transform: translateX(-280px) rotate(-12deg); }
+.app-showcase-phones.fanned .showcase-phone:nth-child(3) { transform: translateX(-140px) rotate(-6deg); }
+.app-showcase-phones.fanned .showcase-phone:nth-child(4) { transform: translateY(-10px); }
+.app-showcase-phones.fanned .showcase-phone:nth-child(5) { transform: translateX(140px) rotate(6deg); }
+.app-showcase-phones.fanned .showcase-phone:nth-child(6) { transform: translateX(280px) rotate(12deg); }
+.app-showcase-phones.fanned .showcase-phone:nth-child(7) { transform: translateX(420px) rotate(18deg); }
+
 /* --- MODIFIED Features Styles --- */
 .app-showcase-features {
   width: 100%;
@@ -691,6 +761,15 @@ footer {
     max-width: 90%;
     aspect-ratio: 16/10;
   }
+  .app-showcase-phones { height: 460px; }
+  .showcase-phone { width: 160px; border-radius: 32px; }
+  .showcase-phone img { border-radius: 27px; }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(1) { transform: translateX(-340px) rotate(-18deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(2) { transform: translateX(-225px) rotate(-12deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(3) { transform: translateX(-112px) rotate(-6deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(5) { transform: translateX(112px) rotate(6deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(6) { transform: translateX(225px) rotate(12deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(7) { transform: translateX(340px) rotate(18deg); }
   .app-showcase-features {
     max-width: 90%; /* Container for features takes 90% width */
   }
@@ -794,6 +873,15 @@ footer {
     aspect-ratio: 16/9;
     border-radius: var(--border-radius);
   }
+  .app-showcase-phones { height: 320px; overflow: hidden; }
+  .showcase-phone { width: 110px; border-radius: 24px; padding: 3px; }
+  .showcase-phone img { border-radius: 21px; }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(1) { transform: translateX(-200px) rotate(-18deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(2) { transform: translateX(-132px) rotate(-12deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(3) { transform: translateX(-66px) rotate(-6deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(5) { transform: translateX(66px) rotate(6deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(6) { transform: translateX(132px) rotate(12deg); }
+  .app-showcase-phones.fanned .showcase-phone:nth-child(7) { transform: translateX(200px) rotate(18deg); }
   .app-showcase-features {
     max-width: 100%;
   }
