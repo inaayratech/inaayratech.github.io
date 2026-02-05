@@ -1,0 +1,639 @@
+/* ============================================
+   Battle Within – v3
+   Bento grid. Dense. Colorful. Classy.
+   ============================================ */
+
+:root {
+  --good: #4CAF50;
+  --evil: #EF5350;
+  --accent: #FF6B35;
+  --bg: #101014;
+  --card: #1A1A1F;
+  --card-hover: #1F1F25;
+  --text: #F5F5F7;
+  --text-2: #A0A0A8;
+  --text-3: #5A5A64;
+  --border: rgba(255,255,255,0.06);
+  --r: 20px;
+  --r-sm: 14px;
+  --font: 'SF Pro Rounded','SF Pro Display',-apple-system,BlinkMacSystemFont,'Nunito',system-ui,sans-serif;
+  --max-w: 1120px;
+  --header-h: 56px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body.bw{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ============================================
+   iOS Segmented Nav
+   ============================================ */
+.seg-nav{
+  position:fixed;top:12px;left:50%;transform:translateX(-50%);
+  z-index:1000;
+}
+
+.seg-tabs{
+  display:flex;
+  background:rgba(30,30,34,0.8);
+  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
+  border-radius:10px;
+  border:1px solid var(--border);
+  padding:2px;
+}
+
+.seg-tab{
+  padding:0.4rem 1rem;
+  font-size:0.78rem;font-weight:600;
+  font-family:var(--font);
+  color:var(--text-3);
+  text-decoration:none;
+  border-radius:8px;
+  transition:color 0.2s,background 0.2s;
+  white-space:nowrap;
+}
+
+.seg-tab:hover{color:var(--text-2)}
+
+.seg-tab.active{
+  background:rgba(255,255,255,0.1);
+  color:var(--text);
+}
+
+.seg-tab-brand{
+  display:flex;align-items:center;gap:0.4rem;
+  color:var(--text) !important;
+  font-weight:700;
+  padding-left:0.35rem;
+}
+
+.seg-icon{
+  width:22px;height:22px;
+  border-radius:6px;
+  object-fit:cover;
+}
+
+/* ============================================
+   Header (legacy, unused)
+   ============================================ */
+.h{
+  position:fixed;top:0;width:100%;height:var(--header-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1rem,4%,2.5rem);
+  background:rgba(16,16,20,0.75);
+  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
+  z-index:1000;border-bottom:1px solid var(--border);
+}
+
+.h-logo{
+  display:flex;align-items:center;gap:0.55rem;
+  text-decoration:none;color:var(--text);
+}
+
+.h-logo img{
+  width:30px;height:30px;border-radius:8px;
+}
+
+.h-logo span{
+  font-size:0.95rem;font-weight:700;letter-spacing:-0.02em;
+}
+
+.h-nav{display:flex;align-items:center;gap:0.25rem}
+
+.h-nav a{
+  color:var(--text-2);text-decoration:none;
+  font-size:0.82rem;font-weight:500;
+  padding:0.35rem 0.7rem;border-radius:8px;
+  transition:color 0.2s,background 0.2s;
+}
+
+.h-nav a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+
+.h-toggle{
+  display:none;color:var(--text);font-size:1.15rem;
+  cursor:pointer;padding:0.4rem;z-index:1100;
+}
+.h-toggle>i{pointer-events:none}
+
+/* ============================================
+   Sections
+   ============================================ */
+.sec{
+  position:relative;z-index:1;
+  padding:5rem clamp(1rem,4%,3rem);
+}
+
+.inner{max-width:var(--max-w);margin:0 auto}
+
+/* ============================================
+   Hero – Icon, title, tagline + fanned phones
+   ============================================ */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding-top:2rem;
+  overflow:hidden;
+}
+
+.hero-wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:3rem;max-width:var(--max-w);width:100%;
+}
+
+.hero-left{
+  flex:1 1 420px;
+  display:flex;flex-direction:column;gap:1.5rem;
+}
+
+.hero-icon{
+  width:72px;height:72px;border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+
+.hero-icon img{width:100%;height:100%;object-fit:cover;display:block}
+
+.hero-title{
+  font-size:clamp(2.8rem,5.5vw,4.2rem);
+  font-weight:800;letter-spacing:-0.04em;line-height:1.05;
+  margin-top:1rem;
+}
+
+.hero-title .g{color:var(--good)}
+.hero-title .e{color:var(--evil)}
+
+.hero-sub{
+  font-size:1.1rem;color:var(--text-2);
+  max-width:420px;line-height:1.65;
+}
+
+.hero-btns{display:flex;gap:0.75rem;flex-wrap:wrap}
+
+/* ============================================
+   iPhone Device Frame (2-element: frame + screen)
+   ============================================ */
+.iphone{
+  position:relative;
+  background:#2C2C2E;
+  border-radius:48px;
+  padding:6px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.4);
+}
+
+/* Power button – right side */
+.iphone::before{
+  content:'';
+  position:absolute;
+  right:-3px;top:22%;
+  width:4px;height:12%;
+  background:#2C2C2E;
+  border-radius:0 3px 3px 0;
+}
+
+/* Volume buttons – left side (vol up + vol down via box-shadow) */
+.iphone::after{
+  content:'';
+  position:absolute;
+  left:-3px;top:20%;
+  width:4px;height:14px;
+  background:#2C2C2E;
+  border-radius:3px 0 0 3px;
+  box-shadow:0 20px 0 0 #2C2C2E;
+}
+
+.iphone-screen{
+  width:100%;
+  border-radius:42px;
+  overflow:hidden;
+  background:#000;
+  position:relative;
+}
+
+.iphone-screen img{
+  width:100%;height:auto;display:block;
+}
+
+/* Hero phones – fanned/cascading */
+.hero-phones{
+  flex:0 0 540px;
+  position:relative;
+  height:660px;
+}
+
+.hero-phones .iphone{
+  position:absolute;
+  width:280px;
+  transition:transform 0.4s ease;
+}
+
+.hero-phones .iphone:nth-child(1){
+  top:50px;left:0;z-index:1;
+  transform:rotate(-6deg);
+}
+
+.hero-phones .iphone:nth-child(2){
+  top:0;left:155px;z-index:3;
+  transform:rotate(0deg);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.08),
+    0 20px 60px rgba(255,107,53,0.1),
+    0 20px 60px rgba(0,0,0,0.4);
+}
+
+.hero-phones .iphone:nth-child(3){
+  top:50px;left:310px;z-index:2;
+  transform:rotate(6deg);
+}
+
+.hero-phones .iphone:hover{transform:rotate(0deg) scale(1.04)!important;z-index:10}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.7rem 1.4rem;border-radius:12px;
+  font-weight:600;font-size:0.88rem;font-family:var(--font);
+  text-decoration:none;border:none;cursor:pointer;
+  transition:transform 0.15s,opacity 0.15s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-o{background:var(--accent);color:#fff}
+.btn-g{background:rgba(255,255,255,0.06);color:var(--text-2);border:1px solid var(--border)}
+.btn-g:hover{color:var(--text);background:rgba(255,255,255,0.08)}
+
+/* ============================================
+   Bento Grid – the main showcase
+   ============================================ */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1rem;
+  max-width:var(--max-w);margin:0 auto;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  overflow:hidden;
+  position:relative;
+  transition:border-color 0.25s;
+}
+
+.card:hover{border-color:rgba(255,255,255,0.1)}
+
+/* Card sizing utilities */
+.c-8{grid-column:span 8}
+.c-7{grid-column:span 7}
+.c-6{grid-column:span 6}
+.c-5{grid-column:span 5}
+.c-4{grid-column:span 4}
+.c-12{grid-column:span 12}
+
+/* --- Text card --- */
+.card-text{
+  padding:2rem 1.75rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+
+.card-text .label{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.72rem;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:0.75rem;width:fit-content;
+  padding:0.25rem 0.6rem;border-radius:6px;
+}
+
+.label-g{color:var(--good);background:rgba(76,175,80,0.1)}
+.label-e{color:var(--evil);background:rgba(239,83,80,0.1)}
+.label-o{color:var(--accent);background:rgba(255,107,53,0.1)}
+
+.card-text h3{
+  font-size:1.4rem;font-weight:700;
+  letter-spacing:-0.025em;margin-bottom:0.6rem;line-height:1.2;
+}
+
+.card-text p{font-size:0.92rem;color:var(--text-2);line-height:1.6}
+
+/* --- Screenshot card --- */
+.card-ss{
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  min-height:440px;
+}
+
+/* Tinted backgrounds for screenshot cards */
+.card-tint-g{background:linear-gradient(145deg,rgba(76,175,80,0.06),var(--card))}
+.card-tint-e{background:linear-gradient(145deg,rgba(239,83,80,0.06),var(--card))}
+.card-tint-o{background:linear-gradient(145deg,rgba(255,107,53,0.06),var(--card))}
+
+/* Phone inside card – inherits .iphone base styles */
+.card .iphone{
+  width:280px;flex-shrink:0;
+  transition:transform 0.35s ease;
+}
+
+.card .iphone:hover{transform:translateY(-6px)}
+
+/* Dual phones in a single card (overlapping) */
+.card-dual{
+  display:flex;align-items:center;justify-content:center;
+  padding:2rem;gap:0;
+  min-height:520px;
+}
+
+.card-dual .iphone{position:relative}
+.card-dual .iphone:first-child{transform:rotate(-4deg) translateX(16px);z-index:1}
+.card-dual .iphone:last-child{transform:rotate(4deg) translateX(-16px);z-index:2}
+.card-dual .iphone:first-child:hover{transform:rotate(0deg) translateX(16px) translateY(-6px);z-index:3}
+.card-dual .iphone:last-child:hover{transform:rotate(0deg) translateX(-16px) translateY(-6px);z-index:3}
+
+/* VS badge in dual card */
+.card-vs{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);z-index:5;
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;font-weight:800;font-size:0.7rem;
+  letter-spacing:0.03em;
+  box-shadow:0 4px 16px rgba(255,107,53,0.3);
+}
+
+/* --- Combo card: text + phone side by side inside one card --- */
+.card-combo{
+  display:flex;align-items:center;
+  padding:0;
+  overflow:hidden;
+}
+
+.card-combo .card-text{flex:1;padding:2rem 1.75rem}
+
+.card-combo .card-ss{
+  flex:0 0 320px;
+  min-height:auto;
+  padding:1.25rem;
+  align-items:center;
+}
+
+.card-combo .iphone{width:280px}
+
+/* --- Trio card: full-width, text left + 3 fanned phones right --- */
+.card-trio{
+  display:flex;align-items:center;
+  padding:0;min-height:680px;
+}
+
+.card-trio .card-text{flex:0 0 320px;padding:2rem 1.75rem}
+
+.trio-phones{
+  flex:1;position:relative;height:680px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.trio-phones .iphone{
+  position:absolute;width:280px;
+  transition:transform 0.4s ease;
+}
+
+.trio-phones .iphone:nth-child(1){left:80px;top:50px;z-index:1;transform:rotate(-6deg)}
+.trio-phones .iphone:nth-child(2){left:50%;top:10px;transform:translateX(-50%);z-index:3}
+.trio-phones .iphone:nth-child(3){right:80px;top:50px;z-index:2;transform:rotate(6deg)}
+
+.trio-phones .iphone:hover{transform:rotate(0deg) scale(1.04)!important;z-index:10}
+.trio-phones .iphone:nth-child(2):hover{transform:translateX(-50%) scale(1.04)!important;z-index:10}
+
+/* ============================================
+   Section Header
+   ============================================ */
+.sec-hdr{text-align:center;margin-bottom:2.5rem}
+
+.sec-hdr h2{
+  font-size:clamp(1.8rem,3.5vw,2.4rem);
+  font-weight:700;letter-spacing:-0.03em;margin-bottom:0.5rem;
+}
+
+.sec-hdr p{font-size:0.95rem;color:var(--text-2)}
+
+
+/* ============================================
+   Mini Features Grid
+   ============================================ */
+.feats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0.75rem;max-width:var(--max-w);margin:0 auto;
+}
+
+.feat{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:1.25rem 1rem;
+  transition:background 0.2s;
+}
+
+.feat:hover{background:var(--card-hover)}
+
+.feat-ic{
+  width:32px;height:32px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:0.7rem;font-size:0.9rem;
+}
+
+.feat:nth-child(3n+1) .feat-ic{background:rgba(255,107,53,0.1);color:var(--accent)}
+.feat:nth-child(3n+2) .feat-ic{background:rgba(76,175,80,0.1);color:var(--good)}
+.feat:nth-child(3n)   .feat-ic{background:rgba(239,83,80,0.1);color:var(--evil)}
+
+.feat h4{font-size:0.88rem;font-weight:600;margin-bottom:0.25rem}
+.feat p{font-size:0.8rem;color:var(--text-3);line-height:1.45}
+
+/* ============================================
+   Pricing
+   ============================================ */
+.prices{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1rem;max-width:840px;margin:0 auto 2rem;
+}
+
+.price{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.75rem 1.25rem;
+  text-align:center;position:relative;
+  transition:border-color 0.2s;
+}
+
+.price:hover{border-color:rgba(255,255,255,0.1)}
+
+.price.pop{border-color:var(--accent);background:rgba(255,107,53,0.04)}
+
+.price-badge{
+  position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:#fff;
+  font-size:0.62rem;font-weight:700;
+  padding:0.18rem 0.6rem;border-radius:5px;
+  text-transform:uppercase;letter-spacing:0.04em;
+}
+
+.price h3{font-size:0.85rem;color:var(--text-2);font-weight:500;margin-bottom:0.5rem}
+.price-amt{font-size:2.1rem;font-weight:800;letter-spacing:-0.03em}
+.price-per{font-size:0.78rem;color:var(--text-3);margin-bottom:1rem}
+
+.price-list{list-style:none;text-align:left;margin-bottom:1.25rem}
+.price-list li{
+  padding:0.25rem 0;font-size:0.8rem;color:var(--text-2);
+  display:flex;align-items:center;gap:0.4rem;
+}
+.price-list li i{color:var(--good);font-size:0.6rem;flex-shrink:0}
+
+.price-note{text-align:center;color:var(--text-3);font-size:0.82rem}
+
+/* ============================================
+   Final CTA
+   ============================================ */
+.cta{text-align:center;padding:6rem clamp(1rem,4%,3rem)}
+
+.cta-evil{font-size:1.05rem;color:var(--evil);font-weight:500;margin-bottom:1rem}
+
+.cta-go{
+  font-size:clamp(2rem,4.5vw,3rem);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:2rem;
+  background:linear-gradient(135deg,var(--good),#fff 80%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.btn-coming-soon{
+  background:rgba(255,255,255,0.08);
+  color:var(--text-2);
+  border:1px solid var(--border);
+  padding:0.85rem 2rem;
+  font-size:0.95rem;
+  border-radius:14px;
+  cursor:default;
+  opacity:0.7;
+  pointer-events:none;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.ft{padding:1.5rem clamp(1rem,4%,2.5rem);border-top:1px solid var(--border)}
+
+.ft-in{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:0.75rem;
+}
+
+.ft-c{font-size:0.78rem;color:var(--text-3)}
+
+.ft-links{display:flex;gap:1.25rem}
+.ft-links a{color:var(--text-3);text-decoration:none;font-size:0.78rem;transition:color 0.2s}
+.ft-links a:hover{color:var(--text-2)}
+
+/* ============================================
+   Scroll reveal
+   ============================================ */
+.rv{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
+.rv.vis{opacity:1;transform:none}
+.sg>*{opacity:0;transform:translateY(12px);transition:opacity 0.4s ease,transform 0.4s ease}
+.sg.vis>*:nth-child(1){transition-delay:.03s;opacity:1;transform:none}
+.sg.vis>*:nth-child(2){transition-delay:.06s;opacity:1;transform:none}
+.sg.vis>*:nth-child(3){transition-delay:.09s;opacity:1;transform:none}
+.sg.vis>*:nth-child(4){transition-delay:.12s;opacity:1;transform:none}
+.sg.vis>*:nth-child(5){transition-delay:.15s;opacity:1;transform:none}
+.sg.vis>*:nth-child(6){transition-delay:.18s;opacity:1;transform:none}
+
+/* ============================================
+   Responsive: Tablet
+   ============================================ */
+@media(max-width:1024px){
+  .hero-wrap{gap:2rem}
+  .hero-phones{flex:0 0 420px;height:540px}
+  .hero-phones .iphone{width:220px}
+  .hero-phones .iphone:nth-child(1){top:30px}
+  .hero-phones .iphone:nth-child(2){left:120px}
+  .hero-phones .iphone:nth-child(3){top:30px;left:240px}
+
+  .c-8,.c-7{grid-column:span 7}
+  .c-5,.c-6{grid-column:span 5}
+
+  .card .iphone{width:240px}
+
+  .feats{grid-template-columns:repeat(2,1fr)}
+
+  .card-combo .card-ss{flex:0 0 280px;padding:1rem}
+  .card-combo .iphone{width:240px}
+
+}
+
+/* ============================================
+   Responsive: Mobile
+   ============================================ */
+@media(max-width:768px){
+  .sec{padding:3.5rem 1rem}
+
+  .seg-tab{padding:0.35rem 0.7rem;font-size:0.72rem}
+
+  /* Hero stacks */
+  .hero{min-height:auto;padding:2.5rem 1rem}
+  .hero-wrap{flex-direction:column;text-align:center;gap:2.5rem}
+  .hero-left{align-items:center;flex:auto}
+  .hero-icon{width:60px;height:60px;border-radius:15px}
+  .hero-sub{max-width:100%}
+  .hero-btns{justify-content:center}
+
+  .hero-phones{
+    flex:auto;width:100%;height:auto;
+    display:flex;justify-content:center;gap:0.75rem;
+    position:relative;
+  }
+  .hero-phones .iphone{
+    position:relative;top:auto;left:auto;
+    width:32%;max-width:160px;
+  }
+  .hero-phones .iphone:nth-child(1){transform:rotate(-4deg)}
+  .hero-phones .iphone:nth-child(2){transform:rotate(0deg);z-index:3}
+  .hero-phones .iphone:nth-child(3){transform:rotate(4deg)}
+
+  /* Bento goes single column */
+  .bento{grid-template-columns:1fr}
+  .c-8,.c-7,.c-6,.c-5,.c-4,.c-12{grid-column:span 1}
+
+  .card .iphone{width:240px}
+  .card-ss{min-height:400px}
+  .card-dual{min-height:440px;gap:0}
+  .card-dual .iphone{width:200px}
+
+  .card-combo{flex-direction:column}
+  .card-combo .card-ss{flex:auto;padding:1.25rem}
+  .card-combo .iphone{width:240px}
+
+  .card-trio{flex-direction:column;min-height:auto}
+  .card-trio .card-text{flex:auto;padding:2rem 1.5rem;text-align:center}
+  .trio-phones{width:100%;height:440px}
+  .trio-phones .iphone{width:200px}
+  .trio-phones .iphone:nth-child(1){left:10%;top:40px}
+  .trio-phones .iphone:nth-child(3){right:10%;top:40px}
+
+  .feats{grid-template-columns:1fr;max-width:360px;margin:0 auto}
+  .prices{grid-template-columns:1fr;max-width:320px;margin:0 auto 2rem}
+
+  .cta{padding:4rem 1rem}
+  .ft-in{flex-direction:column;align-items:center;text-align:center}
+  .ft-links{flex-wrap:wrap;justify-content:center;gap:0.75rem}
+}
+
+@media(max-width:400px){
+  .hero-phones .iphone{max-width:140px}
+  .card .iphone{width:200px!important}
+  .card-dual .iphone{width:170px!important}
+}
