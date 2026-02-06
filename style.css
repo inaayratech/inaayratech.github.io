@@ -321,16 +321,19 @@ section.hero {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: nowrap;
 }
 
 .showcase-phone {
   position: relative;
   width: 260px;
+  flex-shrink: 0;
   background: #2C2C2E;
   border-radius: 44px;
   padding: 6px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.25);
   margin: 0 -30px;
+  overflow: hidden;
 }
 
 .showcase-phone img {
