@@ -139,7 +139,7 @@ body.bw{
 .hero{
   min-height:100vh;
   display:flex;align-items:center;justify-content:center;
-  padding-top:2rem;
+  padding-top:5rem;
   overflow:hidden;
 }
 
@@ -221,38 +221,23 @@ body.bw{
   width:100%;height:auto;display:block;
 }
 
-/* Hero phones – fanned/cascading */
+/* Hero phones – 2-phone overlap */
 .hero-phones{
-  flex:0 0 540px;
-  position:relative;
-  height:660px;
+  flex:0 0 480px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .hero-phones .iphone{
-  position:absolute;
   width:280px;
+  position:relative;
+  margin:0 -30px;
   transition:transform 0.4s ease;
 }
 
-.hero-phones .iphone:nth-child(1){
-  top:50px;left:0;z-index:1;
-  transform:rotate(-6deg);
-}
-
-.hero-phones .iphone:nth-child(2){
-  top:0;left:155px;z-index:3;
-  transform:rotate(0deg);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.08),
-    0 20px 60px rgba(255,107,53,0.1),
-    0 20px 60px rgba(0,0,0,0.4);
-}
-
-.hero-phones .iphone:nth-child(3){
-  top:50px;left:310px;z-index:2;
-  transform:rotate(6deg);
-}
-
+.hero-phones .iphone:first-child{transform:rotate(-5deg);z-index:1}
+.hero-phones .iphone:last-child{transform:rotate(5deg);z-index:2}
 .hero-phones .iphone:hover{transform:rotate(0deg) scale(1.04)!important;z-index:10}
 
 /* ============================================
@@ -351,11 +336,11 @@ body.bw{
   min-height:520px;
 }
 
-.card-dual .iphone{position:relative}
-.card-dual .iphone:first-child{transform:rotate(-4deg) translateX(16px);z-index:1}
-.card-dual .iphone:last-child{transform:rotate(4deg) translateX(-16px);z-index:2}
-.card-dual .iphone:first-child:hover{transform:rotate(0deg) translateX(16px) translateY(-6px);z-index:3}
-.card-dual .iphone:last-child:hover{transform:rotate(0deg) translateX(-16px) translateY(-6px);z-index:3}
+.card-dual .iphone{position:relative;margin:0 -16px}
+.card-dual .iphone:first-child{transform:rotate(-5deg);z-index:1}
+.card-dual .iphone:last-child{transform:rotate(5deg);z-index:2}
+.card-dual .iphone:first-child:hover{transform:rotate(0deg) translateY(-6px);z-index:3}
+.card-dual .iphone:last-child:hover{transform:rotate(0deg) translateY(-6px);z-index:3}
 
 /* VS badge in dual card */
 .card-vs{
@@ -557,11 +542,12 @@ body.bw{
    ============================================ */
 @media(max-width:1024px){
   .hero-wrap{gap:2rem}
-  .hero-phones{flex:0 0 420px;height:540px}
-  .hero-phones .iphone{width:220px}
-  .hero-phones .iphone:nth-child(1){top:30px}
-  .hero-phones .iphone:nth-child(2){left:120px}
-  .hero-phones .iphone:nth-child(3){top:30px;left:240px}
+  .hero-phones{flex:0 0 380px}
+  .hero-phones .iphone{width:220px;margin:0 -24px}
+
+  /* Scale iPhone frame radius for 220-240px phones */
+  .iphone{border-radius:38px;padding:5px}
+  .iphone-screen{border-radius:33px}
 
   .c-8,.c-7{grid-column:span 7}
   .c-5,.c-6{grid-column:span 5}
@@ -573,67 +559,169 @@ body.bw{
   .card-combo .card-ss{flex:0 0 280px;padding:1rem}
   .card-combo .iphone{width:240px}
 
+  /* Trio – switch to relative overlap at tablet */
+  .card-trio{min-height:auto}
+  .card-trio .card-text{flex:0 0 260px;padding:1.75rem 1.5rem}
+  .trio-phones{
+    height:auto;min-height:500px;
+    display:flex;align-items:center;justify-content:center;
+    padding:2rem 0.5rem;
+  }
+  .trio-phones .iphone{
+    position:relative;top:auto;left:auto;right:auto;
+    width:200px;margin:0 -20px;
+  }
+  .trio-phones .iphone:nth-child(1){transform:rotate(-6deg);z-index:1}
+  .trio-phones .iphone:nth-child(2){transform:translateY(-10px);z-index:3}
+  .trio-phones .iphone:nth-child(3){transform:rotate(6deg);z-index:2}
+  .trio-phones .iphone:hover{transform:none!important}
 }
 
 /* ============================================
    Responsive: Mobile
    ============================================ */
 @media(max-width:768px){
-  .sec{padding:3.5rem 1rem}
+  .sec{padding:3rem 1rem}
 
-  .seg-tab{padding:0.35rem 0.7rem;font-size:0.72rem}
+  /* Nav – compact for phones */
+  .seg-tab{padding:0.3rem 0.6rem;font-size:0.7rem}
+  .seg-icon{width:18px;height:18px;border-radius:5px}
+  .seg-tab-brand{gap:0.3rem;padding-left:0.3rem}
 
-  /* Hero stacks */
-  .hero{min-height:auto;padding:2.5rem 1rem}
+  /* Scale iPhone frames for ~150-170px phones */
+  .iphone{border-radius:28px;padding:4px;box-shadow:0 12px 30px rgba(0,0,0,0.3)}
+  .iphone-screen{border-radius:24px}
+  .iphone::before{width:3px}
+  .iphone::after{width:3px;height:10px;box-shadow:0 15px 0 0 #2C2C2E}
+
+  /* Hero stacks vertically */
+  .hero{min-height:auto;padding:4rem 1.25rem 2.5rem}
   .hero-wrap{flex-direction:column;text-align:center;gap:2.5rem}
   .hero-left{align-items:center;flex:auto}
-  .hero-icon{width:60px;height:60px;border-radius:15px}
-  .hero-sub{max-width:100%}
+  .hero-icon{width:56px;height:56px;border-radius:14px}
+  .hero-title{font-size:2.2rem}
+  .hero-sub{max-width:100%;font-size:0.95rem}
   .hero-btns{justify-content:center}
 
+  /* Hero phones – 2-phone overlap */
   .hero-phones{
-    flex:auto;width:100%;height:auto;
-    display:flex;justify-content:center;gap:0.75rem;
-    position:relative;
+    flex:auto;width:100%;
+    display:flex;justify-content:center;
   }
   .hero-phones .iphone{
-    position:relative;top:auto;left:auto;
-    width:32%;max-width:160px;
+    width:36%;max-width:180px;
+    margin:0 -20px;
   }
-  .hero-phones .iphone:nth-child(1){transform:rotate(-4deg)}
-  .hero-phones .iphone:nth-child(2){transform:rotate(0deg);z-index:3}
-  .hero-phones .iphone:nth-child(3){transform:rotate(4deg)}
+  .hero-phones .iphone:first-child{transform:rotate(-5deg);z-index:1}
+  .hero-phones .iphone:last-child{transform:rotate(5deg);z-index:2}
+  .hero-phones .iphone:hover{transform:none!important}
 
-  /* Bento goes single column */
-  .bento{grid-template-columns:1fr}
+  /* Bento single column */
+  .bento{grid-template-columns:1fr;gap:0.75rem}
   .c-8,.c-7,.c-6,.c-5,.c-4,.c-12{grid-column:span 1}
 
-  .card .iphone{width:240px}
-  .card-ss{min-height:400px}
-  .card-dual{min-height:440px;gap:0}
-  .card-dual .iphone{width:200px}
+  /* Card text */
+  .card-text{padding:1.75rem 1.25rem}
+  .card-text h3{font-size:1.2rem}
+  .card-text p{font-size:0.85rem}
 
+  /* Single card phones */
+  .card .iphone{width:200px}
+  .card-ss{min-height:360px}
+
+  /* Dual phone cards – overlapping */
+  .card-dual{
+    min-height:auto;padding:1.5rem 0.5rem;
+    flex-direction:row;flex-wrap:nowrap;
+    justify-content:center;align-items:center;
+    overflow:visible;
+  }
+  .card-dual .iphone{width:50%;max-width:180px;margin:0 -15px}
+  .card-dual .iphone:first-child{transform:rotate(-5deg);z-index:1}
+  .card-dual .iphone:last-child{transform:rotate(5deg);z-index:2}
+  .card-dual .iphone:hover{transform:none!important}
+
+  /* Combo cards */
   .card-combo{flex-direction:column}
   .card-combo .card-ss{flex:auto;padding:1.25rem}
-  .card-combo .iphone{width:240px}
+  .card-combo .iphone{width:200px}
 
-  .card-trio{flex-direction:column;min-height:auto}
-  .card-trio .card-text{flex:auto;padding:2rem 1.5rem;text-align:center}
-  .trio-phones{width:100%;height:440px}
-  .trio-phones .iphone{width:200px}
-  .trio-phones .iphone:nth-child(1){left:10%;top:40px}
-  .trio-phones .iphone:nth-child(3){right:10%;top:40px}
+  /* Trio card – vertical, phones overlapping */
+  .card-trio{flex-direction:column;min-height:auto;padding:0}
+  .card-trio .card-text{flex:auto;padding:1.75rem 1.25rem;text-align:center}
+  .trio-phones{
+    width:100%;height:auto;
+    display:flex;align-items:center;justify-content:center;
+    padding:1.5rem 0 2rem;
+  }
+  .trio-phones .iphone{
+    position:relative;top:auto;left:auto;right:auto;
+    width:34%;max-width:165px;
+    margin:0 -18px;
+  }
+  .trio-phones .iphone:nth-child(1){transform:rotate(-6deg);z-index:1}
+  .trio-phones .iphone:nth-child(2){transform:translateY(-10px);z-index:3}
+  .trio-phones .iphone:nth-child(3){transform:rotate(6deg);z-index:2}
+  .trio-phones .iphone:hover{transform:none!important}
 
-  .feats{grid-template-columns:1fr;max-width:360px;margin:0 auto}
-  .prices{grid-template-columns:1fr;max-width:320px;margin:0 auto 2rem}
+  /* Features & Pricing */
+  .feats{grid-template-columns:1fr;max-width:340px;margin:0 auto}
+  .feat{padding:1rem 0.85rem}
+  .feat h4{font-size:0.82rem}
+  .feat p{font-size:0.75rem}
 
-  .cta{padding:4rem 1rem}
-  .ft-in{flex-direction:column;align-items:center;text-align:center}
-  .ft-links{flex-wrap:wrap;justify-content:center;gap:0.75rem}
+  .prices{grid-template-columns:1fr;max-width:300px;margin:0 auto 2rem}
+  .price{padding:1.5rem 1rem}
+  .price-amt{font-size:1.8rem}
+  .price-note{font-size:0.75rem}
+
+  /* CTA */
+  .cta{padding:3.5rem 1rem}
+  .cta-evil{font-size:0.92rem}
+  .btn-coming-soon{padding:0.75rem 1.5rem;font-size:0.85rem}
+
+  /* Footer */
+  .ft{padding:1.25rem 1rem}
+  .ft-in{flex-direction:column;align-items:center;text-align:center;gap:0.5rem}
+  .ft-c{font-size:0.72rem}
+  .ft-links{flex-wrap:wrap;justify-content:center;gap:0.6rem}
+  .ft-links a{font-size:0.72rem}
 }
 
+/* ============================================
+   Responsive: Small phones (375px and below)
+   ============================================ */
 @media(max-width:400px){
-  .hero-phones .iphone{max-width:140px}
-  .card .iphone{width:200px!important}
-  .card-dual .iphone{width:170px!important}
+  /* Nav – hide brand text, icon only */
+  .seg-tab{padding:0.25rem 0.5rem;font-size:0.62rem}
+  .seg-tab-brand span{display:none}
+  .seg-icon{width:20px;height:20px}
+
+  /* Scale frames for ~120-140px phones */
+  .iphone{border-radius:22px;padding:3px;box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+  .iphone-screen{border-radius:19px}
+  .iphone::before{width:2px}
+  .iphone::after{width:2px;height:8px;box-shadow:0 12px 0 0 #2C2C2E}
+
+  .hero{padding:3.5rem 1rem 2rem}
+  .hero-title{font-size:1.9rem}
+  .hero-sub{font-size:0.88rem}
+
+  /* Hero phones tighter overlap */
+  .hero-phones .iphone{width:35%;max-width:140px;margin:0 -16px}
+
+  /* Card phones smaller */
+  .card .iphone{width:160px!important}
+
+  /* Dual cards tighter overlap */
+  .card-dual{padding:1.25rem 0.5rem}
+  .card-dual .iphone{max-width:145px!important;margin:0 -12px}
+
+  /* Trio phones tighter overlap */
+  .trio-phones .iphone{max-width:135px!important;margin:0 -14px}
+
+  /* Text smaller */
+  .card-text h3{font-size:1.1rem}
+  .sec-hdr h2{font-size:1.5rem}
+  .sec-hdr p{font-size:0.82rem}
 }
