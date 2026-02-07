@@ -493,8 +493,9 @@ section {
   box-shadow: 0 20px 0 0 #2C2C2E;
 }
 
-.phone-frame:first-child { transform: rotate(-5deg); z-index: 1; }
-.phone-frame:last-child  { transform: rotate(5deg);  z-index: 2; }
+.phone-frame:first-child { transform: rotate(-5deg); z-index: 1; transition: transform 0.3s, z-index 0s; }
+.phone-frame:last-child  { transform: rotate(5deg);  z-index: 2; transition: transform 0.3s, z-index 0s; }
+.phone-frame:hover { transform: rotate(0deg) scale(1.04) !important; z-index: 10; }
 
 /* Feature mini cards */
 .app-feats {
