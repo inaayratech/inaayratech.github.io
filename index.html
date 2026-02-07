@@ -4,95 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inaayra Tech | Simple Apps for Everyday Life</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="animated-bg-canvas"></canvas>
-
-  <header>
-    <div class="logo-placeholder">
-      <img src="assets/logo.svg" alt="Notch-Tasker Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo&font=inter';"/>
+  <!-- Segmented Nav -->
+  <nav class="seg-nav">
+    <a href="#" class="brand">
+      <img src="assets/logo.svg" alt="Inaayra Tech" onerror="this.onerror=null;this.src='https://placehold.co/120x40/f43f5e/ffffff?text=Inaayra+Tech';" />
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#apps">Apps</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="menu-toggle" id="menu-toggle-button">
-        <i class="fas fa-bars"></i>
-    </div>
-    <nav id="main-nav">
-      <a href="about.html"><i class="fas fa-users"></i>About Us</a>
-      <a href="#app"><i class="fas fa-desktop"></i>Apps</a>
-      <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
-    </nav>
-  </header>
+  </nav>
 
   <main>
-      <section class="hero">
-        <div class="hero-text">
-          <h1 class="animated-tagline">
-            <span>We</span> <span>focus</span> <span>on</span> <span>simple</span> <span>things</span> <span>!</span>
-          </h1>
-          <p>At Inaayra Tech, we make your day-to-day tasks easier with simple, intuitive apps. We believe technology should be a helpful partner, not a puzzle. Our apps are designed to fit right into your flow, helping you get things done with less effort.</p>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-inner rv">
+        <h1 class="animated-tagline">
+          <span>We</span> <span>focus</span> <span>on</span> <span>simple</span> <span>things.</span>
+        </h1>
+        <p class="subtitle">At Inaayra Tech, we make your day-to-day tasks easier with simple, intuitive apps. Technology should be a helpful partner, not a puzzle.</p>
+        <a href="#philosophy" class="scroll-cta">
+          Explore
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="values" id="philosophy">
+      <div class="section-inner">
+        <div class="section-head rv">
+          <h2>What drives us.</h2>
+          <p>Three principles behind everything we build.</p>
         </div>
-      </section>
-
-      <section id="app" class="app-showcase-section">
-          <div class="app-showcase-header">
-            <div class="app-showcase-icon">
-              <img src="assets/screenshots/app-icon.png" alt="Battle Within App Icon" />
-            </div>
-            <h1 class="app-showcase-title">Battle Within</h1>
-            <p class="app-showcase-tagline">
-              A habit tracking app that frames personal development as an internal war. Your good self vs. your evil self. Every habit. Every day. A battle.
-            </p>
-            <a href="battle-within.html" class="download-button"><i class="fas fa-fire"></i> Learn More</a>
+        <div class="values-grid sg">
+          <div class="value-card rv">
+            <div class="icon rose"><i class="fas fa-feather"></i></div>
+            <h3>Simplicity</h3>
+            <p>Good software doesn't need to be complicated. We strip away the unnecessary so you can focus on what matters.</p>
           </div>
-
-          <div class="app-showcase-phones">
-            <div class="showcase-phone"><img src="assets/screenshots/battle-choice-good.png" alt="Good Choice" /></div>
-            <div class="showcase-phone"><img src="assets/screenshots/battle-choice-evil.png" alt="Evil Choice" /></div>
+          <div class="value-card rv">
+            <div class="icon blue"><i class="fas fa-bullseye"></i></div>
+            <h3>Purpose</h3>
+            <p>Every feature exists for a reason. We solve specific problems well rather than trying to do everything.</p>
           </div>
-
-          <div class="app-showcase-features">
-            <h2 class="app-showcase-features-title">Two Sides. Same Person. The App Keeps Score.</h2>
-            <div class="app-features-grid">
-              <div class="feature-box">
-                <i class="fas fa-bolt fa-fw"></i>
-                <h3>Dual-Choice Battles</h3>
-                <p>Every habit presents two paths. Choose good or surrender to evil. No middle ground.</p>
-              </div>
-              <div class="feature-box">
-                <i class="fas fa-comment-dots fa-fw"></i>
-                <h3>Whisper System</h3>
-                <p>Custom good and evil whispers for each habit. Your own internal dialogue, amplified.</p>
-              </div>
-              <div class="feature-box">
-                <i class="fas fa-calendar-days fa-fw"></i>
-                <h3>Battle Calendar</h3>
-                <p>A visual war map of your month. Green days you conquered. Red days evil prevailed.</p>
-              </div>
-            </div>
+          <div class="value-card rv">
+            <div class="icon green"><i class="fas fa-gem"></i></div>
+            <h3>Craft</h3>
+            <p>We care about the details. Clean interfaces, smooth interactions, and apps that feel right from the first tap.</p>
           </div>
-          </section>
-      </main>
-
-  <footer id="contact">
-    <div class="footer-wrapper">
-      <div class="footer-info">
-        <div class="footer-contact">
-          <p><i class="fas fa-envelope"></i> <a href="mailto:support@inaayratech.com">support@inaayratech.com</a></p>
-          <p><i class="fas fa-phone"></i> <a href="tel:+14792680369">+1 (479) 268-0369</a></p>
-          <p><i class="fas fa-map-marker-alt"></i> 184 Spring Creek Cove, Guntersville, AL 35976</p>
-          <p><i class="fas fa-building"></i> D-U-N-S Number: 139843625</p>
-        </div>
-        <div class="footer-links">
-          <a href="about.html"><i class="fas fa-users"></i> About Us</a>
-          <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-          <a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
         </div>
       </div>
-      <div class="footer-trademark">
-        &copy; <span id="current-year"></span> Inaayra Tech LLC. All rights reserved.
+    </section>
+
+    <!-- Apps -->
+    <section class="app-showcase" id="apps">
+      <div class="section-inner">
+        <div class="app-header rv">
+          <div class="app-icon">
+            <img src="assets/screenshots/app-icon.png" alt="Battle Within App Icon" />
+          </div>
+          <h2>Battle Within</h2>
+          <p class="tagline">A habit tracking app that frames personal development as an internal war. Your good self vs. your evil self. Every habit. Every day. A battle.</p>
+          <a href="battle-within.html" class="btn-accent"><i class="fas fa-fire"></i> Learn More</a>
+        </div>
+
+        <div class="app-phones rv">
+          <div class="phone-frame"><img src="assets/screenshots/battle-choice-good.png" alt="Good Choice" /></div>
+          <div class="phone-frame"><img src="assets/screenshots/battle-choice-evil.png" alt="Evil Choice" /></div>
+        </div>
+
+        <div class="app-feats sg">
+          <div class="app-feat rv">
+            <i class="fas fa-bolt"></i>
+            <h3>Dual-Choice Battles</h3>
+            <p>Every habit presents two paths. Choose good or surrender to evil.</p>
+          </div>
+          <div class="app-feat rv">
+            <i class="fas fa-comment-dots"></i>
+            <h3>Whisper System</h3>
+            <p>Custom good and evil whispers for each habit. Your internal dialogue, amplified.</p>
+          </div>
+          <div class="app-feat rv">
+            <i class="fas fa-calendar-days"></i>
+            <h3>Battle Calendar</h3>
+            <p>A visual war map of your month. Green for victories. Red for defeats.</p>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- About -->
+    <section class="about-brief" id="about">
+      <div class="section-inner rv">
+        <h2>Built with intention.</h2>
+        <p>Inaayra Tech is a small software company focused on creating practical applications that make daily tasks easier. No unnecessary features, no confusing interfaces — just clean, functional tools that help you get things done.</p>
+        <a href="about.html" class="link-arrow">Read more about us <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="ft" id="contact">
+    <div class="ft-inner">
+      <div class="ft-contact">
+        <span><i class="fas fa-envelope"></i><a href="mailto:support@inaayratech.com">support@inaayratech.com</a></span>
+        <span><i class="fas fa-phone"></i><a href="tel:+14792680369">+1 (479) 268-0369</a></span>
+        <span><i class="fas fa-map-marker-alt"></i>184 Spring Creek Cove, Guntersville, AL 35976</span>
+        <span><i class="fas fa-building"></i>D-U-N-S: 139843625</span>
+      </div>
+      <div class="ft-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      &copy; <span id="current-year"></span> Inaayra Tech LLC. All rights reserved.
     </div>
   </footer>
 

@@ -4,31 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms & Conditions | Inaayra Tech</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="static-page-body">
-  <canvas id="animated-bg-canvas"></canvas>
-  <header>
-    <div class="logo-placeholder">
-      <a href="index.html"><img src="assets/logo.svg" alt="Notch‑Tasker Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo&font=inter';"/></a>
-    </div>
-    <div class="menu-toggle" id="menu-toggle-button">
+  <nav class="seg-nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.svg" alt="Inaayra Tech" onerror="this.onerror=null;this.src='https://placehold.co/120x40/f43f5e/ffffff?text=Inaayra+Tech';" />
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
       <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links">
+      <a href="index.html#philosophy">Philosophy</a>
+      <a href="index.html#apps">Apps</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
     </div>
-    <nav id="main-nav">
-      <a href="index.html"><i class="fas fa-home"></i>Home</a>
-      <a href="about.html"><i class="fas fa-users"></i>About Us</a>
-      <a href="privacy.html"><i class="fas fa-shield-alt"></i>Privacy Policy</a>
-    </nav>
-  </header>
+  </nav>
 
   <main class="static-page-main">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a> &gt; Terms & Conditions
-    </div>
-
     <h1>Terms of Service</h1>
 
     <div class="content-section">
@@ -116,34 +112,30 @@
     </div>
   </main>
 
-  <footer id="contact">
-    <div class="footer-wrapper">
-      <div class="footer-info">
-        <div class="footer-contact">
-          <p><i class="fas fa-envelope"></i> <a href="mailto:support@inaayratech.com">support@inaayratech.com</a></p>
-          <p><i class="fas fa-phone"></i> <a href="tel:+14792680369">+1 (479) 268-0369</a></p>
-          <p><i class="fas fa-map-marker-alt"></i> 184 Spring Creek Cove, Guntersville, AL 35976</p>
-          <p><i class="fas fa-building"></i> D-U-N-S Number: 139843625</p>
-        </div>
-        <div class="footer-links">
-          <a href="about.html"><i class="fas fa-users"></i> About Us</a>
-          <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-          <a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
-        </div>
+  <footer class="ft" id="contact">
+    <div class="ft-inner">
+      <div class="ft-contact">
+        <span><i class="fas fa-envelope"></i><a href="mailto:support@inaayratech.com">support@inaayratech.com</a></span>
+        <span><i class="fas fa-phone"></i><a href="tel:+14792680369">+1 (479) 268-0369</a></span>
+        <span><i class="fas fa-map-marker-alt"></i>184 Spring Creek Cove, Guntersville, AL 35976</span>
+        <span><i class="fas fa-building"></i>D-U-N-S: 139843625</span>
       </div>
-      <div class="footer-trademark">
-        &copy; <span id="current-year"></span> Inaayra Tech LLC. All rights reserved.
+      <div class="ft-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
+    </div>
+    <div class="ft-bottom">
+      &copy; <span id="current-year"></span> Inaayra Tech LLC. All rights reserved.
     </div>
   </footer>
 
- <script>
-    // Page-specific script for "Last Updated" date
+  <script>
     const lastUpdatedEl = document.getElementById('lastUpdated');
     if (lastUpdatedEl) {
-        lastUpdatedEl.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      lastUpdatedEl.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     }
-    // Footer current year and mobile menu logic are now handled by the global script.js
   </script>
   <script src="script.js"></script>
 </body>
