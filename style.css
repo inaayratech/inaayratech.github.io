@@ -618,6 +618,7 @@ section {
 .ft-bottom {
   width: 100%;
   text-align: center;
+  margin-top: 32px;
   padding-top: 24px;
   border-top: 1px solid var(--border);
   font-size: 0.82rem;
