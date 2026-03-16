@@ -398,6 +398,10 @@ section {
   border-bottom: 1px solid var(--border);
 }
 
+.app-showcase + .app-showcase {
+  border-top: none;
+}
+
 .app-showcase .section-inner {
   display: flex;
   flex-direction: column;
@@ -573,6 +577,15 @@ section {
 .btn-accent:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(244,63,94,0.35);
+}
+
+.btn-accent.btn-blue {
+  background: #3B82F6;
+  box-shadow: 0 4px 14px rgba(59,130,246,0.25);
+}
+
+.btn-accent.btn-blue:hover {
+  box-shadow: 0 6px 20px rgba(59,130,246,0.35);
 }
 
 .btn-ghost {
