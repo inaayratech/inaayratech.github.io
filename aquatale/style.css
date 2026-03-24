@@ -174,14 +174,16 @@ body.at{
   overflow:hidden;
   background:#000;
   position:relative;
+  aspect-ratio:9/19.5;
 }
 
 .iphone-screen img{
-  width:100%;height:auto;display:block;
+  width:100%;height:100%;object-fit:cover;display:block;
 }
 
 .iphone-screen video{
   width:100%;height:100%;object-fit:cover;display:block;
+  position:absolute;top:0;left:0;
 }
 
 /* Hero phone — single device with video */
@@ -381,16 +383,24 @@ body.at{
   background-clip:text;
 }
 
-.btn-coming-soon{
-  background:rgba(255,255,255,0.08);
-  color:var(--text-2);
-  border:1px solid var(--border);
+.btn-download{
+  background:#fff;
+  color:#000;
+  border:none;
   padding:0.85rem 2rem;
   font-size:0.95rem;
   border-radius:14px;
-  cursor:default;
-  opacity:0.7;
-  pointer-events:none;
+  cursor:pointer;
+  text-decoration:none;
+  font-weight:600;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.btn-download:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(255,255,255,0.15);
+}
+.btn-download i{
+  margin-right:0.4rem;
 }
 
 /* ============================================
@@ -556,7 +566,7 @@ body.at{
   .price-note{font-size:0.75rem}
 
   .cta{padding:3.5rem 1rem}
-  .btn-coming-soon{padding:0.75rem 1.5rem;font-size:0.85rem}
+  .btn-download{padding:0.75rem 1.5rem;font-size:0.85rem}
 
   .ft{padding:1.25rem 1rem}
   .ft-in{flex-direction:column;align-items:center;text-align:center;gap:0.5rem}
