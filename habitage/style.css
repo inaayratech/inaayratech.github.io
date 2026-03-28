@@ -1,0 +1,574 @@
+/* ============================================
+   Habitage – Product Page
+   Dark nature theme. Living. Organic.
+   ============================================ */
+
+:root {
+  --accent: #4ade80;
+  --accent-light: #86efac;
+  --accent-dim: #22c55e;
+  --accent-cyan: #22d3ee;
+  --accent-purple: #a78bfa;
+  --accent-amber: #fbbf24;
+  --bg: #060a12;
+  --card: #0f1520;
+  --card-hover: #151e2e;
+  --text: #f0f2f5;
+  --text-2: #94a3b8;
+  --text-3: #475569;
+  --border: rgba(255,255,255,0.06);
+  --good: #4ade80;
+  --r: 20px;
+  --r-sm: 14px;
+  --font: 'Nunito','SF Pro Rounded','SF Pro Display',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --max-w: 1120px;
+  --header-h: 56px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body.ht{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ============================================
+   iOS Segmented Nav
+   ============================================ */
+.seg-nav{
+  position:fixed;top:12px;left:50%;transform:translateX(-50%);
+  z-index:1000;
+}
+
+.seg-tabs{
+  display:flex;
+  background:rgba(15,21,32,0.88);
+  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
+  border-radius:10px;
+  border:1px solid var(--border);
+  padding:2px;
+}
+
+.seg-tab{
+  padding:0.4rem 1rem;
+  font-size:0.78rem;font-weight:600;
+  font-family:var(--font);
+  color:var(--text-3);
+  text-decoration:none;
+  border-radius:8px;
+  transition:color 0.2s,background 0.2s;
+  white-space:nowrap;
+}
+
+.seg-tab:hover{color:var(--text-2)}
+
+.seg-tab.active{
+  background:rgba(74,222,128,0.12);
+  color:var(--accent);
+}
+
+.seg-tab-brand{
+  display:flex;align-items:center;gap:0.4rem;
+  color:var(--text) !important;
+  font-weight:700;
+  padding-left:0.35rem;
+}
+
+.seg-icon{
+  width:22px;height:22px;
+  border-radius:6px;
+  object-fit:cover;
+}
+
+/* ============================================
+   Sections
+   ============================================ */
+.sec{
+  position:relative;z-index:1;
+  padding:5rem clamp(1rem,4%,3rem);
+}
+
+.inner{max-width:var(--max-w);margin:0 auto}
+
+/* ============================================
+   Hero
+   ============================================ */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding-top:5rem;
+  overflow:hidden;
+}
+
+.hero-wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:3rem;max-width:var(--max-w);width:100%;
+}
+
+.hero-left{
+  flex:1 1 420px;
+  display:flex;flex-direction:column;gap:1.5rem;
+}
+
+.hero-icon{
+  width:72px;height:72px;border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 4px 24px rgba(74,222,128,0.2);
+}
+
+.hero-icon img{width:100%;height:100%;object-fit:cover;display:block}
+
+.hero-title{
+  font-size:clamp(2.8rem,5.5vw,4.2rem);
+  font-weight:800;letter-spacing:-0.04em;line-height:1.05;
+  margin-top:1rem;
+}
+
+.hero-title .accent{color:var(--accent)}
+.hero-title .accent-light{color:var(--accent-light)}
+
+.hero-sub{
+  font-size:1.1rem;color:var(--text-2);
+  max-width:420px;line-height:1.65;
+}
+
+.hero-btns{display:flex;gap:0.75rem;flex-wrap:wrap}
+
+/* ============================================
+   iPhone Device Frame
+   ============================================ */
+.iphone{
+  position:relative;
+  background:#1c1c1e;
+  border-radius:48px;
+  padding:6px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.5);
+}
+
+.iphone::before{
+  content:'';
+  position:absolute;
+  right:-3px;top:22%;
+  width:4px;height:12%;
+  background:#1c1c1e;
+  border-radius:0 3px 3px 0;
+}
+
+.iphone::after{
+  content:'';
+  position:absolute;
+  left:-3px;top:20%;
+  width:4px;height:14px;
+  background:#1c1c1e;
+  border-radius:3px 0 0 3px;
+  box-shadow:0 20px 0 0 #1c1c1e;
+}
+
+.iphone-screen{
+  width:100%;
+  border-radius:42px;
+  overflow:hidden;
+  background:#000;
+  position:relative;
+  aspect-ratio:9/19.5;
+}
+
+.iphone-screen img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+
+.iphone-screen video{
+  width:100%;height:100%;object-fit:cover;display:block;
+  position:absolute;top:0;left:0;
+}
+
+.hero-phone{
+  flex:0 0 300px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.iphone-hero{width:280px}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.7rem 1.4rem;border-radius:12px;
+  font-weight:600;font-size:0.88rem;font-family:var(--font);
+  text-decoration:none;border:none;cursor:pointer;
+  transition:transform 0.15s,opacity 0.15s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-accent{background:var(--accent);color:#0a1a0e}
+.btn-g{background:rgba(255,255,255,0.06);color:var(--text-2);border:1px solid var(--border)}
+.btn-g:hover{color:var(--text);background:rgba(255,255,255,0.08)}
+
+/* ============================================
+   Bento Grid
+   ============================================ */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1rem;
+  max-width:var(--max-w);margin:0 auto;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  overflow:hidden;
+  position:relative;
+  transition:border-color 0.25s;
+}
+
+.card:hover{border-color:rgba(255,255,255,0.1)}
+
+.c-8{grid-column:span 8}
+.c-7{grid-column:span 7}
+.c-6{grid-column:span 6}
+.c-5{grid-column:span 5}
+.c-4{grid-column:span 4}
+.c-12{grid-column:span 12}
+
+.card-text{
+  padding:2rem 1.75rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+
+.card-text .label{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.72rem;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:0.75rem;width:fit-content;
+  padding:0.25rem 0.6rem;border-radius:6px;
+}
+
+.label-green{color:var(--accent);background:rgba(74,222,128,0.1)}
+.label-cyan{color:var(--accent-cyan);background:rgba(34,211,238,0.1)}
+.label-purple{color:var(--accent-purple);background:rgba(167,139,250,0.1)}
+.label-amber{color:var(--accent-amber);background:rgba(251,191,36,0.1)}
+
+.card-text h3{
+  font-size:1.4rem;font-weight:700;
+  letter-spacing:-0.025em;margin-bottom:0.6rem;line-height:1.2;
+}
+
+.card-text p{font-size:0.92rem;color:var(--text-2);line-height:1.6}
+
+.card-ss{
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  min-height:440px;
+}
+
+.card-tint-green{background:linear-gradient(145deg,rgba(74,222,128,0.05),var(--card))}
+.card-tint-cyan{background:linear-gradient(145deg,rgba(34,211,238,0.05),var(--card))}
+.card-tint-purple{background:linear-gradient(145deg,rgba(167,139,250,0.05),var(--card))}
+.card-tint-amber{background:linear-gradient(145deg,rgba(251,191,36,0.05),var(--card))}
+
+.card .iphone{
+  width:280px;flex-shrink:0;
+  transition:transform 0.35s ease;
+}
+
+.card .iphone:hover{transform:translateY(-6px)}
+
+/* ============================================
+   Section Header
+   ============================================ */
+.sec-hdr{text-align:center;margin-bottom:2.5rem}
+
+.sec-hdr h2{
+  font-size:clamp(1.8rem,3.5vw,2.4rem);
+  font-weight:700;letter-spacing:-0.03em;margin-bottom:0.5rem;
+}
+
+.sec-hdr p{font-size:0.95rem;color:var(--text-2)}
+
+/* ============================================
+   Mini Features Grid
+   ============================================ */
+.feats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0.75rem;max-width:var(--max-w);margin:0 auto;
+}
+
+.feat{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:1.25rem 1rem;
+  transition:background 0.2s;
+}
+
+.feat:hover{background:var(--card-hover)}
+
+.feat-ic{
+  width:32px;height:32px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:0.7rem;font-size:0.9rem;
+}
+
+.feat:nth-child(3n+1) .feat-ic{background:rgba(74,222,128,0.1);color:var(--accent)}
+.feat:nth-child(3n+2) .feat-ic{background:rgba(34,211,238,0.1);color:var(--accent-cyan)}
+.feat:nth-child(3n)   .feat-ic{background:rgba(167,139,250,0.1);color:var(--accent-purple)}
+
+.feat h4{font-size:0.88rem;font-weight:600;margin-bottom:0.25rem}
+.feat p{font-size:0.8rem;color:var(--text-3);line-height:1.45}
+
+/* ============================================
+   Pricing
+   ============================================ */
+.prices{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1rem;max-width:580px;margin:0 auto 2rem;
+}
+
+.price{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.75rem 1.25rem;
+  text-align:center;position:relative;
+  transition:border-color 0.2s;
+}
+
+.price:hover{border-color:rgba(255,255,255,0.1)}
+
+.price.pop{border-color:var(--accent);background:rgba(74,222,128,0.03)}
+
+.price-badge{
+  position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:#0a1a0e;
+  font-size:0.62rem;font-weight:700;
+  padding:0.18rem 0.6rem;border-radius:5px;
+  text-transform:uppercase;letter-spacing:0.04em;
+}
+
+.price h3{font-size:0.85rem;color:var(--text-2);font-weight:500;margin-bottom:0.5rem}
+.price-amt{font-size:2.1rem;font-weight:800;letter-spacing:-0.03em}
+.price-per{font-size:0.78rem;color:var(--text-3);margin-bottom:1rem}
+
+.price-list{list-style:none;text-align:left;margin-bottom:1.25rem}
+.price-list li{
+  padding:0.25rem 0;font-size:0.8rem;color:var(--text-2);
+  display:flex;align-items:center;gap:0.4rem;
+}
+.price-list li i{color:var(--good);font-size:0.6rem;flex-shrink:0}
+
+.price-note{text-align:center;color:var(--text-3);font-size:0.82rem}
+
+/* ============================================
+   Final CTA
+   ============================================ */
+.cta{text-align:center;padding:6rem clamp(1rem,4%,3rem)}
+
+.cta-go{
+  font-size:clamp(2rem,4.5vw,3rem);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:2rem;
+  background:linear-gradient(135deg,var(--accent),var(--accent-light) 50%,#fff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.btn-download{
+  background:#fff;color:#000;border:none;
+  padding:0.85rem 2rem;font-size:0.95rem;
+  border-radius:14px;cursor:pointer;text-decoration:none;
+  font-weight:600;transition:transform 0.2s,box-shadow 0.2s;
+}
+.btn-download:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(255,255,255,0.15);
+}
+.btn-download i{margin-right:0.4rem}
+
+/* ============================================
+   Footer
+   ============================================ */
+.ft{padding:1.5rem clamp(1rem,4%,2.5rem);border-top:1px solid var(--border)}
+
+.ft-in{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:0.75rem;
+}
+
+.ft-c{font-size:0.78rem;color:var(--text-3)}
+
+.ft-links{display:flex;gap:1.25rem}
+.ft-links a{color:var(--text-3);text-decoration:none;font-size:0.78rem;transition:color 0.2s}
+.ft-links a:hover{color:var(--text-2)}
+
+/* ============================================
+   Scroll reveal
+   ============================================ */
+.rv{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
+.rv.vis{opacity:1;transform:none}
+.sg>*{opacity:0;transform:translateY(12px);transition:opacity 0.4s ease,transform 0.4s ease}
+.sg.vis>*:nth-child(1){transition-delay:.03s;opacity:1;transform:none}
+.sg.vis>*:nth-child(2){transition-delay:.06s;opacity:1;transform:none}
+.sg.vis>*:nth-child(3){transition-delay:.09s;opacity:1;transform:none}
+.sg.vis>*:nth-child(4){transition-delay:.12s;opacity:1;transform:none}
+.sg.vis>*:nth-child(5){transition-delay:.15s;opacity:1;transform:none}
+.sg.vis>*:nth-child(6){transition-delay:.18s;opacity:1;transform:none}
+
+/* ============================================
+   Legal Pages
+   ============================================ */
+.legal{
+  max-width:720px;margin:0 auto;
+  padding:6rem clamp(1.25rem,4%,2.5rem) 4rem;
+}
+
+.legal h1{
+  font-size:clamp(1.8rem,4vw,2.4rem);
+  font-weight:800;letter-spacing:-0.03em;
+  margin-bottom:2rem;
+}
+
+.legal-meta{
+  font-size:0.85rem;color:var(--text-2);
+  margin-bottom:2rem;padding-bottom:1.5rem;
+  border-bottom:1px solid var(--border);
+}
+
+.legal-content h2{
+  font-size:1.2rem;font-weight:700;
+  letter-spacing:-0.02em;margin:2rem 0 0.75rem;
+  color:var(--text);
+}
+
+.legal-content h3{
+  font-size:1rem;font-weight:600;
+  margin:1.25rem 0 0.5rem;color:var(--text);
+}
+
+.legal-content p{
+  font-size:0.9rem;color:var(--text-2);
+  line-height:1.7;margin-bottom:0.75rem;
+}
+
+.legal-content ul{list-style:none;margin:0 0 1rem;padding:0}
+
+.legal-content ul li{
+  font-size:0.88rem;color:var(--text-2);
+  padding:0.3rem 0 0.3rem 1.25rem;
+  position:relative;line-height:1.6;
+}
+
+.legal-content ul li::before{
+  content:'';position:absolute;
+  left:0;top:0.7rem;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+}
+
+.legal-content a{
+  color:var(--accent-light);text-decoration:none;
+  border-bottom:1px solid rgba(134,239,172,0.3);
+  transition:border-color 0.2s;
+}
+
+.legal-content a:hover{border-color:var(--accent-light)}
+
+/* ============================================
+   Responsive: Tablet
+   ============================================ */
+@media(max-width:1024px){
+  .hero-wrap{gap:2rem}
+  .hero-phone{flex:0 0 280px}
+  .iphone-hero{width:240px}
+
+  .iphone{border-radius:38px;padding:5px}
+  .iphone-screen{border-radius:33px}
+
+  .c-8,.c-7{grid-column:span 7}
+  .c-5,.c-6{grid-column:span 5}
+
+  .card .iphone{width:240px}
+
+  .feats{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ============================================
+   Responsive: Mobile
+   ============================================ */
+@media(max-width:768px){
+  .sec{padding:3rem 1rem}
+
+  .seg-tab{padding:0.3rem 0.6rem;font-size:0.7rem}
+  .seg-icon{width:18px;height:18px;border-radius:5px}
+  .seg-tab-brand{gap:0.3rem;padding-left:0.3rem}
+
+  .iphone{border-radius:28px;padding:4px;box-shadow:0 12px 30px rgba(0,0,0,0.4)}
+  .iphone-screen{border-radius:24px}
+  .iphone::before{width:3px}
+  .iphone::after{width:3px;height:10px;box-shadow:0 15px 0 0 #1c1c1e}
+
+  .hero{min-height:auto;padding:4rem 1.25rem 2.5rem}
+  .hero-wrap{flex-direction:column;text-align:center;gap:2.5rem}
+  .hero-left{align-items:center;flex:auto}
+  .hero-icon{width:56px;height:56px;border-radius:14px}
+  .hero-title{font-size:2.2rem}
+  .hero-sub{max-width:100%;font-size:0.95rem}
+  .hero-btns{justify-content:center}
+
+  .hero-phone{flex:auto;width:100%;display:flex;justify-content:center}
+  .iphone-hero{width:220px}
+
+  .bento{grid-template-columns:1fr;gap:0.75rem}
+  .c-8,.c-7,.c-6,.c-5,.c-4,.c-12{grid-column:span 1}
+
+  .card-text{padding:1.75rem 1.25rem}
+  .card-text h3{font-size:1.2rem}
+  .card-text p{font-size:0.85rem}
+
+  .card .iphone{width:200px}
+  .card-ss{min-height:360px}
+
+  .feats{grid-template-columns:repeat(2,1fr);max-width:100%;margin:0 auto}
+  .feat{padding:1rem 0.85rem}
+  .feat h4{font-size:0.82rem}
+  .feat p{font-size:0.75rem}
+
+  .prices{grid-template-columns:1fr;max-width:100%;margin:0 auto 2rem}
+  .price{padding:1.5rem 1rem}
+  .price-amt{font-size:1.8rem}
+  .price-note{font-size:0.75rem}
+
+  .cta{padding:3.5rem 1rem}
+  .btn-download{padding:0.75rem 1.5rem;font-size:0.85rem}
+
+  .ft{padding:1.25rem 1rem}
+  .ft-in{flex-direction:column;align-items:center;text-align:center;gap:0.5rem}
+  .ft-c{font-size:0.72rem}
+  .ft-links{flex-wrap:wrap;justify-content:center;gap:0.6rem}
+  .ft-links a{font-size:0.72rem}
+}
+
+@media(max-width:400px){
+  .seg-tab{padding:0.25rem 0.5rem;font-size:0.62rem}
+  .seg-tab-brand span{display:none}
+  .seg-icon{width:20px;height:20px}
+
+  .iphone{border-radius:22px;padding:3px;box-shadow:0 8px 20px rgba(0,0,0,0.3)}
+  .iphone-screen{border-radius:19px}
+  .iphone::before{width:2px}
+  .iphone::after{width:2px;height:8px;box-shadow:0 12px 0 0 #1c1c1e}
+
+  .hero{padding:3.5rem 1rem 2rem}
+  .hero-title{font-size:1.9rem}
+  .hero-sub{font-size:0.88rem}
+
+  .iphone-hero{width:180px}
+
+  .card .iphone{width:160px!important}
+
+  .card-text h3{font-size:1.1rem}
+  .sec-hdr h2{font-size:1.5rem}
+  .sec-hdr p{font-size:0.82rem}
+}
