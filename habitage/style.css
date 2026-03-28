@@ -165,33 +165,45 @@ body{
 }
 
 /* ============================================
-   SHOWCASE — full-bleed scene backgrounds
+   SHOWCASE — scene rows (text + phone)
    ============================================ */
-.showcase-item{
-  position:relative;
-  min-height:90vh;
-  display:flex;align-items:center;
-  padding:6rem clamp(1.5rem,6%,4rem);
-  overflow:hidden;
+.showcase{
+  padding:6rem clamp(1.5rem,5%,3rem);
 }
 
-.showcase-bg{
-  position:absolute;inset:0;
-  background-size:cover;
-  background-position:center top;
-  filter:brightness(0.35) saturate(1.2);
-  transform:scale(1.05);
+.showcase-hdr{
+  text-align:center;margin-bottom:4rem;
 }
 
-.showcase-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(5,8,16,0.4) 0%, rgba(5,8,16,0.85) 100%);
+.showcase-hdr h2{
+  font-size:clamp(1.8rem,3.5vw,2.6rem);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:0.5rem;
 }
 
-.showcase-content{
-  position:relative;z-index:2;
-  max-width:560px;
+.showcase-hdr p{
+  color:rgba(255,255,255,0.4);font-size:0.95rem;
 }
+
+.scene-row{
+  display:flex;align-items:center;gap:3rem;
+  max-width:960px;margin:0 auto;
+  padding:3rem 0;
+}
+
+.scene-row-reverse{flex-direction:row-reverse}
+
+.scene-text{flex:1 1 340px}
+
+.scene-text h3{
+  font-size:1.5rem;font-weight:800;
+  letter-spacing:-0.03em;margin-bottom:0.6rem;line-height:1.15;
+}
+
+.scene-text p{
+  font-size:0.95rem;color:rgba(255,255,255,0.45);line-height:1.65;
+}
+
+.scene-phone{flex:0 0 260px;display:flex;justify-content:center}
 
 .pill{
   display:inline-block;
@@ -204,17 +216,6 @@ body{
 
 .pill-green{background:rgba(74,222,128,0.15);color:#4ade80}
 .pill-purple{background:rgba(139,92,246,0.15);color:#a78bfa}
-
-.showcase-content h2{
-  font-size:clamp(2rem,4.5vw,3.2rem);
-  font-weight:800;letter-spacing:-0.04em;
-  line-height:1.1;margin-bottom:1rem;
-}
-
-.showcase-content p{
-  font-size:1.05rem;color:rgba(255,255,255,0.55);
-  line-height:1.7;max-width:460px;
-}
 
 /* ============================================
    HOW IT WORKS — numbered steps
@@ -545,8 +546,8 @@ body{
   .phone{width:220px;border-radius:28px;padding:4px}
   .phone img{border-radius:24px}
 
-  .showcase-item{min-height:70vh;padding:4rem 1.5rem}
-  .showcase-content h2{font-size:1.8rem}
+  .scene-row,.scene-row-reverse{flex-direction:column;text-align:center;gap:2rem;padding:2rem 0}
+  .scene-phone{flex:auto}
 
   .steps{flex-direction:column;align-items:center;gap:1.5rem}
   .step-line{width:2px;height:40px;background:linear-gradient(180deg, rgba(74,222,128,0.3), rgba(74,222,128,0.05))}
@@ -571,5 +572,5 @@ body{
   .phone-row{gap:12px}
   .phone-row .phone{width:150px}
 
-  .showcase-item{min-height:60vh}
+  .scene-text h3{font-size:1.2rem}
 }
