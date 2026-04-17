@@ -15,6 +15,25 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
+/* Subtle starfield behind everything except hero */
+.stars-bg{
+  position:fixed;inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+.stars-bg .s{
+  position:absolute;
+  background:#fff;
+  border-radius:50%;
+  animation:twinkle var(--d) ease-in-out infinite alternate;
+}
+@keyframes twinkle{
+  0%{opacity:var(--o1)}
+  100%{opacity:var(--o2)}
+}
+
+main,footer{position:relative;z-index:1;}
+
 /* ============================================
    NAV — minimal, floating
    ============================================ */

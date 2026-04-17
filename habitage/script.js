@@ -4,6 +4,26 @@
 const yr = document.getElementById('yr');
 if (yr) yr.textContent = new Date().getFullYear();
 
+// Generate subtle starfield
+(function() {
+  const c = document.getElementById('stars-bg');
+  if (!c) return;
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 's';
+    const size = 0.8 + Math.random() * 1.5;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.setProperty('--d', (3 + Math.random() * 4) + 's');
+    s.style.setProperty('--o1', (0.05 + Math.random() * 0.15).toFixed(2));
+    s.style.setProperty('--o2', (0.25 + Math.random() * 0.35).toFixed(2));
+    s.style.animationDelay = (Math.random() * 4) + 's';
+    c.appendChild(s);
+  }
+})();
+
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
