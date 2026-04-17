@@ -4,27 +4,6 @@
 const yr = document.getElementById('yr');
 if (yr) yr.textContent = new Date().getFullYear();
 
-// Generate starfield
-(function() {
-  const container = document.getElementById('stars');
-  if (!container) return;
-  const count = 80;
-  for (let i = 0; i < count; i++) {
-    const star = document.createElement('div');
-    star.className = 'star-dot';
-    const size = 1 + Math.random() * 2;
-    star.style.width = size + 'px';
-    star.style.height = size + 'px';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.setProperty('--dur', (2 + Math.random() * 3) + 's');
-    star.style.setProperty('--o1', (0.1 + Math.random() * 0.3).toFixed(2));
-    star.style.setProperty('--o2', (0.5 + Math.random() * 0.5).toFixed(2));
-    star.style.animationDelay = (Math.random() * 3) + 's';
-    container.appendChild(star);
-  }
-})();
-
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {

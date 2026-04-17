@@ -1,14 +1,14 @@
 /* ============================================
-   Habitage — Immersive product page
-   The website IS the experience.
+   Habitage — Journey-based product page
+   Warm golden-hour palette
    ============================================ */
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 
 body{
-  background:#050810;
-  color:#e8eaf0;
+  background:#0A0808;
+  color:#e8e2d8;
   font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
   line-height:1.6;
   overflow-x:hidden;
@@ -27,9 +27,9 @@ body{
 .nav-inner{
   max-width:1200px;margin:0 auto;
   display:flex;justify-content:space-between;align-items:center;
-  background:rgba(8,10,18,0.7);
+  background:rgba(10,8,8,0.75);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.05);
+  border:1px solid rgba(255,217,112,0.06);
   border-radius:14px;
   padding:8px 20px;
 }
@@ -53,10 +53,10 @@ body{
   transition:color 0.2s;
 }
 
-.nav-links a:hover{color:rgba(255,255,255,0.8)}
+.nav-links a:hover{color:rgba(255,217,112,0.8)}
 
 /* ============================================
-   HERO — you're inside the night sky
+   HERO — golden hour sky gradient
    ============================================ */
 .hero{
   min-height:100vh;
@@ -66,24 +66,27 @@ body{
   padding:8rem 1.5rem 4rem;
   position:relative;
   overflow:hidden;
+  background:linear-gradient(
+    180deg,
+    #5A3518 0%,
+    #8B4513 15%,
+    #C06820 30%,
+    #E09840 45%,
+    #1E5898 65%,
+    #122E58 80%,
+    #081C38 92%,
+    #0A0808 100%
+  );
 }
 
-/* Animated starfield */
-.stars{
-  position:absolute;inset:0;
-  pointer-events:none;
-}
-
-.star-dot{
+/* Soft radial glow behind the content */
+.hero-glow{
   position:absolute;
-  background:#fff;
-  border-radius:50%;
-  animation:twinkle var(--dur) ease-in-out infinite alternate;
-}
-
-@keyframes twinkle{
-  0%{opacity:var(--o1)}
-  100%{opacity:var(--o2)}
+  top:20%;left:50%;
+  width:800px;height:600px;
+  transform:translateX(-50%);
+  background:radial-gradient(ellipse, rgba(224,152,64,0.15) 0%, transparent 70%);
+  pointer-events:none;
 }
 
 .hero-content{
@@ -96,7 +99,7 @@ body{
   border-radius:20px;
   margin:0 auto 2rem;
   display:block;
-  box-shadow:0 0 40px rgba(74,222,128,0.2);
+  box-shadow:0 0 40px rgba(255,217,112,0.2);
 }
 
 .hero h1{
@@ -108,13 +111,13 @@ body{
 }
 
 .glow{
-  color:#4ade80;
-  text-shadow:0 0 30px rgba(74,222,128,0.3);
+  color:#FFD970;
+  text-shadow:0 0 30px rgba(255,217,112,0.3);
 }
 
 .hero-sub{
   font-size:clamp(1rem,2vw,1.2rem);
-  color:rgba(255,255,255,0.5);
+  color:rgba(255,255,255,0.55);
   max-width:500px;margin:0 auto 2.5rem;
   line-height:1.7;
 }
@@ -126,7 +129,7 @@ body{
   transition:color 0.2s;
 }
 
-.hero-cta:hover{color:#4ade80}
+.hero-cta:hover{color:#FFD970}
 
 .hero-cta i{
   font-size:0.75rem;
@@ -180,7 +183,7 @@ body{
 }
 
 /* ============================================
-   SHOWCASE — scene rows (text + phone)
+   SHOWCASE — journey rows (text + phone)
    ============================================ */
 .showcase{
   padding:6rem clamp(1.5rem,5%,3rem);
@@ -226,18 +229,18 @@ body{
   font-size:0.72rem;font-weight:700;
   text-transform:uppercase;letter-spacing:0.06em;
   margin-bottom:1rem;
-  background:rgba(59,130,246,0.15);color:#60a5fa;
 }
 
-.pill-green{background:rgba(74,222,128,0.15);color:#4ade80}
-.pill-purple{background:rgba(139,92,246,0.15);color:#a78bfa}
+.pill-ocean{background:rgba(30,88,152,0.25);color:#6DB3F2}
+.pill-road{background:rgba(232,160,72,0.2);color:#E8A048}
+.pill-space{background:rgba(139,92,246,0.15);color:#a78bfa}
 
 /* ============================================
    HOW IT WORKS — numbered steps
    ============================================ */
 .how{
   padding:7rem clamp(1.5rem,5%,3rem);
-  background:#080c16;
+  background:#0D0A08;
 }
 
 .how-inner{max-width:900px;margin:0 auto;text-align:center}
@@ -264,9 +267,9 @@ body{
   display:flex;align-items:center;justify-content:center;
   font-size:1.4rem;font-weight:800;
   margin:0 auto 1.2rem;
-  background:rgba(74,222,128,0.1);
-  color:#4ade80;
-  border:2px solid rgba(74,222,128,0.2);
+  background:rgba(255,217,112,0.08);
+  color:#FFD970;
+  border:2px solid rgba(255,217,112,0.18);
 }
 
 .step h3{
@@ -281,56 +284,17 @@ body{
 
 .step-line{
   width:60px;height:2px;
-  background:linear-gradient(90deg, rgba(74,222,128,0.3), rgba(74,222,128,0.05));
+  background:linear-gradient(90deg, rgba(255,217,112,0.3), rgba(255,217,112,0.05));
   margin-top:28px;
   flex-shrink:0;
 }
-
-/* ============================================
-   WORLDS — horizontal phone strip
-   ============================================ */
-.worlds{
-  padding:7rem clamp(1.5rem,5%,3rem);
-  overflow:hidden;
-}
-
-.worlds-inner{max-width:1200px;margin:0 auto;text-align:center}
-
-.worlds h2{
-  font-size:clamp(1.8rem,3.5vw,2.6rem);
-  font-weight:800;letter-spacing:-0.03em;
-  margin-bottom:0.6rem;
-}
-
-.worlds-sub{
-  color:rgba(255,255,255,0.4);
-  font-size:0.95rem;margin-bottom:3rem;
-}
-
-.phone-row{
-  display:flex;justify-content:center;
-  gap:20px;
-  padding:0 1rem;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
-
-.phone-row::-webkit-scrollbar{display:none}
-
-.phone-row .phone{
-  width:220px;
-  transition:transform 0.3s;
-}
-
-.phone-row .phone:hover{transform:translateY(-8px)}
 
 /* ============================================
    FEATURES — split layout, text + list
    ============================================ */
 .feats-section{
   padding:7rem clamp(1.5rem,5%,3rem);
-  background:#080c16;
+  background:#0D0A08;
 }
 
 .feats-inner{
@@ -362,7 +326,7 @@ body{
 
 .fi i{
   font-size:1.1rem;
-  color:#4ade80;
+  color:#FFD970;
   margin-top:2px;
   width:24px;text-align:center;
   flex-shrink:0;
@@ -397,7 +361,13 @@ body{
 
 .pricing-sub{
   color:rgba(255,255,255,0.4);
-  font-size:0.92rem;margin-bottom:3rem;
+  font-size:0.92rem;margin-bottom:0.75rem;
+}
+
+.pricing-note{
+  color:rgba(255,217,112,0.6);
+  font-size:0.82rem;font-weight:500;
+  margin-bottom:3rem;
 }
 
 .plans{
@@ -415,13 +385,13 @@ body{
 }
 
 .plan-pop{
-  border-color:rgba(74,222,128,0.3);
-  background:rgba(74,222,128,0.03);
+  border-color:rgba(255,217,112,0.3);
+  background:rgba(255,217,112,0.03);
 }
 
 .plan-badge{
   position:absolute;top:-10px;left:50%;transform:translateX(-50%);
-  background:#4ade80;color:#0a1a0e;
+  background:#FFD970;color:#1a1408;
   font-size:0.65rem;font-weight:700;
   padding:3px 10px;border-radius:6px;
   text-transform:uppercase;letter-spacing:0.04em;
@@ -433,8 +403,8 @@ body{
 }
 
 .plan-price{
-  font-size:2.4rem;font-weight:800;
-  letter-spacing:-0.03em;margin-bottom:1.25rem;
+  font-size:1.4rem;font-weight:800;
+  letter-spacing:-0.02em;margin-bottom:1.25rem;
 }
 
 .plan-price span{
@@ -455,7 +425,7 @@ body{
 .plan li::before{
   content:'';
   width:5px;height:5px;border-radius:50%;
-  background:#4ade80;flex-shrink:0;
+  background:#FFD970;flex-shrink:0;
 }
 
 /* ============================================
@@ -464,14 +434,14 @@ body{
 .final{
   padding:8rem clamp(1.5rem,5%,3rem);
   text-align:center;
-  background:linear-gradient(180deg, #050810 0%, #0a1410 50%, #050810 100%);
+  background:linear-gradient(180deg, #0A0808 0%, #14100A 50%, #0A0808 100%);
 }
 
 .final h2{
   font-size:clamp(2rem,5vw,3.5rem);
   font-weight:900;letter-spacing:-0.04em;
   margin-bottom:2rem;
-  background:linear-gradient(135deg, #fff 30%, #4ade80);
+  background:linear-gradient(135deg, #fff 30%, #FFD970);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
 }
@@ -487,7 +457,7 @@ body{
 
 .dl-btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 12px 30px rgba(255,255,255,0.1);
+  box-shadow:0 12px 30px rgba(255,217,112,0.15);
 }
 
 /* ============================================
@@ -544,9 +514,9 @@ body{
 .legal-content p{font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:0.75rem}
 .legal-content ul{list-style:none;margin:0 0 1rem;padding:0}
 .legal-content ul li{font-size:0.88rem;color:rgba(255,255,255,0.55);padding:0.3rem 0 0.3rem 1.25rem;position:relative;line-height:1.6}
-.legal-content ul li::before{content:'';position:absolute;left:0;top:0.7rem;width:5px;height:5px;border-radius:50%;background:#4ade80}
-.legal-content a{color:#4ade80;text-decoration:none;border-bottom:1px solid rgba(74,222,128,0.3);transition:border-color 0.2s}
-.legal-content a:hover{border-color:#4ade80}
+.legal-content ul li::before{content:'';position:absolute;left:0;top:0.7rem;width:5px;height:5px;border-radius:50%;background:#FFD970}
+.legal-content a{color:#FFD970;text-decoration:none;border-bottom:1px solid rgba(255,217,112,0.3);transition:border-color 0.2s}
+.legal-content a:hover{border-color:#FFD970}
 
 /* ============================================
    RESPONSIVE
@@ -567,10 +537,8 @@ body{
   .scene-phone{flex:auto}
 
   .steps{flex-direction:column;align-items:center;gap:1.5rem}
-  .step-line{width:2px;height:40px;background:linear-gradient(180deg, rgba(74,222,128,0.3), rgba(74,222,128,0.05))}
+  .step-line{width:2px;height:40px;background:linear-gradient(180deg, rgba(255,217,112,0.3), rgba(255,217,112,0.05))}
   .step{max-width:100%}
-
-  .phone-row .phone{width:180px}
 
   .feats-inner{flex-direction:column;gap:2rem}
   .feats-left h2{position:static;font-size:2rem}
@@ -588,8 +556,6 @@ body{
   .phone img{border-radius:24px}
   .phone::before{width:2px}
   .phone::after{width:2px;height:8px;box-shadow:0 12px 0 0 #1c1c1e}
-  .phone-row{gap:12px}
-  .phone-row .phone{width:150px}
 
   .scene-text h3{font-size:1.2rem}
 }
