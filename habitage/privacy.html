@@ -2,124 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | Habitage</title>
-  <meta name="theme-color" content="#050810" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Privacy Policy · Habitage</title>
+  <meta name="description" content="How Habitage handles your data: what we collect, why, who helps us run the app, and how to see, change or delete it." />
+  <meta name="theme-color" content="#1a1433" />
+  <link rel="icon" href="assets/app-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="legal.css" />
 </head>
 <body>
+  <header class="top">
+    <a class="brand" href="./"><img src="assets/app-icon.png" alt="" /> Habitage</a>
+    <nav aria-label="Legal">
+      <a href="./">Home</a>
+      <a href="privacy" aria-current="page">Privacy</a>
+      <a href="terms">Terms</a>
+      <a href="support">Support</a>
+    </nav>
+  </header>
 
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <img src="assets/app-icon.png" alt="" class="nav-icon" />
-        <span>Habitage</span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="privacy.html" style="color:rgba(255,255,255,0.8)">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
-    </div>
-  </nav>
-
-  <div class="legal">
+  <main>
     <h1>Privacy Policy</h1>
+    <p class="lede">Habitage is a calm place to keep habits — alone or with friends. This policy explains, in plain words, what we collect, why, who helps us run the app, and how you stay in control.</p>
+    <p class="meta">Effective September 26, 2026 · Version 2.0 · Applies to Habitage 2.0 and later on iPhone and Android.</p>
 
-    <div class="legal-content">
-      <p class="legal-meta"><strong>Effective Date:</strong> <span id="ht-date"></span><br>
-      <strong>Version:</strong> 1.0</p>
-
-      <h2>Introduction</h2>
-      <p>Habitage ("the App") is committed to protecting your privacy. This Privacy Policy explains how your data is handled when you use the App.</p>
-      <p>The short version: <strong>your data stays on your device and in your personal iCloud account. We don't collect, track, or share anything.</strong></p>
-
-      <h2>1. Information Collection</h2>
-      <h3>1.1 We Do Not Collect Your Data</h3>
-      <p>Habitage does not collect, store, process, or transmit any personal information. This includes:</p>
+    <section class="summary" aria-labelledby="short">
+      <h2 id="short">The short version</h2>
       <ul>
-        <li>No user analytics or usage statistics</li>
-        <li>No crash reports or diagnostic data sent to us</li>
-        <li>No personal identifiers or device information</li>
-        <li>No location data or network information</li>
-        <li>No advertising identifiers or tracking</li>
+        <li>You need an account (Apple, Google or email) so your journeys follow you across devices and so friends and crews can work.</li>
+        <li>We collect what the app needs to run, plus usage and crash data to improve it — which you can turn off at any time, and which we ask for first in the EU, EEA, UK and Switzerland.</li>
+        <li>No ads. We never sell or share your data for advertising, and we don't track you across other apps or websites.</li>
+        <li>Your public profile shows only your name, handle, avatar, bio and a few lifetime stats. Everything else about you is private to you.</li>
+        <li>You can delete your account in the app at any time. What was only yours is erased; what you shared with others stays, shown as "Deleted user".</li>
       </ul>
+    </section>
 
-      <h3>1.2 Local Storage Only</h3>
-      <p>All data you create within the App — habits, completions, streaks, achievement progress, and settings — remains exclusively on your device. This data is stored using Apple's SwiftData framework and never leaves your device unless you enable iCloud sync.</p>
+    <h2>1. Who we are</h2>
+    <p>Habitage is made by Inaayra Tech LLC, Alabama, United States ("we", "us"). We are responsible for your personal data under this policy. Contact us any time at <a href="mailto:support@inaayratech.com">support@inaayratech.com</a>.</p>
 
-      <h3>1.3 iCloud Sync</h3>
-      <p>Habitage automatically syncs your data across your Apple devices using Apple's CloudKit framework when iCloud is enabled on your device:</p>
-      <ul>
-        <li>Your data is stored in <strong>your personal iCloud account</strong>, not on our servers</li>
-        <li>We have <strong>no access</strong> to your iCloud data</li>
-        <li>Syncing is governed by <a href="https://www.apple.com/legal/internet-services/icloud/" target="_blank">Apple's iCloud Terms of Service</a></li>
-        <li>Data is encrypted in transit and at rest by Apple</li>
-        <li>You can disable iCloud for Habitage in your device's Settings (Apple ID &gt; iCloud &gt; Apps Using iCloud)</li>
-        <li>Disabling iCloud keeps your data local to each device</li>
-      </ul>
-
-      <h3>1.4 Local Notifications</h3>
-      <p>Habitage may request permission to send local notifications for habit reminders. These notifications are:</p>
-      <ul>
-        <li>Scheduled and delivered entirely on your device</li>
-        <li>Never sent through our servers — we have no push notification infrastructure</li>
-        <li>Fully controlled by you — you can disable them in the app's settings or in your device's notification settings</li>
-      </ul>
-
-      <h3>1.5 On-Device Keychain</h3>
-      <p>Habitage stores a small piece of non-personal data (trial start date) in your device's Keychain for subscription management. This data never leaves your device and is protected by your device's hardware security.</p>
-
-      <h2>2. Third-Party Services</h2>
-      <h3>2.1 Apple App Store &amp; StoreKit</h3>
-      <p>All subscriptions and purchases are handled entirely through Apple's native StoreKit framework. Payment information is managed by Apple and is never shared with us. Apple's privacy policy is available at <a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a>.</p>
-
-      <h3>2.2 No Other Third Parties</h3>
-      <p>Habitage does not integrate with any advertising networks, analytics platforms, subscription management services, social media SDKs, or other third-party services that access your data.</p>
-
-      <h2>3. Data Security</h2>
-      <p>Since we do not collect or have access to your data, the security of your information depends on your device's built-in security. We recommend:</p>
-      <ul>
-        <li>Keeping your device and iOS updated</li>
-        <li>Using a strong passcode or biometric authentication</li>
-        <li>Enabling iCloud encryption if you use sync</li>
-      </ul>
-
-      <h2>4. Children's Privacy</h2>
-      <p>Habitage does not collect information from anyone, including children under 13. All data remains locally stored on the user's device or in their personal iCloud account.</p>
-
-      <h2>5. Your Rights</h2>
-      <p>Since we don't collect any data, there is no personal information to access, correct, or delete from our servers. All your data is under your complete control:</p>
-      <ul>
-        <li><strong>Delete your data:</strong> Remove the app from your device to delete all local data</li>
-        <li><strong>Opt out of sync:</strong> Disable iCloud sync at any time in your device's Settings (Apple ID &gt; iCloud)</li>
-      </ul>
-
-      <h2>6. Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. Changes will be reflected in the "Effective Date" above. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
-
-      <h2>7. Contact</h2>
-      <p>For questions about this Privacy Policy:</p>
-      <p>Email: <a href="mailto:support@inaayratech.com">support@inaayratech.com</a></p>
+    <h2>2. What we collect, and why</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Data</th><th>What it is</th><th>Why we need it</th></tr></thead>
+        <tbody>
+          <tr><td>Account</td><td>Your email address and sign-in method (Sign in with Apple, Google, or email and password), and an account ID. With Sign in with Apple you can hide your email; we then receive a private relay address.</td><td>To create your account, sign you in and keep your data with you across devices.</td></tr>
+          <tr><td>Public profile</td><td>Display name, handle (@username), avatar, bio, lifetime stats (days kept, journeys completed, Moments) and whether your account is active.</td><td>So friends and crew-mates can recognise you. You choose whether you appear in search.</td></tr>
+          <tr><td>Private account details</td><td>The answers you give in onboarding and Personalization (focus areas, interests, things you'd like to cut back on), the city you pick for weather and its approximate coordinates, your time zone, and your notification preferences.</td><td>To suggest habits and daily Moments that fit you, show your real weather and time of day in the app's scenes, and send notifications at sensible times. Only you can see these.</td></tr>
+          <tr><td>Habits and progress</td><td>Your habits, journeys, check-ins, streaks, pledges, reminders, the sunlight you earn and spend, your isles and house, your progress through the chapter worlds, your Sightings and your Moments.</td><td>This is the app. It is stored so it's safe and on all your devices.</td></tr>
+          <tr><td>Social</td><td>Your friends and friend requests, crews and crew invites, the people watching a habit you chose to share, cheers you send and receive, and the messages you send in direct and crew chats.</td><td>To deliver the social features you use. Habits and progress you share are visible only to the people you share them with (your crew, or the friends you add as watchers).</td></tr>
+          <tr><td>Device</td><td>A notification token, an app-install ID, your platform and app version.</td><td>To send you push notifications, and to stop notifications reaching a phone after you sign out.</td></tr>
+          <tr><td>Purchases</td><td>Your subscription status, plan and renewal dates. Payment details stay with Apple or Google — we never see them.</td><td>To unlock Habitage Pro and handle trials, renewals and restores.</td></tr>
+          <tr><td>Usage and crash data</td><td>How the app is used (for example, which screens are opened) and crash reports with device model, OS version and app version, linked to your account ID.</td><td>To understand what's working and fix what breaks. Optional — see section 5.</td></tr>
+          <tr><td>Safety reports</td><td>If someone reports content, the report and the messages it concerns; moderation decisions and any warnings or suspensions on your account.</td><td>To keep Habitage safe and act on abuse.</td></tr>
+        </tbody>
+      </table>
     </div>
-  </div>
+    <p>We don't collect your contacts, photos, precise GPS location, or health data from other apps. Voyage cards you share are made on your device; saving one to Photos only writes the image you chose.</p>
 
-  <footer class="foot">
-    <div class="foot-inner">
-      <span>&copy; <span id="yr"></span> Habitage &middot; Inaayra Tech LLC</span>
-      <div class="foot-links">
-        <a href="index.html">Home</a>
-        <a href="terms.html">Terms</a>
-        <a href="mailto:support@inaayratech.com">Contact</a>
-      </div>
+    <h2>3. Who can see what</h2>
+    <ul>
+      <li><strong>Everyone signed in to Habitage</strong> can see your public profile. Only people who can find you — your friends, crews, or anyone searching if you leave "Discoverable" on in Settings — will come across it. Turn Discoverable off and you won't appear in search; a friend you send your invite link to can still add you.</li>
+      <li><strong>Your crew</strong> sees the habit you keep together, your progress on it, and crew chat.</li>
+      <li><strong>Watchers</strong> — friends you add to a private habit — see that habit's journey and progress, and can cheer you on.</li>
+      <li><strong>Only you</strong> see your private account details, your other habits, your sunlight, isles, house, Sightings and Moments.</li>
+      <li><strong>Our team</strong> accesses personal data only to run and support the service, investigate a safety report, or when the law requires it.</li>
+    </ul>
+
+    <h2>4. Service providers</h2>
+    <p>We use a small number of trusted companies to run Habitage. They process data only on our instructions and for these purposes:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Provider</th><th>What they do for us</th></tr></thead>
+        <tbody>
+          <tr><td>Google Firebase (Google LLC)</td><td>Sign-in, the app's database, server functions, push notifications, and — if enabled — usage analytics and crash reporting. Data is stored on Google Cloud servers in the United States.</td></tr>
+          <tr><td>Apple and Google</td><td>Sign in with Apple, Google Sign-In, App Store and Google Play payments and subscriptions.</td></tr>
+          <tr><td>RevenueCat</td><td>Keeps track of your subscription (purchase receipts linked to your account ID).</td></tr>
+          <tr><td>OpenWeather</td><td>City search and the weather in your city, for the app's scenes. They receive the city or coordinates, never your account details.</td></tr>
+          <tr><td>Resend</td><td>Sends an email if your account is suspended.</td></tr>
+        </tbody>
+      </table>
     </div>
+    <p>We don't sell personal data, and we don't share it for cross-context behavioural advertising. There are no advertising SDKs in Habitage.</p>
+
+    <h2>5. Usage and crash data — your choice</h2>
+    <p>Usage and crash data helps us improve Habitage. It is never sold and never used for ads.</p>
+    <ul>
+      <li>In the EU, EEA, UK and Switzerland, nothing is collected until you say yes — we ask once, when you first arrive in the app, and "Not now" is as easy as "Allow".</li>
+      <li>Elsewhere it is on by default.</li>
+      <li>Everywhere, you can change your mind at any time in Settings → Data.</li>
+    </ul>
+
+    <h2>6. Notifications</h2>
+    <p>Habit reminders are scheduled on your device. Social notifications (a friend request, a cheer, a message, a crew moment) are sent through our servers. Choose which you get in Settings → Notifications, or turn them off in your device settings.</p>
+
+    <h2>7. Legal bases (EU, EEA, UK)</h2>
+    <ul>
+      <li><strong>Contract</strong> — to provide the app you signed up for: your account, habits, social features and subscription.</li>
+      <li><strong>Consent</strong> — for usage and crash data where the law requires it; you can withdraw it at any time.</li>
+      <li><strong>Legitimate interests</strong> — to keep Habitage secure, prevent abuse and handle safety reports.</li>
+      <li><strong>Legal obligation</strong> — where we must keep or disclose data by law.</li>
+    </ul>
+
+    <h2>8. How long we keep data</h2>
+    <p>We keep your data while you have an account. When you delete your account, we erase it as described in section 9, straight away. Deleted data may remain in routine backups or logs for up to 30 days before it's gone. Usage data is kept for no longer than 14 months, crash reports for about 90 days. Records of moderation decisions are kept as long as needed to keep the community safe.</p>
+
+    <h2>9. Deleting your account</h2>
+    <p>You can delete your account in the app: Settings → Delete account. If you use Sign in with Apple on iPhone, you'll be asked to confirm with Apple once, and we revoke Habitage's access to your Apple ID.</p>
+    <h3>What is erased</h3>
+    <p>Your account and sign-in details, your private account details, your habits, journeys and check-ins, streaks, the cheers you received, sunlight, your isles and house, chapter progress, Sightings, Moments, notifications, device registrations, and any pending friend requests or crew invites to or from you.</p>
+    <h3>What stays, shown as "Deleted user"</h3>
+    <p>Things you shared with other people stay part of their history: accepted friendships, messages you sent, cheers you sent, and your past activity in crews and chats. Your name and handle are removed from your profile and nobody can find, message or add you afterwards. If you want something specific removed, email <a href="mailto:support@inaayratech.com">support@inaayratech.com</a>.</p>
+    <p>Deleting your account does not cancel a subscription — Apple or Google bill it. Cancel it in your App Store or Google Play subscriptions.</p>
+
+    <h2>10. Your rights</h2>
+    <p>Depending on where you live, you may have the right to access, correct, download (portability), delete or restrict your personal data, to object to processing, and to withdraw consent. You can do much of this yourself in the app (Settings, Personalization, Delete account). For anything else — including a copy of your data — email <a href="mailto:support@inaayratech.com">support@inaayratech.com</a>. We'll respond within 30 days. If you're in the EU, EEA or UK, you can also complain to your local data protection authority.</p>
+    <p><strong>California residents:</strong> we don't sell or share personal information as defined by the CCPA/CPRA, and we don't use sensitive personal information to infer characteristics about you. You have the right to know, delete and correct your personal information, and we won't discriminate against you for using these rights.</p>
+
+    <h2>11. Children</h2>
+    <p>Habitage is not intended for children under 13, and we don't knowingly collect data from them. If you're under the age required to consent to data processing where you live, use Habitage only with a parent's or guardian's permission. If you believe a child under 13 has an account, tell us and we'll delete it.</p>
+
+    <h2>12. Security</h2>
+    <p>Data is encrypted in transit and at rest. Access is restricted by strict server-side rules — for example, your private account details can be read only by you. No system is perfectly secure, but we work to protect your data and will notify you and the authorities of a breach where the law requires.</p>
+
+    <h2>13. International transfers</h2>
+    <p>Habitage is run from the United States and our providers may process data there and in other countries. Where the law requires, transfers are protected by safeguards such as the European Commission's Standard Contractual Clauses.</p>
+
+    <h2>14. Changes to this policy</h2>
+    <p>If we make a material change, we'll tell you in the app before it takes effect. The date at the top shows when this policy last changed.</p>
+
+    <h2>15. Contact</h2>
+    <p>Inaayra Tech LLC · <a href="mailto:support@inaayratech.com">support@inaayratech.com</a></p>
+  </main>
+
+  <footer>
+    <span>© <span id="yr">2026</span> Inaayra Tech LLC · Habitage</span>
+    <span><a href="./">Home</a> · <a href="terms">Terms</a> · <a href="support">Support</a></span>
   </footer>
-
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    const d = document.getElementById('ht-date');
-    if (d) d.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  </script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
