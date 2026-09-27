@@ -394,3 +394,23 @@ section { position: relative; }
   .journeys .phone-slot { gap: 10px; align-self: start; }
   .journeys .phone-slot .phone { width: min(86vw, calc((100svh - 128px) / 2.093)); }
 }
+
+/* the Day 1 → 30 stage, same contract: a compact Day counter + the 30 path
+   lights on top, the phone takes the rest (budget ≈ 118px). */
+@media (max-width: 800px) {
+  .days .sticky { grid-template-rows: auto minmax(0, 1fr); gap: 10px; align-content: stretch;
+    padding: calc(env(safe-area-inset-top, 0px) + 14px) var(--gutter) calc(env(safe-area-inset-bottom, 0px) + 14px); }
+  .days-copy h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .days-copy { align-items: center; }
+  .day-count b { font-size: 40px; }
+  .day-count span { font-size: 17px; }
+  .days .phone-slot { align-self: start; }
+  .days .phone-slot .phone { width: min(86vw, calc((100svh - 118px) / 2.093)); }
+}
+
+/* the intros scroll by before each stage pins — give the stages that distance
+   back so the scrub dwell is unchanged */
+@media (max-width: 800px) {
+  .journeys { height: calc(var(--steps) * 70vh + 145vh); }
+  .days { height: 405vh; }
+}

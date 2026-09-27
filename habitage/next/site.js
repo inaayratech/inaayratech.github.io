@@ -170,7 +170,15 @@ function sequence(canvas, base, count, name, keyFrame) {
   new IntersectionObserver(es => { if (es[0].isIntersecting) load(); }, { rootMargin: '120% 0px' }).observe(canvas);
   return { draw, count };
 }
-const progressIn = el => { const r = el.getBoundingClientRect(); return clamp(-r.top / Math.max(1, r.height - innerHeight)); };
+// Progress through a sticky stage, 0 → 1. On phones a stage can open with a
+// headline (.stage-intro) that scrolls by first — the scrub starts only once
+// the stage is pinned, so day 1 / the first journey are never skipped.
+const progressIn = el => {
+  const r = el.getBoundingClientRect();
+  const intro = el.querySelector(':scope > .stage-intro');
+  const skip = intro ? intro.offsetHeight : 0; // 0 when hidden (desktop)
+  return clamp((-r.top - skip) / Math.max(1, r.height - innerHeight - skip));
+};
 
 // Day 1 → 30
 const dayPath = $('#dayPath');
@@ -332,6 +340,7 @@ new IntersectionObserver(es => {
 // ── the one loop ──
 const PHONE_NAV = matchMedia('(max-width: 800px)');
 let navY = scrollY;
+const PHONE_STAGES = [$('#journeys'), $('#days')];
 let t0 = performance.now(), last = t0, ticking = true;
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
@@ -344,7 +353,11 @@ function frame(now) {
   // and comes back the moment you scroll up
   if (PHONE_NAV.matches) {
     const dy = scrollY - navY;
-    if (Math.abs(dy) > 6) { nav.classList.toggle('tuck', dy > 0 && scrollY > innerHeight * 0.8); navY = scrollY; }
+    // while a phone stage (journeys / days) is pinned the nav stays away in both
+    // directions — its counter and captions live where the nav would sit
+    const pinned = PHONE_STAGES.some(s => { const r = s.getBoundingClientRect(); return r.top <= 1 && r.bottom >= innerHeight - 1 && s.querySelector(':scope > .sticky').getBoundingClientRect().top <= 1; });
+    if (pinned) { nav.classList.add('tuck'); navY = scrollY; }
+    else if (Math.abs(dy) > 6) { nav.classList.toggle('tuck', dy > 0 && scrollY > innerHeight * 0.8); navY = scrollY; }
   } else nav.classList.remove('tuck');
   // journeys
   const rj = jSec.getBoundingClientRect();
