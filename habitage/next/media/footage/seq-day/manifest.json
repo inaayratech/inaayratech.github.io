@@ -1,0 +1,372 @@
+{
+ "source": "ScreenRecording_09-09-2026 01-29-07_1.MP4 (Multiverse of Madness, full 30-day run)",
+ "count": 72,
+ "width": 1080,
+ "height": 2340,
+ "aspect": "1290:2796",
+ "aspectRatio": 0.461373,
+ "format": "webp",
+ "pattern": "frame-{NNN}.webp",
+ "frames": [
+  {
+   "file": "frame-001.webp",
+   "day": 1,
+   "sourceTime": 1.0
+  },
+  {
+   "file": "frame-002.webp",
+   "day": 1,
+   "sourceTime": 2.2
+  },
+  {
+   "file": "frame-003.webp",
+   "day": 1,
+   "sourceTime": 6.3
+  },
+  {
+   "file": "frame-004.webp",
+   "day": 2,
+   "sourceTime": 21.68
+  },
+  {
+   "file": "frame-005.webp",
+   "day": 2,
+   "sourceTime": 23.5
+  },
+  {
+   "file": "frame-006.webp",
+   "day": 2,
+   "sourceTime": 25.5
+  },
+  {
+   "file": "frame-007.webp",
+   "day": 3,
+   "sourceTime": 41.04
+  },
+  {
+   "file": "frame-008.webp",
+   "day": 3,
+   "sourceTime": 43.2
+  },
+  {
+   "file": "frame-009.webp",
+   "day": 3,
+   "sourceTime": 45.36
+  },
+  {
+   "file": "frame-010.webp",
+   "day": 4,
+   "sourceTime": 60.84
+  },
+  {
+   "file": "frame-011.webp",
+   "day": 4,
+   "sourceTime": 63.0
+  },
+  {
+   "file": "frame-012.webp",
+   "day": 4,
+   "sourceTime": 65.16
+  },
+  {
+   "file": "frame-013.webp",
+   "day": 5,
+   "sourceTime": 79.85
+  },
+  {
+   "file": "frame-014.webp",
+   "day": 5,
+   "sourceTime": 80.75
+  },
+  {
+   "file": "frame-015.webp",
+   "day": 6,
+   "sourceTime": 91.15
+  },
+  {
+   "file": "frame-016.webp",
+   "day": 6,
+   "sourceTime": 91.85
+  },
+  {
+   "file": "frame-017.webp",
+   "day": 7,
+   "sourceTime": 112.1
+  },
+  {
+   "file": "frame-018.webp",
+   "day": 7,
+   "sourceTime": 112.7
+  },
+  {
+   "file": "frame-019.webp",
+   "day": 8,
+   "sourceTime": 123.0
+  },
+  {
+   "file": "frame-020.webp",
+   "day": 8,
+   "sourceTime": 124.2
+  },
+  {
+   "file": "frame-021.webp",
+   "day": 9,
+   "sourceTime": 134.8
+  },
+  {
+   "file": "frame-022.webp",
+   "day": 9,
+   "sourceTime": 135.6
+  },
+  {
+   "file": "frame-023.webp",
+   "day": 10,
+   "sourceTime": 145.95
+  },
+  {
+   "file": "frame-024.webp",
+   "day": 10,
+   "sourceTime": 146.65
+  },
+  {
+   "file": "frame-025.webp",
+   "day": 11,
+   "sourceTime": 157.2
+  },
+  {
+   "file": "frame-026.webp",
+   "day": 11,
+   "sourceTime": 158.4
+  },
+  {
+   "file": "frame-027.webp",
+   "day": 12,
+   "sourceTime": 171.0
+  },
+  {
+   "file": "frame-028.webp",
+   "day": 12,
+   "sourceTime": 172.1
+  },
+  {
+   "file": "frame-029.webp",
+   "day": 12,
+   "sourceTime": 174.08
+  },
+  {
+   "file": "frame-030.webp",
+   "day": 13,
+   "sourceTime": 188.9
+  },
+  {
+   "file": "frame-031.webp",
+   "day": 13,
+   "sourceTime": 190.3
+  },
+  {
+   "file": "frame-032.webp",
+   "day": 14,
+   "sourceTime": 201.1
+  },
+  {
+   "file": "frame-033.webp",
+   "day": 14,
+   "sourceTime": 202.1
+  },
+  {
+   "file": "frame-034.webp",
+   "day": 15,
+   "sourceTime": 212.75
+  },
+  {
+   "file": "frame-035.webp",
+   "day": 15,
+   "sourceTime": 213.85
+  },
+  {
+   "file": "frame-036.webp",
+   "day": 16,
+   "sourceTime": 224.5
+  },
+  {
+   "file": "frame-037.webp",
+   "day": 16,
+   "sourceTime": 225.5
+  },
+  {
+   "file": "frame-038.webp",
+   "day": 17,
+   "sourceTime": 236.3
+  },
+  {
+   "file": "frame-039.webp",
+   "day": 17,
+   "sourceTime": 237.7
+  },
+  {
+   "file": "frame-040.webp",
+   "day": 18,
+   "sourceTime": 249.36
+  },
+  {
+   "file": "frame-041.webp",
+   "day": 18,
+   "sourceTime": 251.1
+  },
+  {
+   "file": "frame-042.webp",
+   "day": 18,
+   "sourceTime": 252.84
+  },
+  {
+   "file": "frame-043.webp",
+   "day": 19,
+   "sourceTime": 267.45
+  },
+  {
+   "file": "frame-044.webp",
+   "day": 19,
+   "sourceTime": 268.75
+  },
+  {
+   "file": "frame-045.webp",
+   "day": 20,
+   "sourceTime": 279.45
+  },
+  {
+   "file": "frame-046.webp",
+   "day": 20,
+   "sourceTime": 280.35
+  },
+  {
+   "file": "frame-047.webp",
+   "day": 21,
+   "sourceTime": 292.36
+  },
+  {
+   "file": "frame-048.webp",
+   "day": 21,
+   "sourceTime": 295.3
+  },
+  {
+   "file": "frame-049.webp",
+   "day": 21,
+   "sourceTime": 296.8
+  },
+  {
+   "file": "frame-050.webp",
+   "day": 22,
+   "sourceTime": 311.12
+  },
+  {
+   "file": "frame-051.webp",
+   "day": 22,
+   "sourceTime": 313.1
+  },
+  {
+   "file": "frame-052.webp",
+   "day": 22,
+   "sourceTime": 315.08
+  },
+  {
+   "file": "frame-053.webp",
+   "day": 23,
+   "sourceTime": 330.64
+  },
+  {
+   "file": "frame-054.webp",
+   "day": 23,
+   "sourceTime": 332.8
+  },
+  {
+   "file": "frame-055.webp",
+   "day": 23,
+   "sourceTime": 334.96
+  },
+  {
+   "file": "frame-056.webp",
+   "day": 24,
+   "sourceTime": 359.4
+  },
+  {
+   "file": "frame-057.webp",
+   "day": 24,
+   "sourceTime": 359.95
+  },
+  {
+   "file": "frame-058.webp",
+   "day": 25,
+   "sourceTime": 371.32
+  },
+  {
+   "file": "frame-059.webp",
+   "day": 25,
+   "sourceTime": 374.68
+  },
+  {
+   "file": "frame-060.webp",
+   "day": 25,
+   "sourceTime": 375.5
+  },
+  {
+   "file": "frame-061.webp",
+   "day": 26,
+   "sourceTime": 389.15
+  },
+  {
+   "file": "frame-062.webp",
+   "day": 26,
+   "sourceTime": 390.25
+  },
+  {
+   "file": "frame-063.webp",
+   "day": 27,
+   "sourceTime": 400.8
+  },
+  {
+   "file": "frame-064.webp",
+   "day": 27,
+   "sourceTime": 401.6
+  },
+  {
+   "file": "frame-065.webp",
+   "day": 28,
+   "sourceTime": 412.3
+  },
+  {
+   "file": "frame-066.webp",
+   "day": 28,
+   "sourceTime": 413.7
+  },
+  {
+   "file": "frame-067.webp",
+   "day": 29,
+   "sourceTime": 425.28
+  },
+  {
+   "file": "frame-068.webp",
+   "day": 29,
+   "sourceTime": 427.2
+  },
+  {
+   "file": "frame-069.webp",
+   "day": 29,
+   "sourceTime": 429.12
+  },
+  {
+   "file": "frame-070.webp",
+   "day": 30,
+   "sourceTime": 443.6
+  },
+  {
+   "file": "frame-071.webp",
+   "day": 30,
+   "sourceTime": 448.8
+  },
+  {
+   "file": "frame-072.webp",
+   "day": 30,
+   "sourceTime": 451.2
+  }
+ ]
+}

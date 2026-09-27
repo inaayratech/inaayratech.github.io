@@ -1,0 +1,29 @@
+{
+ "name": "seq-isles-wake",
+ "frames": 85,
+ "pattern": "{i:04d}.webp",
+ "first": "0000.webp",
+ "width": 1920,
+ "height": 1080,
+ "keyFrame": 84,
+ "posterFrame": 84,
+ "description": "Aurel's isles at night (hour 23): all 35 wonders asleep and the outer isles misted, waking in 5 waves (nearest the home isle first) to fully radiant; one continuous camera take sinking and drifting in from a high wide view. Rendered 2x (3840x2160), Lanczos-downscaled. Each frame = 7 sim frames (0.233 s) of a 19.8 s take.",
+ "simSecondsPerFrame": 0.23333333333333334,
+ "waves": [
+  {
+   "frame": 7
+  },
+  {
+   "frame": 20
+  },
+  {
+   "frame": 33
+  },
+  {
+   "frame": 45
+  },
+  {
+   "frame": 58
+  }
+ ]
+}
