@@ -330,6 +330,8 @@ new IntersectionObserver(es => {
 }, { rootMargin: '300px 0px' }).observe($('#aurelBye'));
 
 // ── the one loop ──
+const PHONE_NAV = matchMedia('(max-width: 800px)');
+let navY = scrollY;
 let t0 = performance.now(), last = t0, ticking = true;
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
@@ -338,6 +340,12 @@ function frame(now) {
   const p = clamp(scrollY / Math.max(1, max));
   sky.draw(p, RM ? 0 : t, RM ? 0 : dt);
   nav.classList.toggle('solid', scrollY > innerHeight * 0.6);
+  // phones: the nav tucks away scrolling down (the stages get the full height)
+  // and comes back the moment you scroll up
+  if (PHONE_NAV.matches) {
+    const dy = scrollY - navY;
+    if (Math.abs(dy) > 6) { nav.classList.toggle('tuck', dy > 0 && scrollY > innerHeight * 0.8); navY = scrollY; }
+  } else nav.classList.remove('tuck');
   // journeys
   const rj = jSec.getBoundingClientRect();
   if (rj.bottom > 0 && rj.top < innerHeight) setJourney(Math.min(jVids.length - 1, Math.floor(progressIn(jSec) * jVids.length)));

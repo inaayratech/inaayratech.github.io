@@ -41,8 +41,9 @@ section { position: relative; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 10;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: calc(env(safe-area-inset-top, 0px) + 14px) var(--gutter) 14px;
-  transition: background 600ms var(--ease), backdrop-filter 600ms var(--ease);
+  transition: background 600ms var(--ease), backdrop-filter 600ms var(--ease), transform 500ms var(--ease);
 }
+.nav.tuck { transform: translateY(-110%); }
 .nav.solid { background: rgba(10, 13, 28, .42); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 18px; }
 .brand img { border-radius: 8px; }
@@ -374,4 +375,22 @@ section { position: relative; }
   .journey-list span { font-size: 14px; }
   .path { grid-template-columns: repeat(15, 7px); gap: 5px 4px; }
   .path li { width: 7px; height: 7px; }
+}
+
+
+/* ═════════ phones: the journeys stage is the phone's ═════════
+   The headline scrolls in above the stage (.stage-intro); inside the stage only
+   the journey's name + line sit on top, the phone takes every remaining pixel,
+   and the nav tucks away while scrolling down (site.js). Budget under the phone:
+   paddings 28 + name/line 70 + gaps 22 + dots 6 ≈ 126 → 128. */
+.stage-intro { display: none; }
+@media (max-width: 800px) {
+  .stage-intro { display: block; padding: 16vh var(--gutter) 2vh; }
+  .stage-intro h2 { margin-bottom: 12px; }
+  .journeys .sticky { grid-template-rows: auto minmax(0, 1fr); grid-template-areas: "list" "phone"; gap: 12px;
+    padding: calc(env(safe-area-inset-top, 0px) + 14px) var(--gutter) calc(env(safe-area-inset-bottom, 0px) + 14px); }
+  .journeys-copy h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .journey-list { min-height: 4.4em; align-content: end; }
+  .journeys .phone-slot { gap: 10px; align-self: start; }
+  .journeys .phone-slot .phone { width: min(86vw, calc((100svh - 128px) / 2.093)); }
 }
