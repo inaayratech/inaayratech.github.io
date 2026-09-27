@@ -2,52 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Habitage · Habit is a beautiful journey</title>
-  <meta name="description" content="Habitage turns every habit into a 30-day journey through a living world. Keep it at your own pace, light up thirty chapter worlds with Aurel, wake the floating isles, and keep habits together with friends. Free for 7 days on iPhone.">
-  <meta name="theme-color" content="#1f1c52">
-  <link rel="canonical" href="https://inaayratech.com/habitage/">
-
-  <!-- Favicon: ONE file. The icon is being redesigned — replace assets/favicon.png (256×256) and every tab, bookmark and home-screen icon follows. -->
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
-
+  <meta name="description" content="Habitage turns every habit into a 30-day journey through a living world. Walk it with Aurel, wake the floating isles, find creatures along the way, and keep habits together with friends. Coming to iPhone and Android.">
+  <meta name="theme-color" content="#0a0d1c">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Habitage">
   <meta property="og:title" content="Habitage · Habit is a beautiful journey">
-  <meta property="og:description" content="Every habit is a 30-day journey through a living world. Light thirty worlds with Aurel, wake the floating isles, and keep habits together — calmly.">
-  <meta property="og:url" content="https://inaayratech.com/habitage/">
-  <meta property="og:image" content="https://inaayratech.com/habitage/assets/img/og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Floating isles over a sea of cloud at dusk, lit with a windmill, a lighthouse and a fairground">
+  <meta property="og:description" content="Every habit is a 30-day journey through a living world. Hop on — let's sail.">
+  <meta property="og:image" content="https://inaayratech.com/habitage/media/worlds/hero-isles-night-1280.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Habitage · Habit is a beautiful journey">
-  <meta name="twitter:description" content="Every habit is a 30-day journey through a living world. Hop on — let's sail.">
-  <meta name="twitter:image" content="https://inaayratech.com/habitage/assets/img/og.jpg">
-  <meta name="apple-itunes-app" content="app-id=6745517036">
-
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/app-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap">
-  <link rel="preload" as="image" href="assets/img/hero-p-780.avif" type="image/avif" media="(max-aspect-ratio: 4/5)">
-  <link rel="preload" as="image" imagesrcset="assets/img/hero-1000.avif 1000w, assets/img/hero-1600.avif 1600w" imagesizes="100vw" type="image/avif" media="(min-aspect-ratio: 4/5)">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="media/worlds/hero-isles-night-1280.jpg" media="(min-width: 801px)">
+  <link rel="preload" as="image" href="media/worlds/hero-isles-night-9x16-720.jpg" media="(max-width: 800px)">
+  <link rel="stylesheet" href="site.css?v=f11efa8e16">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-
-<canvas id="lanterns" aria-hidden="true"></canvas>
-<div class="glow-follow" id="glowFollow" aria-hidden="true"></div>
+<canvas id="sky" aria-hidden="true"></canvas>
 
 <header class="nav" id="nav">
   <a href="#top" class="brand" aria-label="Habitage, back to top">
-    <img src="assets/favicon.png" alt="" width="30" height="30">
+    <img src="assets/favicon.png" alt="" width="28" height="28">
     <span>Habitage</span>
   </a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="#journey">The journey</a>
-    <a href="#chapters">Worlds</a>
+    <a href="#journeys">Journeys</a>
+    <a href="#home">Home</a>
     <a href="#isles">Aurel’s Home</a>
     <a href="#together">Together</a>
   </nav>
@@ -56,384 +39,276 @@
 
 <main id="main">
 
-  <!-- ═══ 1 · ARRIVAL ═══ -->
+  <!-- 1 · Night isles -->
   <section class="hero" id="top">
-    <div class="hero-media" data-parallax="0.12">
-      <picture>
-        <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/hero-p-780.avif">
-        <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/hero-p-780.webp">
-        <source media="(max-aspect-ratio: 4/5)" srcset="assets/img/hero-p-780.jpg">
-        <source type="image/avif" srcset="assets/img/hero-1000.avif 1000w, assets/img/hero-1600.avif 1600w" sizes="100vw">
-        <source type="image/webp" srcset="assets/img/hero-1000.webp 1000w, assets/img/hero-1600.webp 1600w" sizes="100vw">
-        <img src="assets/img/hero-1600.jpg" srcset="assets/img/hero-1000.jpg 1000w, assets/img/hero-1600.jpg 1600w" sizes="100vw"
-             alt="Floating isles over a sea of cloud at dusk, their windmill, lighthouse and fairground lit, with Aurel standing among them"
-             width="1600" height="1000" fetchpriority="high" decoding="async">
-      </picture>
+    <div class="hero-film">
+      <video class="lazy" muted playsinline loop preload="none"
+        poster="media/worlds/hero-isles-night-1280.jpg"
+        data-src="media/worlds/hero-isles-night-1920.mp4"
+        data-src-phone="media/worlds/hero-isles-night-9x16-1080.mp4"
+        data-poster-phone="media/worlds/hero-isles-night-9x16-720.jpg"
+        data-eager></video>
     </div>
-    <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-copy">
-      <p class="eyebrow rv">Habitage for iPhone and Android</p>
-      <h1 class="rv">Habit is a<br><em>beautiful</em> journey.</h1>
-      <p class="voice rv">Hop on — let’s sail.</p>
-      <div class="hero-actions rv">
-        <div class="stores" aria-label="Habitage is coming to iOS and Android">
-          <span class="store"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.9 3.2-.5 8 1.3 10.6.9 1.3 1.9 2.7 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.2-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.9-1.1-3-4.4zM11.5 3c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg><span><small>Download on</small>iOS</span></span>
-          <span class="store"><svg viewBox="0 0 20 22" aria-hidden="true"><path fill="currentColor" d="M1.2.6 11.4 10.8 1.2 21c-.3-.2-.5-.6-.5-1.1V1.7c0-.5.2-.9.5-1.1Zm11.3 11.3 2.6 2.6-11.8 6.8 9.2-9.4Zm0-2.2L3.3.3l11.8 6.8-2.6 2.6Zm5.6.6c.8.5.8 1.8 0 2.2l-2.3 1.3-2.8-2.8 2.8-2.8 2.3 1.3Z"/></svg><span><small>Download on</small>Android</span></span>
-        </div>
-        <p class="note">Coming soon to iPhone and Android</p>
+      <h1 class="reveal">Habit is a<br>beautiful journey.</h1>
+      <p class="lede reveal">Hop on — let’s sail.</p>
+      <div class="stores reveal" aria-label="Download on iOS and Android">
+        <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4.2zM14 5.2c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>iPhone</span>
+        <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.5l1.7-3a.5.5 0 00-.9-.5l-1.8 3.1A10.6 10.6 0 0012 8.2c-1.7 0-3.3.4-4.6 1l-1.8-3.2a.5.5 0 00-.9.5l1.7 3A9.4 9.4 0 002 17h20a9.4 9.4 0 00-4.4-7.5zM7.5 14.2a1 1 0 110-2 1 1 0 010 2zm9 0a1 1 0 110-2 1 1 0 010 2z"/></svg>Android</span>
       </div>
-    </div>
-    <a class="scroll-cue" href="#pledge" aria-label="Scroll to begin the story"><span></span></a>
-  </section>
-
-  <!-- ═══ 2 · THE PLEDGE ═══ -->
-  <section class="pledge" id="pledge">
-    <div class="wrap">
-      <p class="eyebrow rv">Every habit is a journey</p>
-      <h2 class="rv">Thirty days.<br><em>Your</em> pace. <em>Your</em> words.</h2>
-      <p class="lede rv">Pick a habit and a world to take it through. Each day you keep it, the journey moves on. Thirty kept days and it’s complete, however long that takes you.</p>
-      <div class="pledge-grid">
-        <article class="glass card rv">
-          <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span>
-          <h3>At your own pace</h3>
-          <p>No countdown and no drifting back. A missed day doesn’t end anything; the journey simply waits for you.</p>
-        </article>
-        <article class="glass card rv" style="--d:.12s">
-          <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/><path d="M14 7l3 3"/></svg></span>
-          <h3>A pledge in your own words</h3>
-          <blockquote>“I’ll walk at sunrise, because the mornings are mine.”</blockquote>
-          <p>Write it once. It sails with you every day.</p>
-        </article>
-        <article class="glass card rv" style="--d:.24s">
-          <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c3.9 0 6.5-2.6 6.5-6.2 0-3.8-3.2-6.3-4.3-10.3-2.3 1.6-3.4 4-3.2 6.2-1.3-.6-2.1-1.9-2.3-3.2C6.9 9.2 5.5 11.8 5.5 14.8 5.5 18.4 8.1 21 12 21z"/></svg></span>
-          <h3>Streaks that glow</h3>
-          <p>Keep going and your streak burns a little brighter. And whatever happens, the days you’ve kept stay kept.</p>
-        </article>
-      </div>
+      <p class="fine reveal">Download on iOS and Android — coming very soon.</p>
     </div>
   </section>
 
-  <!-- ═══ 3 · DAY 1 → DAY 30 (sticky) ═══ -->
-  <section class="story" id="journey" aria-label="A journey from day one to day thirty">
-    <div class="story-stage">
-      <div class="story-layers" aria-hidden="true">
-        <picture class="on" data-i="0"><source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/s01a-p-780.avif"><source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/s01a-p-780.webp"><source media="(max-aspect-ratio: 4/5)" srcset="assets/img/s01a-p-780.jpg"><source type="image/avif" srcset="assets/img/s01a-1000.avif 1000w, assets/img/s01a-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="assets/img/s01a-1000.webp 1000w, assets/img/s01a-1600.webp 1600w" sizes="100vw"><img src="assets/img/s01a-1600.jpg" srcset="assets/img/s01a-1000.jpg 1000w, assets/img/s01a-1600.jpg 1600w" sizes="100vw" alt="Day 1: The Lantern Lagoon asleep in the dark" width="1600" height="1000" loading="lazy" decoding="async"></picture>
-        <picture data-i="1"><source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/s01-p-780.avif"><source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/s01-p-780.webp"><source media="(max-aspect-ratio: 4/5)" srcset="assets/img/s01-p-780.jpg"><source type="image/avif" srcset="assets/img/s01-1000.avif 1000w, assets/img/s01-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="assets/img/s01-1000.webp 1000w, assets/img/s01-1600.webp 1600w" sizes="100vw"><img src="assets/img/s01-1600.jpg" srcset="assets/img/s01-1000.jpg 1000w, assets/img/s01-1600.jpg 1600w" sizes="100vw" alt="The Lantern Lagoon awake, its lotus lanterns glowing" width="1600" height="1000" loading="lazy" decoding="async"></picture>
-        <picture data-i="2"><source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/s12-p-780.avif"><source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/s12-p-780.webp"><source media="(max-aspect-ratio: 4/5)" srcset="assets/img/s12-p-780.jpg"><source type="image/avif" srcset="assets/img/s12-1000.avif 1000w, assets/img/s12-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="assets/img/s12-1000.webp 1000w, assets/img/s12-1600.webp 1600w" sizes="100vw"><img src="assets/img/s12-1600.jpg" srcset="assets/img/s12-1000.jpg 1000w, assets/img/s12-1600.jpg 1600w" sizes="100vw" alt="The Bubble Reef, domes of air on the sea floor" width="1600" height="1000" loading="lazy" decoding="async"></picture>
-        <picture data-i="3"><source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/s16-p-780.avif"><source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/s16-p-780.webp"><source media="(max-aspect-ratio: 4/5)" srcset="assets/img/s16-p-780.jpg"><source type="image/avif" srcset="assets/img/s16-1000.avif 1000w, assets/img/s16-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="assets/img/s16-1000.webp 1000w, assets/img/s16-1600.webp 1600w" sizes="100vw"><img src="assets/img/s16-1600.jpg" srcset="assets/img/s16-1000.jpg 1000w, assets/img/s16-1600.jpg 1600w" sizes="100vw" alt="The Aurora Ice under a dancing aurora" width="1600" height="1000" loading="lazy" decoding="async"></picture>
-        <picture data-i="4"><source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/s21-p-780.avif"><source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/s21-p-780.webp"><source media="(max-aspect-ratio: 4/5)" srcset="assets/img/s21-p-780.jpg"><source type="image/avif" srcset="assets/img/s21-1000.avif 1000w, assets/img/s21-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="assets/img/s21-1000.webp 1000w, assets/img/s21-1600.webp 1600w" sizes="100vw"><img src="assets/img/s21-1600.jpg" srcset="assets/img/s21-1000.jpg 1000w, assets/img/s21-1600.jpg 1600w" sizes="100vw" alt="The Drifting Isles over a sea of cloud" width="1600" height="1000" loading="lazy" decoding="async"></picture>
-        <picture data-i="5"><source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/s30-p-780.avif"><source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/s30-p-780.webp"><source media="(max-aspect-ratio: 4/5)" srcset="assets/img/s30-p-780.jpg"><source type="image/avif" srcset="assets/img/s30-1000.avif 1000w, assets/img/s30-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="assets/img/s30-1000.webp 1000w, assets/img/s30-1600.webp 1600w" sizes="100vw"><img src="assets/img/s30-1600.jpg" srcset="assets/img/s30-1000.jpg 1000w, assets/img/s30-1600.jpg 1600w" sizes="100vw" alt="Day 30: The Cradle of Dawn at first light" width="1600" height="1000" loading="lazy" decoding="async"></picture>
-      </div>
-      <div class="story-shade" aria-hidden="true"></div>
-      <div class="story-ui">
-        <div class="day" aria-live="off"><span class="day-label">Day</span><span class="day-num" id="dayNum">1</span></div>
-        <svg class="trail" id="trail" aria-hidden="true"></svg>
-        <ol class="beats" id="beats">
-          <li class="beat on" data-day="1"><h3>The lagoon is asleep.</h3><p>Day one. You make a quiet promise, and Aurel steps into a world still in the dark.</p></li>
-          <li class="beat" data-day="3"><h3>Every kept day lights something.</h3><p>A lantern. A bell. A frost-flower. Each day you keep your habit, the world answers.</p></li>
-          <li class="beat" data-day="10"><h3>Miss a day? It waits.</h3><p>No penalties, no drifting back. Thirty kept days complete the journey, at whatever pace your life allows.</p></li>
-          <li class="beat" data-day="15"><h3>The worlds keep changing.</h3><p>Aurora skies, reefs, cloud-high isles. Every chapter is a new place, and every streak a little brighter.</p></li>
-          <li class="beat" data-day="20"><h3>Chapter by chapter.</h3><p>“The wind is carrying Aurel east now.” The night sky slowly turns toward morning.</p></li>
-          <li class="beat" data-day="30"><h3>Day thirty. The first light wakes.</h3><p>Journey complete. “It was never meant to shine alone.”</p></li>
+  <!-- 2 · Meet Aurel -->
+  <section class="meet" id="aurel">
+    <div class="meet-stage" id="aurelStage" role="img" aria-label="Aurel, a small glowing traveller, walks in and waves"></div>
+    <div class="meet-copy">
+      <p class="eyebrow reveal">Meet Aurel</p>
+      <h2 class="reveal">This is Aurel.</h2>
+      <p class="reveal">A drop of light in a traveller’s smock. He walks every journey with you — each habit you keep is a step he takes.</p>
+      <p class="hint reveal">He’ll look your way. Say hello.</p>
+    </div>
+  </section>
+
+  <!-- 3 · Five journeys -->
+  <section class="journeys" id="journeys" style="--steps:5">
+    <!-- phones: the headline scrolls in first, then the stage belongs to the phone -->
+    <header class="stage-intro" aria-hidden="true">
+      <p class="eyebrow reveal">Five worlds</p>
+      <h2 class="reveal">Every habit becomes<br>a 30-day journey.</h2>
+      <p class="reveal">Choose a world for your habit. Each day you keep it, you travel one day further — and every day looks different.</p>
+    </header>
+    <div class="sticky">
+      <div class="journeys-copy">
+        <p class="eyebrow reveal">Five worlds</p>
+        <h2 class="reveal">Every habit becomes<br>a 30-day journey.</h2>
+        <p class="reveal">Choose a world for your habit. Each day you keep it, you travel one day further — and every day looks different.</p>
+        <ol class="journey-list" id="journeyList">
+          <li data-i="0"><button type="button"><b>Ocean Voyage</b><span>A sailboat, an open horizon, a whale breaching on day six.</span></button></li>
+          <li data-i="1"><button type="button"><b>Road Trip</b><span>A red four-by-four and thirty sunsets, all the way to the cabin.</span></button></li>
+          <li data-i="2"><button type="button"><b>Space Odyssey</b><span>Ringed worlds, meteor rain and a rocket for company.</span></button></li>
+          <li data-i="3"><button type="button"><b>Multiverse of Madness</b><span>A new planet and a new sky every single day.</span></button></li>
+          <li data-i="4"><button type="button"><b>Hollywood</b><span>A theatre that plays a different film every night.</span></button></li>
         </ol>
       </div>
+      <div class="phone-slot">
+        <div class="phone" id="journeyPhone">
+          <div class="screen">
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-ocean.jpg" data-src="media/footage/journey-ocean.mp4" data-src-phone="media/footage/journey-ocean.720.mp4" aria-label="Ocean Voyage, day 6: a whale breaches past the sailboat under a rainbow"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-road.jpg" data-src="media/footage/journey-road.mp4" data-src-phone="media/footage/journey-road.720.mp4" aria-label="Road Trip, day 30: fireworks over the cabin at dusk"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-space.jpg" data-src="media/footage/journey-space.mp4" data-src-phone="media/footage/journey-space.720.mp4" aria-label="Space Odyssey, day 6: a ringed teal world and a meteor shower"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-multiverse.jpg" data-src="media/footage/journey-multiverse.mp4" data-src-phone="media/footage/journey-multiverse.720.mp4" aria-label="Multiverse of Madness, day 12: a black hole and a glowing lava wyrm"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-hollywood.jpg" data-src="media/footage/journey-hollywood.mp4" data-src-phone="media/footage/journey-hollywood.720.mp4" aria-label="Hollywood, day 13: a flying time-car over the cinema at sunset"></video>
+          </div>
+        </div>
+        <p class="phone-caption" id="journeyCaption" aria-live="polite">Ocean Voyage</p>
+        <div class="jdots" id="jdots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
     </div>
   </section>
 
-  <!-- ═══ 4 · LIVING WORLDS ═══ -->
+  <!-- 4 · Home -->
+  <section class="home" id="home">
+    <div class="wrap">
+      <p class="eyebrow reveal">Home</p>
+      <h2 class="reveal">Home follows your sky.</h2>
+      <p class="reveal measure">Open Habitage at dawn and it’s dawn on the road. By night the moon is out. Aurel walks ahead while you keep today’s habits — and the fewer left, the clearer the weather. Finish the day and he makes camp.</p>
+    </div>
+    <div class="home-stage">
+      <figure class="window reveal">
+        <div class="window-frame" id="homeWindow">
+          <video data-t="dawn"  muted playsinline loop preload="none" data-poster="media/footage/home-window-dawn.jpg"  data-src="media/footage/home-window-dawn.mp4"  data-src-phone="media/footage/home-window-dawn.720.mp4"></video>
+          <video data-t="noon"  muted playsinline loop preload="none" data-poster="media/footage/home-window-noon.jpg"  data-src="media/footage/home-window-noon.mp4"  data-src-phone="media/footage/home-window-noon.720.mp4"></video>
+          <video data-t="dusk"  muted playsinline loop preload="none" data-poster="media/footage/home-window-dusk.jpg"  data-src="media/footage/home-window-dusk.mp4"  data-src-phone="media/footage/home-window-dusk.720.mp4"></video>
+          <video data-t="night" muted playsinline loop preload="none" data-poster="media/footage/home-window-night.jpg" data-src="media/footage/home-window-night.mp4" data-src-phone="media/footage/home-window-night.720.mp4"></video>
+        </div>
+        <figcaption>
+          <span id="clockLine">The sky on Home is the sky where you are.</span>
+          <span class="times" role="group" aria-label="See Home at another time of day">
+            <button type="button" data-t="dawn">Dawn</button>
+            <button type="button" data-t="noon">Noon</button>
+            <button type="button" data-t="dusk">Dusk</button>
+            <button type="button" data-t="night">Night</button>
+          </span>
+        </figcaption>
+      </figure>
+      <div class="phone phone-home island reveal">
+        <div class="screen">
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/home-camp.jpg" data-src="media/footage/home-camp.mp4" data-src-phone="media/footage/home-camp.720.mp4" aria-label="Home at night with every habit done: Aurel reaches camp, fires lit, fireworks overhead"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Day 1 → Day 30 -->
+  <section class="days" id="days">
+    <!-- phones: the headline scrolls in first, then the stage belongs to the phone -->
+    <header class="stage-intro" aria-hidden="true">
+      <p class="eyebrow reveal">One journey</p>
+      <h2 class="reveal">Thirty days,<br>thirty skies.</h2>
+      <p class="reveal">This is one real journey, from its first day to its last. A lava world, a golden giant, a black hole, nebulae — and Earth rising over the Moon on day thirty.</p>
+    </header>
+    <div class="sticky">
+      <div class="days-copy">
+        <p class="eyebrow">One journey</p>
+        <h2>Thirty days,<br>thirty skies.</h2>
+        <div class="day-count" aria-live="off"><span>Day</span> <b id="dayNum">1</b></div>
+        <ol class="path" id="dayPath" aria-hidden="true"></ol>
+        <p class="measure">This is one real journey, from its first day to its last. A lava world, a golden giant, a black hole, nebulae — and Earth rising over the Moon on day thirty.</p>
+      </div>
+      <div class="phone-slot">
+        <div class="phone">
+          <div class="screen"><canvas id="dayCanvas" width="540" height="1170" aria-label="The Multiverse of Madness journey, day by day from day 1 to day 30"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Aurel's Home -->
+  <section class="isles" id="isles">
+    <div class="sticky">
+      <div class="isles-copy wrap">
+        <p class="eyebrow">Aurel’s Home</p>
+        <h2>Keep a habit,<br>wake a wonder.</h2>
+        <p class="measure">The sunlight you earn wakes the floating isles one by one — the carousel, the lighthouse, the great Star Wheel — until every lantern is lit.</p>
+        <a class="quiet-link" href="world/isles.html">Explore the isles <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="isles-frame"><canvas id="islesCanvas" width="1920" height="1080" aria-label="Aurel's floating isles at night, waking from mist to fully lit"></canvas></div>
+    </div>
+  </section>
+
+  <section class="isles-more" aria-label="Inside Aurel's Home">
+    <div class="pair">
+      <figure class="reveal">
+        <div class="phone island"><div class="screen">
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/isles-fly.jpg" data-src="media/footage/isles-fly.mp4" aria-label="Flying over Aurel's isles at night, every wonder lit: the ferris wheel, the carousel, the lanterns"></video>
+        </div></div>
+        <figcaption><b>Fly over every isle.</b><span>Once a wonder wakes, it stays lit.</span></figcaption>
+      </figure>
+      <figure class="reveal">
+        <div class="phone island"><div class="screen">
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/house-shop.jpg" data-src="media/footage/house-shop.mp4" aria-label="Inside Aurel's house: choosing fireside seats and placing them by the hearth"></video>
+        </div></div>
+        <figcaption><b>Make his house a home.</b><span>Fireside seats, a reading lamp, a painting above the hearth.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 7 · Worlds -->
   <section class="worlds" id="worlds">
     <div class="wrap">
-      <p class="eyebrow rv">Living worlds</p>
-      <h2 class="rv">Choose where each habit <em>sails</em>.</h2>
-      <p class="lede rv">An ocean voyage, a road trip, a launch into space, and more. Each journey happens in a living world that changes as your days add up.</p>
+      <p class="eyebrow reveal">Thirty chapters</p>
+      <h2 class="reveal">Every day, a new world<br>to walk into.</h2>
+      <p class="reveal measure">Aurel’s story has thirty chapter worlds. Here are six of them.</p>
     </div>
-    <div class="phones" id="phones">
-      <figure class="phone rv" style="--tilt:-3deg">
-        <div class="phone-frame"><picture><source type="image/avif" srcset="assets/img/ph-ocean-480.avif"><source type="image/webp" srcset="assets/img/ph-ocean-480.webp"><img src="assets/img/ph-ocean-480.jpg" alt="Ocean voyage on day 16: a sailboat at sunset with a shark fin nearby" width="480" height="1043" loading="lazy" decoding="async"></picture></div>
-        <figcaption>Ocean voyage</figcaption>
-      </figure>
-      <figure class="phone rv" style="--lift:-24px;--d:.1s">
-        <div class="phone-frame"><picture><source type="image/avif" srcset="assets/img/ph-road-480.avif"><source type="image/webp" srcset="assets/img/ph-road-480.webp"><img src="assets/img/ph-road-480.jpg" alt="Road trip on day 17: a red car driving under a crimson sky, halfway there" width="480" height="1043" loading="lazy" decoding="async"></picture></div>
-        <figcaption>Road trip</figcaption>
-      </figure>
-      <figure class="phone rv" style="--tilt:3deg">
-        <div class="phone-frame"><picture><source type="image/avif" srcset="assets/img/ph-space-480.avif"><source type="image/webp" srcset="assets/img/ph-space-480.webp"><img src="assets/img/ph-space-480.jpg" alt="Space journey on day 26: a shuttle nearing a glowing golden star" width="480" height="1043" loading="lazy" decoding="async"></picture></div>
-        <figcaption>Space, and more</figcaption>
-      </figure>
-    </div>
-
-    <div class="wrap road">
-      <div class="road-copy">
-        <p class="eyebrow rv">Home</p>
-        <h2 class="rv">Your Home keeps <em>your</em> sky.</h2>
-        <p class="lede rv">Home is a living Road World: a road by the mountains and the sea, under a sky that follows your real time of day and your local weather.</p>
-        <p class="road-now rv" id="roadNow">Right now it’s evening where you are, so this is what your Home looks like.</p>
+    <div class="cinema reveal" id="cinema">
+      <div class="cinema-frame">
+        <video muted playsinline preload="none" data-name="Lantern Lagoon" data-n="01" data-poster="media/worlds/world-lantern-lagoon-1280.jpg" data-poster-phone="media/worlds/world-lantern-lagoon-9x16-720.jpg" data-src="media/worlds/world-lantern-lagoon-1920.mp4?v=2" data-src-phone="media/worlds/world-lantern-lagoon-9x16-720.mp4?v=2"></video>
+        <video muted playsinline preload="none" data-name="Aurora Ice" data-n="16" data-poster="media/worlds/world-aurora-ice-1280.jpg" data-poster-phone="media/worlds/world-aurora-ice-9x16-720.jpg" data-src="media/worlds/world-aurora-ice-1920.mp4" data-src-phone="media/worlds/world-aurora-ice-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Moth Mangroves" data-n="18" data-poster="media/worlds/world-moth-mangroves-1280.jpg" data-poster-phone="media/worlds/world-moth-mangroves-9x16-720.jpg" data-src="media/worlds/world-moth-mangroves-1920.mp4" data-src-phone="media/worlds/world-moth-mangroves-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Orrery Summit" data-n="20" data-poster="media/worlds/world-orrery-summit-1280.jpg" data-poster-phone="media/worlds/world-orrery-summit-9x16-720.jpg" data-src="media/worlds/world-orrery-summit-1920.mp4" data-src-phone="media/worlds/world-orrery-summit-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Lighthouse Causeway" data-n="26" data-poster="media/worlds/world-lighthouse-causeway-1280.jpg" data-poster-phone="media/worlds/world-lighthouse-causeway-9x16-720.jpg" data-src="media/worlds/world-lighthouse-causeway-1920.mp4" data-src-phone="media/worlds/world-lighthouse-causeway-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Cradle of Dawn" data-n="30" data-poster="media/worlds/world-cradle-of-dawn-1280.jpg" data-poster-phone="media/worlds/world-cradle-of-dawn-9x16-720.jpg" data-src="media/worlds/world-cradle-of-dawn-1920.mp4" data-src-phone="media/worlds/world-cradle-of-dawn-9x16-720.mp4"></video>
+        <p class="cinema-title" id="cinemaTitle" aria-live="polite"><span>Chapter 01</span>Lantern Lagoon</p>
       </div>
-      <div class="road-scene rv" id="roadScene" role="img" aria-label="Illustration of the Home road world: a road winding by mountains and the sea under a sky coloured for your current time of day">
-        <svg viewBox="0 0 800 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="rsSky" x1="0" y1="0" x2="0" y2="1">
-              <stop id="rsS0" offset="0" stop-color="#1a1a50"/><stop id="rsS1" offset=".55" stop-color="#5a4a98"/><stop id="rsS2" offset="1" stop-color="#d88aa8"/>
-            </linearGradient>
-            <linearGradient id="rsSea" x1="0" y1="0" x2="0" y2="1">
-              <stop id="rsW0" offset="0" stop-color="#6a5a9a"/><stop id="rsW1" offset="1" stop-color="#241f52"/>
-            </linearGradient>
-            <radialGradient id="rsGlow"><stop offset="0" stop-color="#fff4dc" stop-opacity=".95"/><stop offset=".35" stop-color="#ffd79a" stop-opacity=".45"/><stop offset="1" stop-color="#ffd79a" stop-opacity="0"/></radialGradient>
-          </defs>
-          <rect width="800" height="440" fill="url(#rsSky)"/>
-          <g id="rsStars" fill="#fff"></g>
-          <g id="rsSun"><circle r="90" fill="url(#rsGlow)"/><circle id="rsDisc" r="16" fill="#fff4dc"/></g>
-          <path id="rsM3" d="M0 250 L60 205 L120 228 L190 170 L260 222 L330 190 L400 236 L470 184 L540 214 L610 168 L690 220 L760 196 L800 212 L800 300 L0 300Z" fill="#8a78b8" opacity=".55"/>
-          <path id="rsM2" d="M0 268 L80 222 L150 250 L230 204 L300 258 L380 226 L450 262 L520 214 L600 256 L680 222 L800 262 L800 300 L0 300Z" fill="#5f4f94" opacity=".85"/>
-          <rect y="286" width="800" height="154" fill="url(#rsSea)"/>
-          <path id="rsShine" d="M380 292 h60 l-6 10 h-48z M392 310 h36 l-4 8 h-28z M400 328 h20 l-3 6 h-14z" fill="#ffe6c8" opacity=".35"/>
-          <path id="rsLand" d="M0 320 C120 300 220 330 330 318 C420 308 470 336 560 346 C660 356 740 338 800 344 L800 440 L0 440Z" fill="#2a2458"/>
-          <path d="M-20 440 C160 400 300 372 440 360 C560 350 690 350 820 356" stroke="#3d356f" stroke-width="30" fill="none"/>
-          <path d="M-20 440 C160 400 300 372 440 360 C560 350 690 350 820 356" stroke="#ffd79a" stroke-opacity=".55" stroke-width="1.6" stroke-dasharray="14 16" fill="none"/>
-          <g id="rsRain" stroke="#dfe6ff" stroke-opacity=".35" stroke-width="1.2"></g>
-        </svg>
-        <span class="road-chip glass" id="roadChip">Your sky · evening</span>
-      </div>
+      <div class="chapters" id="chapters" role="tablist" aria-label="Chapter worlds"></div>
     </div>
   </section>
 
-  <!-- ═══ 5 · AUREL ═══ -->
-  <section class="aurel" id="aurel">
-    <div class="wrap aurel-grid">
-      <figure class="aurel-art rv">
-        <picture><source type="image/avif" srcset="assets/img/aurel-800.avif"><source type="image/webp" srcset="assets/img/aurel-800.webp"><img src="assets/img/aurel-800.jpg" alt="Aurel, a small traveller with a soft teardrop-shaped glowing head and a brown tunic, standing among flowers at dusk" width="800" height="800" loading="lazy" decoding="async"></picture>
-      </figure>
-      <div class="aurel-copy">
-        <p class="eyebrow rv">Your companion</p>
-        <h2 class="rv">Meet <em>Aurel</em>.</h2>
-        <p class="lede rv">A small, gentle traveller made of light, who walks every journey with you. Aurel doesn’t nag and never scolds. Show up, and Aurel carries your light into the world.</p>
-        <p class="aside rv">Every kept day, Aurel wakes one more thing on the long road to the first dawn.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ 6 · THIRTY CHAPTERS ═══ -->
-  <section class="chapters" id="chapters">
-    <div class="chapters-pin">
-      <div class="wrap chapters-head">
-        <p class="eyebrow rv">Thirty chapter worlds</p>
-        <h2 class="rv">One step for every <em>kept</em> day.</h2>
-        <p class="lede rv">Lagoons of lotus lanterns, aurora ice, an orrery above the clouds, a stair of last stars. Light each world, and the way on opens.</p>
-      </div>
-      <div class="strip" id="strip" tabindex="0" aria-label="All thirty chapter worlds (scrolls sideways)">
-        <ol class="strip-track" id="stripTrack">
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch01-560.avif"><source type="image/webp" srcset="assets/img/ch01-560.webp"><img src="assets/img/ch01-560.jpg" alt="The Lantern Lagoon, chapter 1, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>01</b><span>The Lantern Lagoon</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch02-560.avif"><source type="image/webp" srcset="assets/img/ch02-560.webp"><img src="assets/img/ch02-560.jpg" alt="The Glowcap Grove, chapter 2, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>02</b><span>The Glowcap Grove</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch03-560.avif"><source type="image/webp" srcset="assets/img/ch03-560.webp"><img src="assets/img/ch03-560.jpg" alt="The Hushbell Meadow, chapter 3, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>03</b><span>The Hushbell Meadow</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch04-560.avif"><source type="image/webp" srcset="assets/img/ch04-560.webp"><img src="assets/img/ch04-560.jpg" alt="The Hearthlight Burrows, chapter 4, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>04</b><span>The Hearthlight Burrows</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch05-560.avif"><source type="image/webp" srcset="assets/img/ch05-560.webp"><img src="assets/img/ch05-560.jpg" alt="The Snowfolk Dell, chapter 5, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>05</b><span>The Snowfolk Dell</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch06-560.avif"><source type="image/webp" srcset="assets/img/ch06-560.webp"><img src="assets/img/ch06-560.jpg" alt="The Tidepool Cove, chapter 6, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>06</b><span>The Tidepool Cove</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch07-560.avif"><source type="image/webp" srcset="assets/img/ch07-560.webp"><img src="assets/img/ch07-560.jpg" alt="The Moonpear Orchard, chapter 7, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>07</b><span>The Moonpear Orchard</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch08-560.avif"><source type="image/webp" srcset="assets/img/ch08-560.webp"><img src="assets/img/ch08-560.jpg" alt="The Candlewick Library, chapter 8, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>08</b><span>The Candlewick Library</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch09-560.avif"><source type="image/webp" srcset="assets/img/ch09-560.webp"><img src="assets/img/ch09-560.jpg" alt="The Topiary Maze, chapter 9, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>09</b><span>The Topiary Maze</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch10-560.avif"><source type="image/webp" srcset="assets/img/ch10-560.webp"><img src="assets/img/ch10-560.jpg" alt="The Watchfire Ridge, chapter 10, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>10</b><span>The Watchfire Ridge</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch11-560.avif"><source type="image/webp" srcset="assets/img/ch11-560.webp"><img src="assets/img/ch11-560.jpg" alt="The Whispering Dunes, chapter 11, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>11</b><span>The Whispering Dunes</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch12-560.avif"><source type="image/webp" srcset="assets/img/ch12-560.webp"><img src="assets/img/ch12-560.jpg" alt="The Bubble Reef, chapter 12, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>12</b><span>The Bubble Reef</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch13-560.avif"><source type="image/webp" srcset="assets/img/ch13-560.webp"><img src="assets/img/ch13-560.jpg" alt="The Geode Hollow, chapter 13, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>13</b><span>The Geode Hollow</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch14-560.avif"><source type="image/webp" srcset="assets/img/ch14-560.webp"><img src="assets/img/ch14-560.jpg" alt="The Painted Canyon, chapter 14, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>14</b><span>The Painted Canyon</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch15-560.avif"><source type="image/webp" srcset="assets/img/ch15-560.webp"><img src="assets/img/ch15-560.jpg" alt="The Mirror Tarn, chapter 15, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>15</b><span>The Mirror Tarn</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch16-560.avif"><source type="image/webp" srcset="assets/img/ch16-560.webp"><img src="assets/img/ch16-560.jpg" alt="The Aurora Ice, chapter 16, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>16</b><span>The Aurora Ice</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch17-560.avif"><source type="image/webp" srcset="assets/img/ch17-560.webp"><img src="assets/img/ch17-560.jpg" alt="The Glasshouse Ruins, chapter 17, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>17</b><span>The Glasshouse Ruins</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch18-560.avif"><source type="image/webp" srcset="assets/img/ch18-560.webp"><img src="assets/img/ch18-560.jpg" alt="The Moth Mangroves, chapter 18, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>18</b><span>The Moth Mangroves</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch19-560.avif"><source type="image/webp" srcset="assets/img/ch19-560.webp"><img src="assets/img/ch19-560.jpg" alt="The Rain Terraces, chapter 19, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>19</b><span>The Rain Terraces</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch20-560.avif"><source type="image/webp" srcset="assets/img/ch20-560.webp"><img src="assets/img/ch20-560.jpg" alt="The Orrery Summit, chapter 20, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>20</b><span>The Orrery Summit</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch21-560.avif"><source type="image/webp" srcset="assets/img/ch21-560.webp"><img src="assets/img/ch21-560.jpg" alt="The Drifting Isles, chapter 21, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>21</b><span>The Drifting Isles</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch22-560.avif"><source type="image/webp" srcset="assets/img/ch22-560.webp"><img src="assets/img/ch22-560.jpg" alt="The Wisteria Cloister, chapter 22, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>22</b><span>The Wisteria Cloister</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch23-560.avif"><source type="image/webp" srcset="assets/img/ch23-560.webp"><img src="assets/img/ch23-560.jpg" alt="The Heron Mirror, chapter 23, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>23</b><span>The Heron Mirror</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch24-560.avif"><source type="image/webp" srcset="assets/img/ch24-560.webp"><img src="assets/img/ch24-560.jpg" alt="The Steamstone Springs, chapter 24, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>24</b><span>The Steamstone Springs</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch25-560.avif"><source type="image/webp" srcset="assets/img/ch25-560.webp"><img src="assets/img/ch25-560.jpg" alt="The Songbird Tree, chapter 25, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>25</b><span>The Songbird Tree</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch26-560.avif"><source type="image/webp" srcset="assets/img/ch26-560.webp"><img src="assets/img/ch26-560.jpg" alt="The Lighthouse Causeway, chapter 26, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>26</b><span>The Lighthouse Causeway</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch27-560.avif"><source type="image/webp" srcset="assets/img/ch27-560.webp"><img src="assets/img/ch27-560.jpg" alt="The Travellers’ Pass, chapter 27, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>27</b><span>The Travellers’ Pass</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch28-560.avif"><source type="image/webp" srcset="assets/img/ch28-560.webp"><img src="assets/img/ch28-560.jpg" alt="The Starseed Fields, chapter 28, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>28</b><span>The Starseed Fields</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch29-560.avif"><source type="image/webp" srcset="assets/img/ch29-560.webp"><img src="assets/img/ch29-560.jpg" alt="The Stair of Last Stars, chapter 29, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>29</b><span>The Stair of Last Stars</span></figcaption></figure></li>
-          <li class="ch"><figure><picture><source type="image/avif" srcset="assets/img/ch30-560.avif"><source type="image/webp" srcset="assets/img/ch30-560.webp"><img src="assets/img/ch30-560.jpg" alt="The Cradle of Dawn, chapter 30, awake" width="560" height="350" loading="lazy" decoding="async"></picture><figcaption><b>30</b><span>The Cradle of Dawn</span></figcaption></figure></li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ 7 · AUREL'S HOME — THE ISLES ═══ -->
-  <section class="isles" id="isles">
-    <div class="wrap isles-head">
-      <p class="eyebrow rv">Aurel’s Home</p>
-      <h2 class="rv">Floating isles, <em>asleep</em> since the dawn.</h2>
-      <p class="lede rv">Thirty-five old wonders stand in the mist. Every habit you keep earns sunlight, and sunlight wakes them, stage by stage: windmills, a lighthouse, an observatory, a whole sky fairground.</p>
-    </div>
-
-    <div class="mist" id="mist" aria-label="The isles asleep in the mist, then awake and glowing">
-      <div class="mist-stage">
-        <picture class="mist-img mist-asleep">
-          <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/isles-asleep-p-780.avif">
-          <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/isles-asleep-p-780.webp">
-          <source media="(max-aspect-ratio: 4/5)" srcset="assets/img/isles-asleep-p-780.jpg">
-          <source type="image/avif" srcset="assets/img/isles-asleep-1000.avif 1000w, assets/img/isles-asleep-1600.avif 1600w" sizes="100vw">
-          <source type="image/webp" srcset="assets/img/isles-asleep-1000.webp 1000w, assets/img/isles-asleep-1600.webp 1600w" sizes="100vw">
-          <img src="assets/img/isles-asleep-1600.jpg" srcset="assets/img/isles-asleep-1000.jpg 1000w, assets/img/isles-asleep-1600.jpg 1600w" sizes="100vw" alt="The isles asleep: grey stone wonders, outer isles hidden in violet mist" width="1600" height="1000" loading="lazy" decoding="async">
-        </picture>
-        <picture class="mist-img mist-awake" id="mistAwake">
-          <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/isles-awake-p-780.avif">
-          <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/isles-awake-p-780.webp">
-          <source media="(max-aspect-ratio: 4/5)" srcset="assets/img/isles-awake-p-780.jpg">
-          <source type="image/avif" srcset="assets/img/isles-awake-1000.avif 1000w, assets/img/isles-awake-1600.avif 1600w" sizes="100vw">
-          <source type="image/webp" srcset="assets/img/isles-awake-1000.webp 1000w, assets/img/isles-awake-1600.webp 1600w" sizes="100vw">
-          <img src="assets/img/isles-awake-1600.jpg" srcset="assets/img/isles-awake-1000.jpg 1000w, assets/img/isles-awake-1600.jpg 1600w" sizes="100vw" alt="The same isles awake: the mist lifted, every wonder painted and glowing, bridges mended" width="1600" height="1000" loading="lazy" decoding="async">
-        </picture>
-        <div class="mist-caption">
-          <p class="mist-state" id="mistState">Asleep</p>
-          <p class="mist-line">The mist lifts as the island glows.</p>
-          <div class="mist-meter" aria-hidden="true"><span id="mistMeter"></span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="wrap">
-      <ul class="wonders">
-        <li class="wonder rv" style="--d:0.0s"><picture><source type="image/avif" srcset="assets/img/w-starwheel-800.avif"><source type="image/webp" srcset="assets/img/w-starwheel-800.webp"><img src="assets/img/w-starwheel-800.jpg" alt="The Star Wheel, awake at dusk" width="800" height="500" loading="lazy" decoding="async"></picture><div><h3>The Star Wheel</h3><p>Every lantern cabin glows as it turns.</p></div></li>
-        <li class="wonder rv" style="--d:0.1s"><picture><source type="image/avif" srcset="assets/img/w-carousel-800.avif"><source type="image/webp" srcset="assets/img/w-carousel-800.webp"><img src="assets/img/w-carousel-800.jpg" alt="The Sky Carousel, awake at dusk" width="800" height="500" loading="lazy" decoding="async"></picture><div><h3>The Sky Carousel</h3><p>The horses rise and fall, and the music plays.</p></div></li>
-        <li class="wonder rv" style="--d:0.2s"><picture><source type="image/avif" srcset="assets/img/w-balloon-800.avif"><source type="image/webp" srcset="assets/img/w-balloon-800.webp"><img src="assets/img/w-balloon-800.jpg" alt="The Balloon Swings, awake at dusk" width="800" height="500" loading="lazy" decoding="async"></picture><div><h3>The Balloon Swings</h3><p>The balloons glow as they fly round.</p></div></li>
-        <li class="wonder rv" style="--d:0.0s"><picture><source type="image/avif" srcset="assets/img/w-bigtop-800.avif"><source type="image/webp" srcset="assets/img/w-bigtop-800.webp"><img src="assets/img/w-bigtop-800.jpg" alt="The Big Top, awake at dusk" width="800" height="500" loading="lazy" decoding="async"></picture><div><h3>The Big Top</h3><p>Its pennants fly and the ring is lit.</p></div></li>
-        <li class="wonder rv" style="--d:0.1s"><picture><source type="image/avif" srcset="assets/img/w-lighthouse-800.avif"><source type="image/webp" srcset="assets/img/w-lighthouse-800.webp"><img src="assets/img/w-lighthouse-800.jpg" alt="The Lighthouse, awake at dusk" width="800" height="500" loading="lazy" decoding="async"></picture><div><h3>The Lighthouse</h3><p>A beam sweeps the cloud sea.</p></div></li>
-        <li class="wonder rv" style="--d:0.2s"><picture><source type="image/avif" srcset="assets/img/w-windmill-800.avif"><source type="image/webp" srcset="assets/img/w-windmill-800.webp"><img src="assets/img/w-windmill-800.jpg" alt="The Great Windmill, awake at dusk" width="800" height="500" loading="lazy" decoding="async"></picture><div><h3>The Great Windmill</h3><p>Painted sails, and petals on the wind.</p></div></li>
-      </ul>
-      <div class="house glass rv">
-        <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg></span>
-        <div>
-          <h3>And a house to make your own</h3>
-          <p>Aurel’s thatched cottage is small outside and a great round hall within. Furnish it piece by piece with the sunlight you’ve earned, then walk in and stay a while.</p>
-        </div>
-      </div>
-
-      <div class="live rv" id="live">
-        <div class="live-poster">
-          <picture><source type="image/avif" srcset="assets/img/w-starwheel-800.avif"><source type="image/webp" srcset="assets/img/w-starwheel-800.webp"><img src="assets/img/w-starwheel-800.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></picture>
-        </div>
-        <div class="live-copy">
-          <p class="eyebrow">Live · in your browser</p>
-          <h3>Wake the isles yourself.</h3>
-          <p>This is the real 3D world from the app. Give the wonders sunlight, turn the sky from dawn to night, and walk Aurel across the bridges.</p>
-          <button class="btn" id="openIsles" type="button">Enter the isles <span aria-hidden="true">→</span></button>
-          <p class="fine">About 2 MB. It loads only when you tap.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ 8 · SIGHTINGS ═══ -->
+  <!-- 8 · Sightings -->
   <section class="sightings" id="sightings">
-    <div class="wrap sightings-grid">
-      <div>
-        <p class="eyebrow rv">Sightings</p>
-        <h2 class="rv">Creatures along <em>the way</em>.</h2>
-        <p class="lede rv">As your kept days add up, creatures begin to appear on your journeys: a fox at the treeline, a whale beneath the boat. Spot them, and they join your Field Guide for good.</p>
-      </div>
-      <ul class="field-guide" aria-label="Some creatures you can find">
-        <li class="specimen rv"><picture><source type="image/webp" srcset="assets/img/cr-fox.webp"><img src="assets/img/cr-fox.png" alt="Red fox" width="360" height="173" loading="lazy" decoding="async"></picture><span>Red fox</span></li>
-        <li class="specimen rv"><picture><source type="image/webp" srcset="assets/img/cr-whale.webp"><img src="assets/img/cr-whale.png" alt="Humpback whale" width="360" height="186" loading="lazy" decoding="async"></picture><span>Humpback whale</span></li>
-        <li class="specimen rv"><picture><source type="image/webp" srcset="assets/img/cr-deer.webp"><img src="assets/img/cr-deer.png" alt="White-tailed deer" width="339" height="360" loading="lazy" decoding="async"></picture><span>Deer</span></li>
-        <li class="specimen rv"><picture><source type="image/webp" srcset="assets/img/cr-bear.webp"><img src="assets/img/cr-bear.png" alt="Black bear" width="360" height="224" loading="lazy" decoding="async"></picture><span>Black bear</span></li>
-      </ul>
+    <div class="wrap">
+      <p class="eyebrow reveal">Sightings</p>
+      <h2 class="reveal">Creatures find you<br>along the way.</h2>
+      <p class="reveal measure">Keep going and your world fills up. A seahorse in the rain, a peacock under a rainbow, a lava wyrm beneath a checkered planet — each one yours to keep.</p>
+    </div>
+    <div class="tiles" id="tiles">
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-1.jpg" data-poster-phone="media/footage/sighting-1-720.jpg" data-src="media/footage/sighting-1.mp4" data-src-phone="media/footage/sighting-1.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Seahorse · Ocean, day 3</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-2.jpg" data-poster-phone="media/footage/sighting-2-720.jpg" data-src="media/footage/sighting-2.mp4" data-src-phone="media/footage/sighting-2.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Peacock · Road Trip, day 8</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-3.jpg" data-poster-phone="media/footage/sighting-3-720.jpg" data-src="media/footage/sighting-3.mp4" data-src-phone="media/footage/sighting-3.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Rocket · Space, day 6</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-4.jpg" data-poster-phone="media/footage/sighting-4-720.jpg" data-src="media/footage/sighting-4.mp4" data-src-phone="media/footage/sighting-4.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Prism · Multiverse, day 18</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-5.jpg" data-poster-phone="media/footage/sighting-5-720.jpg" data-src="media/footage/sighting-5.mp4" data-src-phone="media/footage/sighting-5.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Lava wyrm · Multiverse, day 25</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-6.jpg" data-poster-phone="media/footage/sighting-6-720.jpg" data-src="media/footage/sighting-6.mp4" data-src-phone="media/footage/sighting-6.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Lightbulb · Hollywood, day 13</figcaption></figure>
     </div>
   </section>
 
-  <!-- ═══ 9 · TOGETHER ═══ -->
+  <!-- 9 · Together -->
   <section class="together" id="together">
     <div class="wrap">
-      <p class="eyebrow rv">Together, calmly</p>
-      <h2 class="rv">Company for the <em>long</em> road.</h2>
-      <p class="lede rv">Social that feels like a warm lantern, not a scoreboard. No feeds, no leaderboards, just the people who want to see you get there.</p>
-      <div class="together-grid">
-        <div class="crew glass rv" aria-label="Example crew card">
-          <div class="crew-top"><span class="crew-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><div><strong>Sunrise walk</strong><small>Crew · 5 of 6</small></div></div>
-          <ul class="crew-list">
-            <li><span class="av" style="--h:18">M</span>Maya<em>Day 14</em></li>
-            <li><span class="av" style="--h:280">L</span>Leo<em>Day 12</em></li>
-            <li><span class="av" style="--h:330">A</span>Ana<em>Day 12</em></li>
-            <li><span class="av" style="--h:200">S</span>Sam<em>Day 9</em></li>
-            <li><span class="av" style="--h:40">You</span>You<em>Day 11</em></li>
-          </ul>
-          <div class="crew-chat"><p class="bubble">Made it out before the rain.</p><p class="bubble me">Same. Day 11 for me.</p></div>
-          <div class="cheer-row"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>Maya cheered your Day 11</div>
-        </div>
-        <ul class="together-list">
-          <li class="rv"><h3>Friends</h3><p>Add the people you’d actually tell. See their journeys, and let them see yours.</p></li>
-          <li class="rv"><h3>Crews of up to six</h3><p>Keep one habit together, each on your own journey, side by side.</p></li>
-          <li class="rv"><h3>Watchers</h3><p>Keep a habit private, and invite a friend or two to quietly follow along.</p></li>
-          <li class="rv"><h3>Cheers, messages and crew chat</h3><p>A small cheer when it matters. A word in your crew chat. Nothing that shouts.</p></li>
-        </ul>
-      </div>
-      <ul class="extras">
-        <li class="glass rv"><span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/></svg></span><div><h3>Home-screen widgets</h3><p>Your journey and your crew, glanceable on your iPhone Home Screen.</p></div></li>
-        <li class="glass rv" style="--d:.12s"><span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="3"/><path d="M6 14l4-3 3 2 5-4"/></svg></span><div><h3>Voyage cards</h3><p>Beautiful cards of your days kept, made to share.</p></div></li>
-      </ul>
+      <p class="eyebrow reveal">Together</p>
+      <h2 class="reveal">Keep a habit<br>with your crew.</h2>
+      <p class="reveal measure">Start a crew of up to six. Everyone walks their own journey at their own pace — you see who’s kept theirs today, and a cheer is one tap away.</p>
+    </div>
+    <div class="trio">
+      <figure class="reveal">
+        <div class="phone island"><div class="screen">
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/cheer-send.jpg" data-src="media/footage/cheer-send.mp4" data-src-phone="media/footage/cheer-send.720.mp4" aria-label="Sending a cheer to Alice: the cheer sheet opens, emoji and words float up over her journey"></video>
+        </div></div>
+        <figcaption>Send a cheer.</figcaption>
+      </figure>
+      <figure class="reveal lead">
+        <div class="phone island"><div class="screen" id="crewScreen">
+          <video data-t="dawn"  muted playsinline loop preload="none" data-poster="media/footage/crew-dawn.jpg"  data-src="media/footage/crew-dawn.mp4"  data-src-phone="media/footage/crew-dawn.720.mp4"></video>
+          <video data-t="noon"  muted playsinline loop preload="none" data-poster="media/footage/crew-noon.jpg"  data-src="media/footage/crew-noon.mp4"  data-src-phone="media/footage/crew-noon.720.mp4"></video>
+          <video data-t="dusk"  muted playsinline loop preload="none" data-poster="media/footage/crew-dusk.jpg"  data-src="media/footage/crew-dusk.mp4"  data-src-phone="media/footage/crew-dusk.720.mp4"></video>
+          <video data-t="night" muted playsinline loop preload="none" data-poster="media/footage/crew-night.jpg" data-src="media/footage/crew-night.mp4" data-src-phone="media/footage/crew-night.720.mp4"></video>
+        </div></div>
+        <figcaption>Your crew, at a glance.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <div class="phone island"><div class="screen">
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/cheer-receive.jpg" data-src="media/footage/cheer-receive.mp4" data-src-phone="media/footage/cheer-receive.720.mp4" aria-label="Receiving cheers: emoji from friends float up over your journey, each with its sender's name"></video>
+        </div></div>
+        <figcaption>Feel it land.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- ═══ 10 · PRICING ═══ -->
-  <!-- ═══ 11 · DAWN ═══ -->
-  <section class="dawn" id="dawn">
-    <div class="dawn-media" data-parallax="0.08">
-      <picture>
-        <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="assets/img/s30-p-780.avif">
-        <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="assets/img/s30-p-780.webp">
-        <source media="(max-aspect-ratio: 4/5)" srcset="assets/img/s30-p-780.jpg">
-        <source type="image/avif" srcset="assets/img/s30-1000.avif 1000w, assets/img/s30-1600.avif 1600w" sizes="100vw">
-        <source type="image/webp" srcset="assets/img/s30-1000.webp 1000w, assets/img/s30-1600.webp 1600w" sizes="100vw">
-        <img src="assets/img/s30-1600.jpg" srcset="assets/img/s30-1000.jpg 1000w, assets/img/s30-1600.jpg 1600w" sizes="100vw" alt="" width="1600" height="1000" loading="lazy" decoding="async">
-      </picture>
-    </div>
-    <div class="dawn-copy">
-      <h2 class="rv">Habit is a<br><em>beautiful</em> journey.</h2>
-      <p class="voice rv">Hop on — let’s sail.</p>
-      <div class="stores rv" aria-label="Habitage is coming to iOS and Android">
-          <span class="store"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.9 3.2-.5 8 1.3 10.6.9 1.3 1.9 2.7 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.2-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.9-1.1-3-4.4zM11.5 3c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg><span><small>Download on</small>iOS</span></span>
-          <span class="store"><svg viewBox="0 0 20 22" aria-hidden="true"><path fill="currentColor" d="M1.2.6 11.4 10.8 1.2 21c-.3-.2-.5-.6-.5-1.1V1.7c0-.5.2-.9.5-1.1Zm11.3 11.3 2.6 2.6-11.8 6.8 9.2-9.4Zm0-2.2L3.3.3l11.8 6.8-2.6 2.6Zm5.6.6c.8.5.8 1.8 0 2.2l-2.3 1.3-2.8-2.8 2.8-2.8 2.3 1.3Z"/></svg><span><small>Download on</small>Android</span></span>
+  <!-- 10 · Dawn -->
+  <!-- 9½ · Home Screen widgets -->
+  <section class="widgets" id="widgets">
+    <div class="wrap">
+      <p class="eyebrow reveal">On your Home Screen</p>
+      <h2 class="reveal">Your journey,<br>at a glance.</h2>
+      <p class="reveal measure">Today’s habits and your crew live on your Home Screen, under the same sky as the app — morning light by day, stars by night. Aurel walks on while you check off the day.</p>
+      <div class="wboard reveal" id="wboard">
+        <div class="wslot w-large">
+          <img class="w-day" src="media/widgets/widget-today-large-day.webp" alt="The Today widget, large: Aurel on the road, 2 of 4 done and today’s habits by day" loading="lazy" decoding="async">
+          <img class="w-night" src="media/widgets/widget-today-large-night.webp" alt="The Today widget, large: Aurel on the road, 2 of 4 done and today’s habits at night" loading="lazy" decoding="async">
         </div>
-      <p class="note rv">Coming soon to iPhone and Android</p>
+        <div class="wslot w-crew">
+          <img class="w-day" src="media/widgets/widget-crew-medium-day.webp" alt="The Crew widget, medium: the Morning Walk crew’s bus, 1 of 6 aboard by day" loading="lazy" decoding="async">
+          <img class="w-night" src="media/widgets/widget-crew-medium-night.webp" alt="The Crew widget, medium: the Morning Walk crew’s bus, 1 of 6 aboard at night" loading="lazy" decoding="async">
+        </div>
+        <div class="wslot w-medium">
+          <img class="w-day" src="media/widgets/widget-today-medium-day.webp" alt="The Today widget, medium: Aurel on the road and today’s count by day" loading="lazy" decoding="async">
+          <img class="w-night" src="media/widgets/widget-today-medium-night.webp" alt="The Today widget, medium: Aurel on the road and today’s count at night" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <p class="wcap"><span class="seg" role="group" aria-label="See the widgets by day or at night"><button type="button" data-w="day">Day</button><button type="button" data-w="night">Night</button></span></p>
+    </div>
+  </section>
+
+  <section class="dawn" id="dawn">
+    <div class="dawn-stage" id="aurelBye" role="img" aria-label="Aurel waves goodbye in the dawn light"></div>
+    <div class="dawn-copy">
+      <h2 class="reveal">Hop on — let’s sail.</h2>
+      <p class="reveal">Habitage is coming to iPhone and Android.</p>
+      <div class="stores reveal" aria-label="Download on iOS and Android">
+        <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4.2zM14 5.2c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>iPhone</span>
+        <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.5l1.7-3a.5.5 0 00-.9-.5l-1.8 3.1A10.6 10.6 0 0012 8.2c-1.7 0-3.3.4-4.6 1l-1.8-3.2a.5.5 0 00-.9.5l1.7 3A9.4 9.4 0 002 17h20a9.4 9.4 0 00-4.4-7.5zM7.5 14.2a1 1 0 110-2 1 1 0 010 2zm9 0a1 1 0 110-2 1 1 0 010 2z"/></svg>Android</span>
+      </div>
+      <p class="fine reveal">Download on iOS and Android — links arrive on launch day.</p>
     </div>
   </section>
 </main>
 
 <footer class="foot">
-  <div class="wrap foot-inner">
-    <div class="foot-brand"><img src="assets/favicon.png" alt="" width="26" height="26"><span>Habitage</span></div>
-    <nav class="foot-links" aria-label="Legal and support">
-      <a href="/habitage/privacy">Privacy</a>
-      <a href="/habitage/terms">Terms</a>
-      <a href="/habitage/support">Support</a>
-      <a href="mailto:support@inaayratech.com">support@inaayratech.com</a>
-    </nav>
-    <p class="foot-copy">© <span id="yr">2026</span> Inaayra Tech LLC</p>
-  </div>
+  <span>© <span id="yr">2026</span> Inaayra Tech LLC</span>
+  <nav aria-label="Legal"><a href="privacy">Privacy</a><a href="terms">Terms</a><a href="support">Support</a></nav>
 </footer>
 
-<!-- the live isles: built on demand -->
-<div class="isles-dialog" id="islesDialog" role="dialog" aria-modal="true" aria-labelledby="idTitle" hidden>
-  <div class="id-world" id="idWorld">
-    <div class="id-loading" id="idLoading"><span class="spinner" aria-hidden="true"></span><p>Crossing to the isles…</p></div>
-  </div>
-  <div class="id-top">
-    <h2 class="id-title" id="idTitle">Aurel’s Home</h2>
-    <span class="id-sun glass" id="idSun">Glow <b id="idGlow">0</b></span>
-    <button class="id-close glass" id="idClose" type="button" aria-label="Close the isles"><svg viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg></button>
-  </div>
-  <div class="id-panel glass" id="idPanel">
-    <p class="id-hint" id="idHint">Give a wonder sunlight to wake it. Drag in the world to walk.</p>
-    <ul class="id-wonders" id="idWonders"></ul>
-    <div class="id-row">
-      <div class="id-hours" role="group" aria-label="Time of day">
-        <button type="button" data-h="6.4">Dawn</button><button type="button" data-h="12">Day</button><button type="button" data-h="16.2">Golden</button><button type="button" data-h="17.05" aria-pressed="true">Dusk</button><button type="button" data-h="22">Night</button>
-      </div>
-      <button class="id-chip" type="button" id="idOverview" aria-pressed="false">See every isle</button>
-      <button class="id-chip" type="button" id="idAll">Wake everything</button>
-    </div>
-  </div>
-</div>
-
-<script src="script.js" defer></script>
+<script type="module" src="site.js?v=c80e5d0a8c"></script>
 </body>
 </html>

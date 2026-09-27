@@ -1,59 +1,68 @@
-# Habitage site: art direction (locked 2026-09-26, revised for the product owner's direction)
+# Habitage — website v2 art direction (LOCKED 2026-09-26)
 
-**In one line:** modern and calm, magical and quietly interactive. The app's real worlds are the stars; everything around them stays out of the way.
+The site is a journey you take. Nothing is a still picture: every section is the
+real app, moving — film loops cut from real recordings, live 3D (the isles, Aurel),
+or footage that scrubs as you scroll. The page is one evening turning into dawn.
 
-## References, and what we take from each
-- **Apple product pages**: confident restraint and one idea per viewport. Sticky scroll-telling, where the media changes under still text. Large, tight, rounded-grotesque headings. We take the Day 1 → Day 30 sticky sequence, the pinned filmstrip and the pacing.
-- **Alto's Odyssey site / game**: the landscape carries the emotion and copy is sparse. We take full-bleed worlds with a single quiet line over them.
-- **Sky: Children of the Light**: light as the thing you gather and give. We take *light* as the only motif. Progress is shown by soft light, never by badges or numbers shouting.
-- **Monument Valley**: generous space and calm pacing. We take air around everything.
-- **Award-level WebGL storytelling (Awwwards and FWA 2026)**: the site is something to *do*. We take the live, real 3D isles, which a visitor can wake themselves, loaded only when they ask.
+Owner feedback this answers: v1 of the site was "average… a dumpster": low-res
+worlds, average transitions, random images, a generic starry background, stills
+where video belongs. Owner direction: **modern, calm, magical, silently
+interactive**; the app's rounded type; never gamified.
 
-## Palette: calm night, desaturated dusk
-| token | value | use |
-|---|---|---|
-| `--night` | `#0a0d1c` | page ground |
-| `--navy` | `#0f1326` | sections, dialog |
-| `--slate` | `#1b2034` | raised surfaces |
-| `--dusk` | `#b9b3d6` | eyebrows, quiet labels (desaturated lilac) |
-| `--rose` | `#cdb0bd` | used sparingly |
-| `--warm` | `#eadbc3` | soft lamplight: the ONLY warm accent (lit days, voice lines) |
-| `--ink` | `#f3f1ee` | text, primary button |
-| `--mist` | `rgba(233,231,242,.68)` | body copy |
+## 1. The living sky (the page background)
+- The app's own sky, not generic stars: deep dusk at the top of the page, warming
+  through twilight to dawn at the bottom (scroll position drives the gradient).
+- Soft aurora ribbons, drifting lanterns, the app's rounded cloud shapes; a few
+  slow shooting stars. Low contrast, slow, always behind content.
+- Palette (from the app): night navy #0a0d1c → violet #2a1e5e → rose #c07aa0 →
+  amber #f3b27a → dawn cream #fff1d8. Accent: warm lamplight #eadbc3.
 
-Rules:
-- There are no saturated purple or gold washes and no candy colours.
-- Colour comes from the app's worlds. Renders are shown slightly desaturated (`saturate(.82–.88)`) so they sit calmly in the navy. They return to full colour on hover.
-- The primary button is a soft ink-white pill. There are no gradient gold CTAs.
+## 2. Type
+- One family: `ui-rounded, "SF Pro Rounded", -apple-system, … "Nunito"`. No serif.
+- Big, quiet headlines (600, tight tracking), short lines. Body 17–19px, generous
+  line-height. Copy is the app's voice: warm, brief ("Hop on — let's sail.").
 
-## Type
-One family, the app's own: `ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", "Nunito", system-ui, sans-serif`. It is SF Pro Rounded on Apple devices, with Nunito loaded from Google Fonts as the rounded fallback elsewhere. There are no serif display fonts.
-- Headings: 600, tracking −0.035 to −0.045em, `text-wrap: balance`. Emphasis is a *quieter* colour, never italic or bold.
-- Body: 17–20px, 1.55 line height, mist colour.
-- Labels are sentence case at 14px/600 in dusk. There are no all-caps badges.
+## 3. Motion
+- No hard cuts. Sections dissolve into each other through the shared sky.
+- Scroll SCRUBS time (image sequences, not <video> seeking — smooth on iOS Safari).
+- Everything eases (cubic-bezier .22,.8,.2,1), 600–1200ms; nothing pops or flashes.
+- `prefers-reduced-motion`: sequences show their key frame, loops pause on a poster.
 
-## Light and material
-- Only real renders are used: the 3D chapter worlds and Aurel's isles (captured from the app's own WebGL builds), plus real in-app journey screenshots.
-- Glass is a 4.5% white fill, 20px blur and a 1px hairline at 12%. Nothing opaque sits over a scene.
-- Light is soft: a large, faint radial glow follows the pointer (desktop) and scroll. A few slow motes drift up through the page. There are no neon edges and no glow stacks.
-- Images meet the page through gradient feathering into the navy.
+## 4. Media quality bar
+- 3D renders at 2–4K, supersampled (render 2× then downscale). Never upscale.
+- Film loops: seamless, H.264 MP4 + VP9/AV1 WebM, poster frame; 1080p max on
+  desktop, 720p phone variant; muted, playsinline, loaded only near the viewport.
+- Everything fitted to its frame: phone footage inside a real phone frame with
+  the right aspect; no awkward crops, no letterboxing, no blurry upscales.
+- Recordings: the ad pipeline's CLEAN filter (status-bar clock → 9:41).
 
-## Motion: subtle, responsive, silent
-- The easing is `cubic-bezier(.22,.61,.21,1)` at 1.0–1.6s. Reveals travel 18px and clear a 6px blur. Nothing bounces or pops.
-- Parallax is shallow (≤ 12%) and on media only. Text never floats away from where you read it.
-- Scroll drives *state*: the day counter, the world cross-fades, the path lighting up, the mist lifting, and the filmstrip gliding.
-- The motes canvas holds ≤ 36 particles, is capped at 30fps, and pauses when hidden.
-- `prefers-reduced-motion`: no parallax, motes, pointer light, blur-reveals or scrubbed transforms. State still changes and content is immediately visible.
+## 5. The story (top → bottom)
+1. **Night isles (hero)** — slow orbit of Aurel's isles fully radiant at night
+   (Star Wheel turning, lanterns, mist). Live 3D where capable, else a 4K loop.
+   "Habit is a beautiful journey." · "Hop on — let's sail." · App Store.
+2. **Meet Aurel** — live 3D Aurel (the real baked mesh) walks in from the dusk,
+   slows, turns to you, his gaze follows the cursor, waves (joy); tap → wonder +
+   small bounce; idles with a breathing glow. "This is Aurel. He'll walk every
+   journey with you." Waist-up framing, high DPR. Phone fallback: a film of it.
+3. **Five journeys** — Ocean, Road, Space, Multiverse of Madness, Hollywood:
+   seamless loops from the real 30-day recordings in phone frames, one gliding in
+   as the last moves on; each named in one line.
+4. **Home** — the owner's Home scene (to be supplied), alive; sky follows the
+   visitor's clock.
+5. **Day 1 → Day 30** — ONE continuous journey scrubbed by scroll: a real
+   recording's days as an image sequence; a day counter and 30 path lights.
+6. **Aurel's Home** — the isles at night, hi-res; wonders wake one by one as you
+   scroll; "Explore the isles" opens the live 3D.
+7. **A few breathtaking worlds** — 5–6 chapter worlds at night (not all 30),
+   each a short cinematic camera move, cross-fading.
+8. **Sightings** — the discover moments as short video clips from the recordings.
+9. **Together** — the owner's crew scene (to be supplied): friends, crews, cheers.
+10. **Dawn** — the sky reaches sunrise; Aurel waves goodbye; App Store.
 
-## The scroll story
-1. **Arrival**: Aurel on the waking isles at dusk. "Habit is a beautiful journey." / "Hop on — let's sail." App Store link and 7-day trial.
-2. **The pledge**: a 30-day journey, at your own pace, in your own words.
-3. **Day 1 → Day 30**: sticky. The counter climbs, real chapter worlds cross-fade from a sleeping lagoon to the Cradle of Dawn, and thirty points on a path light one by one.
-4. **Living worlds**: ocean, road and space (real in-app scenes), and the Home Road World. Its sky is tinted by the visitor's actual clock.
-5. **Aurel**: the companion.
-6. **Thirty chapters**: a pinned filmstrip of all 30 worlds.
-7. **Aurel's Home**: the mist lifts on scroll (asleep → awake, same camera), then the wonders and the house. *Wake the isles yourself* opens the real 3D world.
-8. **Sightings**: the Field Guide.
-9. **Together, calmly**: friends, crews of up to 6, watchers, cheers and chat. Widgets and voyage cards.
-10. **Pricing**: one glass panel.
-11. **Dawn**: the closing line over the Cradle of Dawn, then the footer.
+## 6. Performance
+- First paint < 200KB on phones; heavy media lazy by section; live 3D modules
+  load on approach only; total transferred for a full scroll < ~15MB on phones.
+
+## References
+Apple product pages (scroll-scrubbed sequences), thatgamecompany's Sky and
+Journey sites, Alto's Odyssey, Monument Valley, Awwwards/FWA scroll-story sites.
