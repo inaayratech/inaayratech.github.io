@@ -59,7 +59,7 @@ section { position: relative; }
    uniform 3.2% padding around it; the outer radius = screen radius + bezel. */
 .phone {
   position: relative; width: 100%; height: auto;
-  padding: 3.2%; border-radius: 15.2% / 7.26%;
+  padding: 2.2%; border-radius: 14.4% / 6.83%; /* modern iPhone Pro bezel (~2.2% of width); outer radius = screen radius + bezel */
   background: linear-gradient(145deg, #2a2838, #0c0c14 40%, #1b1a26);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, .08) inset, 0 40px 80px -20px rgba(4, 4, 16, .7), 0 0 90px -30px rgba(234, 219, 195, .35);
 }
@@ -392,7 +392,7 @@ section { position: relative; }
   .journeys-copy h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .journey-list { min-height: 4.4em; align-content: end; }
   .journeys .phone-slot { gap: 10px; align-self: start; }
-  .journeys .phone-slot .phone { width: min(86vw, calc((100svh - 128px) / 2.093)); }
+  .journeys .phone-slot .phone { width: min(86vw, calc((100svh - 128px) / 2.116)); }
 }
 
 /* the Day 1 → 30 stage, same contract: a compact Day counter + the 30 path
@@ -405,7 +405,7 @@ section { position: relative; }
   .day-count b { font-size: 40px; }
   .day-count span { font-size: 17px; }
   .days .phone-slot { align-self: start; }
-  .days .phone-slot .phone { width: min(86vw, calc((100svh - 118px) / 2.093)); }
+  .days .phone-slot .phone { width: min(86vw, calc((100svh - 118px) / 2.116)); }
 }
 
 /* the intros scroll by before each stage pins — give the stages that distance
@@ -434,4 +434,21 @@ section { position: relative; }
   .w-large { grid-row: auto; }
   .w-medium { display: none; } /* phones: the large Today + the crew — no repeats */
   .seg button { min-height: 40px; padding: 8px 26px; font-size: 15px; }
+}
+
+
+/* ── phones never stretch. In a row of cards (the Aurel's Home pair, the Together
+   trio) a shorter caption let the grid stretch that card — and the extra height
+   landed in the phone as a thick bottom bezel. Phones size to their screen only. */
+.phone { align-self: start; }
+.pair figure, .trio figure { align-content: start; }
+
+/* ── swipe rows keep their shadows. A horizontally scrolling row clips vertically,
+   so the phones' drop shadow + glow (≈60px above, ≈110px below) was cut off in a
+   hard, faintly visible line across the section while swiping. Give the rows room
+   for the shadow and take the same space back with negative margins (layout unchanged). */
+@media (max-width: 800px) {
+  .tiles { padding-top: 94px; margin-top: -64px; padding-bottom: 118px; margin-bottom: -110px; }
+  .pair  { padding-top: 70px; margin-top: -64px; padding-bottom: 118px; margin-bottom: -110px; }
+  .trio  { padding-top: 98px; margin-top: -64px; padding-bottom: 122px; margin-bottom: -110px; }
 }
