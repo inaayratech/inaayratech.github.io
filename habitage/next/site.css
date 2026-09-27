@@ -53,13 +53,16 @@ section { position: relative; }
 @media (max-width: 860px) { .nav-links { display: none; } }
 
 /* ── phone frame ── */
+/* The SCREEN carries the recordings' exact aspect (1290×2796, iPhone 14 Pro Max)
+   so footage fills it edge to edge — no crop, no letterbox. The bezel is a
+   uniform 3.2% padding around it; the outer radius = screen radius + bezel. */
 .phone {
-  position: relative; width: 100%; aspect-ratio: 1290 / 2796;
-  padding: 3.2%; border-radius: 15% / 7%;
+  position: relative; width: 100%; height: auto;
+  padding: 3.2%; border-radius: 15.2% / 7.26%;
   background: linear-gradient(145deg, #2a2838, #0c0c14 40%, #1b1a26);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, .08) inset, 0 40px 80px -20px rgba(4, 4, 16, .7), 0 0 90px -30px rgba(234, 219, 195, .35);
 }
-.screen { position: relative; width: 100%; height: 100%; border-radius: 12.5% / 5.8%; overflow: hidden; background: #050610; }
+.screen { position: relative; width: 100%; aspect-ratio: 1290 / 2796; border-radius: 12.8% / 5.9%; overflow: hidden; background: #050610; }
 .screen video, .screen canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .phone.island .screen::after { /* the Dynamic Island the screen recordings don't include */
   content: ""; position: absolute; left: 30.6%; width: 38.8%; top: 1.57%; height: 3.43%; border-radius: 999px; background: #000; z-index: 2;
