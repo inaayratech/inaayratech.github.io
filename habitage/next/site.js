@@ -13,11 +13,17 @@ const lerp = (a, b, t) => a + (b - a) * t;
 $('#yr').textContent = new Date().getFullYear();
 
 // ── films: the right source for the screen, set only when near the viewport ──
-function arm(v) {
+function dress(v) {           // the poster only — cheap, set well ahead of the viewport
+  if (v.dataset.dressed) return;
+  v.dataset.dressed = '1';
+  const p = (PHONE && v.dataset.posterPhone) || v.dataset.poster;
+  if (p) v.poster = p;
+}
+function arm(v) {             // the film itself — only once it's about to be seen
+  dress(v);
   if (v.dataset.armed) return;
   v.dataset.armed = '1';
   const src = (PHONE && v.dataset.srcPhone) || v.dataset.src;
-  if (PHONE && v.dataset.posterPhone) v.poster = v.dataset.posterPhone;
   if (src) { v.src = src; v.preload = 'auto'; }
 }
 function play(v) {
@@ -26,12 +32,14 @@ function play(v) {
   const p = v.play(); if (p && p.catch) p.catch(() => {});
 }
 function pause(v) { if (!v.paused) v.pause(); }
-// phone posters immediately, so nothing paints the desktop poster first
-if (PHONE) $$('video[data-poster-phone]').forEach(v => { v.poster = v.dataset.posterPhone; });
+// the hero's phone poster immediately, so the desktop poster never paints first
+{ const h = $('.hero-film video'); if (PHONE && h.dataset.posterPhone) h.poster = h.dataset.posterPhone; }
+const dressIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { dress(e.target); dressIO.unobserve(e.target); } }), { rootMargin: PHONE ? '600px 0px' : '1400px 0px' });
+$$('video').forEach(v => dressIO.observe(v));
 
 // Simple films (.lazy): play while visible, pause when not.
 const filmIO = new IntersectionObserver(es => es.forEach(e => (e.isIntersecting ? play(e.target) : pause(e.target))), { rootMargin: '200px 0px' });
-const armIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { arm(e.target); armIO.unobserve(e.target); } }), { rootMargin: '900px 0px' });
+const armIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { arm(e.target); armIO.unobserve(e.target); } }), { rootMargin: PHONE ? '350px 0px' : '700px 0px' });
 $$('video.lazy').forEach(v => { filmIO.observe(v); if (!v.hasAttribute('data-eager')) armIO.observe(v); });
 // the hero film starts after the page has painted its poster (first paint stays light)
 addEventListener('load', () => setTimeout(() => { const h = $('.hero-film video'); if (h && !RM) play(h); }, 300));
@@ -170,10 +178,11 @@ for (let d = 1; d <= 30; d++) { const li = document.createElement('li'); dayPath
 const dayLis = $$('li', dayPath);
 let dayFrames = null, daySeq = null;
 fetch('media/footage/seq-day/manifest.json').then(r => r.json()).then(m => {
-  dayFrames = m.frames;
+  // phones scrub every other frame (still ≥ one per day, and always the last)
+  dayFrames = PHONE ? m.frames.filter((f, i) => i % 2 === 0 || i === m.frames.length - 1) : m.frames;
   const dir = PHONE ? 'media/footage/seq-day-540/' : 'media/footage/seq-day/';
-  daySeq = sequence($('#dayCanvas'), dir, m.frames.length, i => m.frames[i].file, m.frames.length - 1);
-  if (RM) daySeq.draw(m.frames.length - 1);
+  daySeq = sequence($('#dayCanvas'), dir, dayFrames.length, i => dayFrames[i].file, dayFrames.length - 1);
+  if (RM) daySeq.draw(dayFrames.length - 1);
 }).catch(() => {});
 let lastDay = 0;
 function setDay(d) {
@@ -185,27 +194,30 @@ function setDay(d) {
 // Aurel's isles waking
 let islesSeq = null;
 fetch('media/worlds/seq-isles-wake/manifest.json').then(r => r.json()).then(m => {
-  const dir = PHONE ? 'media/worlds/seq-isles-wake-960/' : 'media/worlds/seq-isles-wake/';
-  islesSeq = sequence($('#islesCanvas'), dir, m.frames, i => String(i).padStart(4, '0') + '.webp', m.keyFrame);
-  if (RM) islesSeq.draw(m.keyFrame);
+  islesSeq = PHONE
+    ? sequence($('#islesCanvas'), 'media/worlds/seq-isles-wake-phone/', Math.ceil(m.frames / 2), i => String(i * 2).padStart(4, '0') + '.webp', Math.floor(m.keyFrame / 2))
+    : sequence($('#islesCanvas'), 'media/worlds/seq-isles-wake/', m.frames, i => String(i).padStart(4, '0') + '.webp', m.keyFrame);
+  if (RM) islesSeq.draw(islesSeq.count - 1);
 }).catch(() => {});
 
 // ── five journeys: one glides in as the last moves on ──
 const jSec = $('#journeys'), jVids = $$('#journeyPhone .jv'), jItems = $$('#journeyList li');
 const jNames = jItems.map(li => $('b', li).textContent);
-let jOn = -1;
+let jOn = -1, jNear = false;
+new IntersectionObserver(es => { jNear = es[0].isIntersecting; const v = jVids[jOn]; if (v) (jNear ? play(v) : pause(v)); }, { rootMargin: '300px 0px' }).observe(jSec);
 function setJourney(i) {
   if (i === jOn) return;
   const prev = jOn; jOn = i;
   jVids.forEach((v, k) => {
     v.classList.toggle('on', k === i);
     v.classList.toggle('gone', k < i);
-    if (k === i) play(v); else if (k !== prev) pause(v);
+    if (k === i) { dress(v); if (jNear) play(v); } else if (k !== prev) pause(v);
   });
   if (prev >= 0) setTimeout(() => { if (jOn !== prev) pause(jVids[prev]); }, 1200);
-  if (jVids[i + 1]) arm(jVids[i + 1]);
+  if (jNear && jVids[i + 1]) arm(jVids[i + 1]);
   jItems.forEach((li, k) => li.classList.toggle('on', k === i));
   $('#journeyCaption').textContent = jNames[i];
+  $$('#jdots i').forEach((d, k) => d.classList.toggle('on', k === i));
 }
 jItems.forEach((li, k) => $('button', li).addEventListener('click', () => {
   const r = jSec.getBoundingClientRect(), span = r.height - innerHeight;
@@ -220,7 +232,7 @@ const T_WORDS = { dawn: 'dawn', noon: 'midday', dusk: 'dusk', night: 'night' };
 function timeSwitch(root, t, visible) {
   $$('video', root).forEach(v => {
     const on = v.dataset.t === t; v.classList.toggle('on', on);
-    if (on) { arm(v); if (visible) play(v); } else pause(v);
+    if (on) { dress(v); if (visible) play(v); } else pause(v);
   });
 }
 const homeWin = $('#homeWindow'), crewScr = $('#crewScreen');
@@ -258,8 +270,8 @@ function setWorld(k) {
   cVids.forEach((v, i) => v.classList.toggle('on', i === k));
   cBtns.forEach((b, i) => { b.classList.toggle('on', i === k); b.setAttribute('aria-selected', i === k); $('i', b).style.width = i < k ? '100%' : '0'; });
   const v = cVids[k];
-  arm(v); v.currentTime = 0; if (cVis) play(v);
-  if (cVids[k + 1]) arm(cVids[(k + 1) % cVids.length]);
+  dress(v);
+  if (cVis) { arm(v); v.currentTime = 0; play(v); if (cVids[k + 1]) arm(cVids[k + 1]); }
   const title = $('#cinemaTitle');
   title.style.opacity = 0;
   setTimeout(() => { title.innerHTML = `<span>Chapter ${v.dataset.n}</span>${v.dataset.name}`; title.style.opacity = 1; }, prev < 0 ? 0 : 420);
@@ -270,7 +282,7 @@ cVids.forEach((v, i) => {
   v.addEventListener('timeupdate', () => { if (i === cOn && v.duration) $('i', cBtns[i]).style.width = (100 * v.currentTime / v.duration) + '%'; });
 });
 setWorld(0);
-new IntersectionObserver(es => { cVis = es[0].isIntersecting; const v = cVids[cOn]; cVis ? play(v) : pause(v); }, { rootMargin: '100px 0px' }).observe(cinema);
+new IntersectionObserver(es => { cVis = es[0].isIntersecting; const v = cVids[cOn]; if (cVis) { play(v); if (cVids[cOn + 1]) arm(cVids[cOn + 1]); } else pause(v); }, { rootMargin: '100px 0px' }).observe(cinema);
 
 // ── sightings: play in view, sound on request (one at a time) ──
 const tiles = $$('.tile');
@@ -285,9 +297,24 @@ tiles.forEach(t => {
   });
 });
 
+// ── swipe rows on phones: dots that follow the card in the centre ──
+function swipeDots(row, extra) {
+  const cards = [...row.children];
+  const dots = document.createElement('div'); dots.className = 'dots' + (extra ? ' ' + extra : ''); dots.setAttribute('aria-hidden', 'true');
+  cards.forEach(() => dots.appendChild(document.createElement('i')));
+  row.after(dots);
+  const upd = () => {
+    const mid = row.scrollLeft + row.clientWidth / 2; let best = 0, bd = 1e9;
+    [...cards].sort((a, b) => a.offsetLeft - b.offsetLeft).forEach((c, k) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = k; } });
+    [...dots.children].forEach((d, k) => d.classList.toggle('on', k === best));
+  };
+  row.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+}
+swipeDots($('#tiles')); swipeDots($('.pair')); swipeDots($('.trio'));
+
 // ── Aurel: meets you, and waves goodbye at dawn ──
 try {
-  const meet = mountAurel($('#aurelStage'), { poster: 'aurel/poster.webp' });
+  const meet = mountAurel($('#aurelStage'), { poster: 'aurel/poster.webp', loadMargin: PHONE ? '250px 0px' : '800px 0px' });
   $('#aurelStage').addEventListener('click', () => meet.wave && meet.wave());
   let waved = false;
   new IntersectionObserver(es => { if (es[0].isIntersecting && !waved) { waved = true; setTimeout(() => meet.wave(), 2600); } }, { threshold: 0.6 }).observe($('#aurelStage'));

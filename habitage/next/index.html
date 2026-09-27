@@ -45,7 +45,7 @@
       <video class="lazy" muted playsinline loop preload="none"
         poster="media/worlds/hero-isles-night-1280.jpg"
         data-src="media/worlds/hero-isles-night-1920.mp4"
-        data-src-phone="media/worlds/hero-isles-night-9x16-720.mp4"
+        data-src-phone="media/worlds/hero-isles-night-9x16-1080.mp4"
         data-poster-phone="media/worlds/hero-isles-night-9x16-720.jpg"
         data-eager></video>
     </div>
@@ -89,14 +89,15 @@
       <div class="phone-slot">
         <div class="phone" id="journeyPhone">
           <div class="screen">
-            <video class="jv" muted playsinline loop preload="none" poster="media/footage/journey-ocean.jpg" data-src="media/footage/journey-ocean.mp4" data-src-phone="media/footage/journey-ocean.720.mp4" aria-label="Ocean Voyage, day 6: a whale breaches past the sailboat under a rainbow"></video>
-            <video class="jv" muted playsinline loop preload="none" poster="media/footage/journey-road.jpg" data-src="media/footage/journey-road.mp4" data-src-phone="media/footage/journey-road.720.mp4" aria-label="Road Trip, day 30: fireworks over the cabin at dusk"></video>
-            <video class="jv" muted playsinline loop preload="none" poster="media/footage/journey-space.jpg" data-src="media/footage/journey-space.mp4" data-src-phone="media/footage/journey-space.720.mp4" aria-label="Space Odyssey, day 6: a ringed teal world and a meteor shower"></video>
-            <video class="jv" muted playsinline loop preload="none" poster="media/footage/journey-multiverse.jpg" data-src="media/footage/journey-multiverse.mp4" data-src-phone="media/footage/journey-multiverse.720.mp4" aria-label="Multiverse of Madness, day 12: a black hole and a glowing lava wyrm"></video>
-            <video class="jv" muted playsinline loop preload="none" poster="media/footage/journey-hollywood.jpg" data-src="media/footage/journey-hollywood.mp4" data-src-phone="media/footage/journey-hollywood.720.mp4" aria-label="Hollywood, day 13: a flying time-car over the cinema at sunset"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-ocean.jpg" data-src="media/footage/journey-ocean.mp4" data-src-phone="media/footage/journey-ocean.720.mp4" aria-label="Ocean Voyage, day 6: a whale breaches past the sailboat under a rainbow"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-road.jpg" data-src="media/footage/journey-road.mp4" data-src-phone="media/footage/journey-road.720.mp4" aria-label="Road Trip, day 30: fireworks over the cabin at dusk"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-space.jpg" data-src="media/footage/journey-space.mp4" data-src-phone="media/footage/journey-space.720.mp4" aria-label="Space Odyssey, day 6: a ringed teal world and a meteor shower"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-multiverse.jpg" data-src="media/footage/journey-multiverse.mp4" data-src-phone="media/footage/journey-multiverse.720.mp4" aria-label="Multiverse of Madness, day 12: a black hole and a glowing lava wyrm"></video>
+            <video class="jv" muted playsinline loop preload="none" data-poster="media/footage/journey-hollywood.jpg" data-src="media/footage/journey-hollywood.mp4" data-src-phone="media/footage/journey-hollywood.720.mp4" aria-label="Hollywood, day 13: a flying time-car over the cinema at sunset"></video>
           </div>
         </div>
         <p class="phone-caption" id="journeyCaption" aria-live="polite">Ocean Voyage</p>
+        <div class="jdots" id="jdots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </div>
   </section>
@@ -111,10 +112,10 @@
     <div class="home-stage">
       <figure class="window reveal">
         <div class="window-frame" id="homeWindow">
-          <video data-t="dawn"  muted playsinline loop preload="none" poster="media/footage/home-window-dawn.jpg"  data-src="media/footage/home-window-dawn.mp4"  data-src-phone="media/footage/home-window-dawn.720.mp4"></video>
-          <video data-t="noon"  muted playsinline loop preload="none" poster="media/footage/home-window-noon.jpg"  data-src="media/footage/home-window-noon.mp4"  data-src-phone="media/footage/home-window-noon.720.mp4"></video>
-          <video data-t="dusk"  muted playsinline loop preload="none" poster="media/footage/home-window-dusk.jpg"  data-src="media/footage/home-window-dusk.mp4"  data-src-phone="media/footage/home-window-dusk.720.mp4"></video>
-          <video data-t="night" muted playsinline loop preload="none" poster="media/footage/home-window-night.jpg" data-src="media/footage/home-window-night.mp4" data-src-phone="media/footage/home-window-night.720.mp4"></video>
+          <video data-t="dawn"  muted playsinline loop preload="none" data-poster="media/footage/home-window-dawn.jpg"  data-src="media/footage/home-window-dawn.mp4"  data-src-phone="media/footage/home-window-dawn.720.mp4"></video>
+          <video data-t="noon"  muted playsinline loop preload="none" data-poster="media/footage/home-window-noon.jpg"  data-src="media/footage/home-window-noon.mp4"  data-src-phone="media/footage/home-window-noon.720.mp4"></video>
+          <video data-t="dusk"  muted playsinline loop preload="none" data-poster="media/footage/home-window-dusk.jpg"  data-src="media/footage/home-window-dusk.mp4"  data-src-phone="media/footage/home-window-dusk.720.mp4"></video>
+          <video data-t="night" muted playsinline loop preload="none" data-poster="media/footage/home-window-night.jpg" data-src="media/footage/home-window-night.mp4" data-src-phone="media/footage/home-window-night.720.mp4"></video>
         </div>
         <figcaption>
           <span id="clockLine">The sky on Home is the sky where you are.</span>
@@ -128,7 +129,7 @@
       </figure>
       <div class="phone phone-home island reveal">
         <div class="screen">
-          <video class="lazy" muted playsinline loop preload="none" poster="media/footage/home-camp.jpg" data-src="media/footage/home-camp.mp4" data-src-phone="media/footage/home-camp.720.mp4" aria-label="Home at night with every habit done: Aurel reaches camp, fires lit, fireworks overhead"></video>
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/home-camp.jpg" data-src="media/footage/home-camp.mp4" data-src-phone="media/footage/home-camp.720.mp4" aria-label="Home at night with every habit done: Aurel reaches camp, fires lit, fireworks overhead"></video>
         </div>
       </div>
     </div>
@@ -169,13 +170,13 @@
     <div class="pair">
       <figure class="reveal">
         <div class="phone island"><div class="screen">
-          <video class="lazy" muted playsinline loop preload="none" poster="media/footage/isles-fly.jpg" data-src="media/footage/isles-fly.mp4" aria-label="Flying over Aurel's isles at night, every wonder lit: the ferris wheel, the carousel, the lanterns"></video>
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/isles-fly.jpg" data-src="media/footage/isles-fly.mp4" aria-label="Flying over Aurel's isles at night, every wonder lit: the ferris wheel, the carousel, the lanterns"></video>
         </div></div>
         <figcaption><b>Fly over every isle.</b><span>Once a wonder wakes, it stays lit.</span></figcaption>
       </figure>
       <figure class="reveal">
         <div class="phone island"><div class="screen">
-          <video class="lazy" muted playsinline loop preload="none" poster="media/footage/house-shop.jpg" data-src="media/footage/house-shop.mp4" aria-label="Inside Aurel's house: choosing fireside seats and placing them by the hearth"></video>
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/house-shop.jpg" data-src="media/footage/house-shop.mp4" aria-label="Inside Aurel's house: choosing fireside seats and placing them by the hearth"></video>
         </div></div>
         <figcaption><b>Make his house a home.</b><span>Fireside seats, a reading lamp, a painting above the hearth.</span></figcaption>
       </figure>
@@ -191,12 +192,12 @@
     </div>
     <div class="cinema reveal" id="cinema">
       <div class="cinema-frame">
-        <video muted playsinline preload="none" data-name="Lantern Lagoon" data-n="01" poster="media/worlds/world-lantern-lagoon-1280.jpg" data-poster-phone="media/worlds/world-lantern-lagoon-9x16-720.jpg" data-src="media/worlds/world-lantern-lagoon-1920.mp4" data-src-phone="media/worlds/world-lantern-lagoon-9x16-720.mp4"></video>
-        <video muted playsinline preload="none" data-name="Aurora Ice" data-n="16" poster="media/worlds/world-aurora-ice-1280.jpg" data-poster-phone="media/worlds/world-aurora-ice-9x16-720.jpg" data-src="media/worlds/world-aurora-ice-1920.mp4" data-src-phone="media/worlds/world-aurora-ice-9x16-720.mp4"></video>
-        <video muted playsinline preload="none" data-name="Moth Mangroves" data-n="18" poster="media/worlds/world-moth-mangroves-1280.jpg" data-poster-phone="media/worlds/world-moth-mangroves-9x16-720.jpg" data-src="media/worlds/world-moth-mangroves-1920.mp4" data-src-phone="media/worlds/world-moth-mangroves-9x16-720.mp4"></video>
-        <video muted playsinline preload="none" data-name="Orrery Summit" data-n="20" poster="media/worlds/world-orrery-summit-1280.jpg" data-poster-phone="media/worlds/world-orrery-summit-9x16-720.jpg" data-src="media/worlds/world-orrery-summit-1920.mp4" data-src-phone="media/worlds/world-orrery-summit-9x16-720.mp4"></video>
-        <video muted playsinline preload="none" data-name="Lighthouse Causeway" data-n="26" poster="media/worlds/world-lighthouse-causeway-1280.jpg" data-poster-phone="media/worlds/world-lighthouse-causeway-9x16-720.jpg" data-src="media/worlds/world-lighthouse-causeway-1920.mp4" data-src-phone="media/worlds/world-lighthouse-causeway-9x16-720.mp4"></video>
-        <video muted playsinline preload="none" data-name="Cradle of Dawn" data-n="30" poster="media/worlds/world-cradle-of-dawn-1280.jpg" data-poster-phone="media/worlds/world-cradle-of-dawn-9x16-720.jpg" data-src="media/worlds/world-cradle-of-dawn-1920.mp4" data-src-phone="media/worlds/world-cradle-of-dawn-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Lantern Lagoon" data-n="01" data-poster="media/worlds/world-lantern-lagoon-1280.jpg" data-poster-phone="media/worlds/world-lantern-lagoon-9x16-720.jpg" data-src="media/worlds/world-lantern-lagoon-1920.mp4?v=2" data-src-phone="media/worlds/world-lantern-lagoon-9x16-720.mp4?v=2"></video>
+        <video muted playsinline preload="none" data-name="Aurora Ice" data-n="16" data-poster="media/worlds/world-aurora-ice-1280.jpg" data-poster-phone="media/worlds/world-aurora-ice-9x16-720.jpg" data-src="media/worlds/world-aurora-ice-1920.mp4" data-src-phone="media/worlds/world-aurora-ice-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Moth Mangroves" data-n="18" data-poster="media/worlds/world-moth-mangroves-1280.jpg" data-poster-phone="media/worlds/world-moth-mangroves-9x16-720.jpg" data-src="media/worlds/world-moth-mangroves-1920.mp4" data-src-phone="media/worlds/world-moth-mangroves-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Orrery Summit" data-n="20" data-poster="media/worlds/world-orrery-summit-1280.jpg" data-poster-phone="media/worlds/world-orrery-summit-9x16-720.jpg" data-src="media/worlds/world-orrery-summit-1920.mp4" data-src-phone="media/worlds/world-orrery-summit-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Lighthouse Causeway" data-n="26" data-poster="media/worlds/world-lighthouse-causeway-1280.jpg" data-poster-phone="media/worlds/world-lighthouse-causeway-9x16-720.jpg" data-src="media/worlds/world-lighthouse-causeway-1920.mp4" data-src-phone="media/worlds/world-lighthouse-causeway-9x16-720.mp4"></video>
+        <video muted playsinline preload="none" data-name="Cradle of Dawn" data-n="30" data-poster="media/worlds/world-cradle-of-dawn-1280.jpg" data-poster-phone="media/worlds/world-cradle-of-dawn-9x16-720.jpg" data-src="media/worlds/world-cradle-of-dawn-1920.mp4" data-src-phone="media/worlds/world-cradle-of-dawn-9x16-720.mp4"></video>
         <p class="cinema-title" id="cinemaTitle" aria-live="polite"><span>Chapter 01</span>Lantern Lagoon</p>
       </div>
       <div class="chapters" id="chapters" role="tablist" aria-label="Chapter worlds"></div>
@@ -211,12 +212,12 @@
       <p class="reveal measure">Keep going and your world fills up. A seahorse in the rain, a peacock under a rainbow, a lava wyrm beneath a checkered planet — each one yours to keep.</p>
     </div>
     <div class="tiles" id="tiles">
-      <figure class="tile reveal"><video muted playsinline loop preload="none" poster="media/footage/sighting-1.jpg" data-poster-phone="media/footage/sighting-1-720.jpg" data-src="media/footage/sighting-1.mp4" data-src-phone="media/footage/sighting-1.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Seahorse · Ocean, day 3</figcaption></figure>
-      <figure class="tile reveal"><video muted playsinline loop preload="none" poster="media/footage/sighting-2.jpg" data-poster-phone="media/footage/sighting-2-720.jpg" data-src="media/footage/sighting-2.mp4" data-src-phone="media/footage/sighting-2.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Peacock · Road Trip, day 8</figcaption></figure>
-      <figure class="tile reveal"><video muted playsinline loop preload="none" poster="media/footage/sighting-3.jpg" data-poster-phone="media/footage/sighting-3-720.jpg" data-src="media/footage/sighting-3.mp4" data-src-phone="media/footage/sighting-3.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Rocket · Space, day 6</figcaption></figure>
-      <figure class="tile reveal"><video muted playsinline loop preload="none" poster="media/footage/sighting-4.jpg" data-poster-phone="media/footage/sighting-4-720.jpg" data-src="media/footage/sighting-4.mp4" data-src-phone="media/footage/sighting-4.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Prism · Multiverse, day 18</figcaption></figure>
-      <figure class="tile reveal"><video muted playsinline loop preload="none" poster="media/footage/sighting-5.jpg" data-poster-phone="media/footage/sighting-5-720.jpg" data-src="media/footage/sighting-5.mp4" data-src-phone="media/footage/sighting-5.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Lava wyrm · Multiverse, day 25</figcaption></figure>
-      <figure class="tile reveal"><video muted playsinline loop preload="none" poster="media/footage/sighting-6.jpg" data-poster-phone="media/footage/sighting-6-720.jpg" data-src="media/footage/sighting-6.mp4" data-src-phone="media/footage/sighting-6.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Lightbulb · Hollywood, day 13</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-1.jpg" data-poster-phone="media/footage/sighting-1-720.jpg" data-src="media/footage/sighting-1.mp4" data-src-phone="media/footage/sighting-1.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Seahorse · Ocean, day 3</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-2.jpg" data-poster-phone="media/footage/sighting-2-720.jpg" data-src="media/footage/sighting-2.mp4" data-src-phone="media/footage/sighting-2.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Peacock · Road Trip, day 8</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-3.jpg" data-poster-phone="media/footage/sighting-3-720.jpg" data-src="media/footage/sighting-3.mp4" data-src-phone="media/footage/sighting-3.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Rocket · Space, day 6</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-4.jpg" data-poster-phone="media/footage/sighting-4-720.jpg" data-src="media/footage/sighting-4.mp4" data-src-phone="media/footage/sighting-4.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Prism · Multiverse, day 18</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-5.jpg" data-poster-phone="media/footage/sighting-5-720.jpg" data-src="media/footage/sighting-5.mp4" data-src-phone="media/footage/sighting-5.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Lava wyrm · Multiverse, day 25</figcaption></figure>
+      <figure class="tile reveal"><video muted playsinline loop preload="none" data-poster="media/footage/sighting-6.jpg" data-poster-phone="media/footage/sighting-6-720.jpg" data-src="media/footage/sighting-6.mp4" data-src-phone="media/footage/sighting-6.720.mp4"></video><button class="sound" type="button" aria-pressed="false" aria-label="Play sound"></button><figcaption>Lightbulb · Hollywood, day 13</figcaption></figure>
     </div>
   </section>
 
@@ -230,22 +231,22 @@
     <div class="trio">
       <figure class="reveal">
         <div class="phone island"><div class="screen">
-          <video class="lazy" muted playsinline loop preload="none" poster="media/footage/cheer-send.jpg" data-src="media/footage/cheer-send.mp4" data-src-phone="media/footage/cheer-send.720.mp4" aria-label="Sending a cheer to Alice: the cheer sheet opens, emoji and words float up over her journey"></video>
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/cheer-send.jpg" data-src="media/footage/cheer-send.mp4" data-src-phone="media/footage/cheer-send.720.mp4" aria-label="Sending a cheer to Alice: the cheer sheet opens, emoji and words float up over her journey"></video>
         </div></div>
         <figcaption>Send a cheer.</figcaption>
       </figure>
       <figure class="reveal lead">
         <div class="phone island"><div class="screen" id="crewScreen">
-          <video data-t="dawn"  muted playsinline loop preload="none" poster="media/footage/crew-dawn.jpg"  data-src="media/footage/crew-dawn.mp4"  data-src-phone="media/footage/crew-dawn.720.mp4"></video>
-          <video data-t="noon"  muted playsinline loop preload="none" poster="media/footage/crew-noon.jpg"  data-src="media/footage/crew-noon.mp4"  data-src-phone="media/footage/crew-noon.720.mp4"></video>
-          <video data-t="dusk"  muted playsinline loop preload="none" poster="media/footage/crew-dusk.jpg"  data-src="media/footage/crew-dusk.mp4"  data-src-phone="media/footage/crew-dusk.720.mp4"></video>
-          <video data-t="night" muted playsinline loop preload="none" poster="media/footage/crew-night.jpg" data-src="media/footage/crew-night.mp4" data-src-phone="media/footage/crew-night.720.mp4"></video>
+          <video data-t="dawn"  muted playsinline loop preload="none" data-poster="media/footage/crew-dawn.jpg"  data-src="media/footage/crew-dawn.mp4"  data-src-phone="media/footage/crew-dawn.720.mp4"></video>
+          <video data-t="noon"  muted playsinline loop preload="none" data-poster="media/footage/crew-noon.jpg"  data-src="media/footage/crew-noon.mp4"  data-src-phone="media/footage/crew-noon.720.mp4"></video>
+          <video data-t="dusk"  muted playsinline loop preload="none" data-poster="media/footage/crew-dusk.jpg"  data-src="media/footage/crew-dusk.mp4"  data-src-phone="media/footage/crew-dusk.720.mp4"></video>
+          <video data-t="night" muted playsinline loop preload="none" data-poster="media/footage/crew-night.jpg" data-src="media/footage/crew-night.mp4" data-src-phone="media/footage/crew-night.720.mp4"></video>
         </div></div>
         <figcaption>Your crew, at a glance.</figcaption>
       </figure>
       <figure class="reveal">
         <div class="phone island"><div class="screen">
-          <video class="lazy" muted playsinline loop preload="none" poster="media/footage/cheer-receive.jpg" data-src="media/footage/cheer-receive.mp4" data-src-phone="media/footage/cheer-receive.720.mp4" aria-label="Receiving cheers: emoji from friends float up over your journey, each with its sender's name"></video>
+          <video class="lazy" muted playsinline loop preload="none" data-poster="media/footage/cheer-receive.jpg" data-src="media/footage/cheer-receive.mp4" data-src-phone="media/footage/cheer-receive.720.mp4" aria-label="Receiving cheers: emoji from friends float up over your journey, each with its sender's name"></video>
         </div></div>
         <figcaption>Feel it land.</figcaption>
       </figure>

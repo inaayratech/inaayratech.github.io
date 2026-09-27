@@ -132,9 +132,11 @@ section { position: relative; }
 .window-frame { position: relative; aspect-ratio: 1290 / 820; border-radius: 28px; overflow: hidden; background: #0d1030;
   box-shadow: 0 0 0 1px rgba(255,255,255,.07) inset, 0 40px 90px -30px rgba(3, 3, 14, .8); }
 .window-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.window figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; font-size: 15px; color: var(--ink-soft); }
-.times { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-line); }
-.times button { border: 0; background: none; cursor: pointer; padding: 6px 13px; border-radius: 999px; font-size: 14px; color: var(--ink-soft); transition: background 500ms var(--ease), color 500ms var(--ease); }
+.window figcaption { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px 20px; margin-top: 16px; font-size: 15px; color: var(--ink-soft); }
+/* the line swaps text on every time switch: it owns a fixed box so nothing around it moves */
+#clockLine { display: block; min-height: 1.6em; line-height: 1.6; }
+.times { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-line); }
+.times button { border: 0; background: none; cursor: pointer; padding: 6px 13px; border-radius: 999px; font-size: 14px; color: var(--ink-soft); text-align: center; transition: background 500ms var(--ease), color 500ms var(--ease); }
 .times button.on { background: rgba(246, 238, 226, .16); color: var(--ink); }
 .phone-home { width: clamp(200px, 22vw, 300px); }
 
@@ -239,7 +241,6 @@ section { position: relative; }
   .journeys .sticky, .days .sticky { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; align-content: start; gap: 12px; padding-top: 76px; }
   .journeys-copy h2, .days-copy h2 { font-size: 30px; margin-bottom: 6px; }
   .journeys-copy > p:not(.eyebrow), .days-copy .measure, .journeys-copy .eyebrow, .days-copy .eyebrow { display: none; }
-  .journey-list { margin-top: 8px; grid-auto-flow: column; grid-auto-columns: max-content; overflow: hidden; gap: 0; }
   .journey-list li:not(.on) { display: none; }
   .journey-list span { max-height: 3em; }
   .journey-list b { font-size: 18px; }
@@ -267,7 +268,6 @@ section { position: relative; }
 /* Together sits where the sky warms to rose: keep its captions legible */
 .trio figcaption { color: #fff6e8; text-shadow: 0 1px 14px rgba(40, 20, 60, .55); }
 .together h2, .together p { text-shadow: 0 1px 18px rgba(40, 20, 60, .35); }
-@media (max-width: 800px) { .journey-list { display: block; } .journey-list span { white-space: normal; } }
 /* inside Aurel's Home: two phones after the waking scrub */
 .isles-more { padding: 12vh var(--gutter) 4vh; }
 .pair { display: grid; grid-template-columns: repeat(2, auto); justify-content: center; gap: clamp(28px, 7vw, 120px); }
@@ -282,4 +282,96 @@ section { position: relative; }
   .pair::-webkit-scrollbar { display: none; }
   .pair figure { scroll-snap-align: center; transform: none !important; }
   .pair .phone { width: 100%; }
+}
+
+/* ═════════ phones: the art-directed pass ═════════ */
+.jdots, .dots { display: none; }
+@media (max-width: 800px) {
+  :root { --gutter: clamp(18px, 5.2vw, 28px); }
+  h1 { font-size: clamp(40px, 11.6vw, 52px); }
+  h2 { font-size: clamp(31px, 8.6vw, 40px); margin-bottom: 14px; }
+  .eyebrow { font-size: 13px; margin-bottom: 10px; }
+  p { font-size: 17px; line-height: 1.58; }
+  .measure { max-width: 34ch; }
+
+  /* hero: copy sits on a deeper floor so it never fights the isles */
+  .hero { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 44px); }
+  .hero-film::after { background: linear-gradient(180deg, rgba(10,13,28,.5) 0%, rgba(10,13,28,0) 18%, rgba(10,13,28,0) 42%, rgba(10,13,28,.78) 72%, var(--night) 100%); }
+  .lede { font-size: 21px; margin: 14px 0 22px; }
+  .store { min-height: 46px; padding: 12px 20px 12px 16px; }
+
+  /* Aurel: bigger, and the copy tucks under his feet */
+  .meet { padding: 8vh var(--gutter) 10vh; gap: 4px; }
+  .meet-stage { width: min(100%, 440px); max-height: 62svh; }
+  .meet-copy p { font-size: 18px; }
+
+  /* journeys: title → big centred phone → the journey's name + line + dots */
+  .journeys .sticky { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; grid-template-areas: "title" "phone" "list";
+    align-content: stretch; gap: 10px; padding: calc(env(safe-area-inset-top, 0px) + 72px) var(--gutter) 22px; }
+  .journeys-copy { display: contents; }
+  .journeys-copy h2 { grid-area: title; font-size: clamp(27px, 7.4vw, 32px); margin: 0; }
+  .journeys .phone-slot { grid-area: phone; align-self: center; }
+  .journeys .phone-slot .phone { width: min(70vw, calc((100svh - 300px) / 2.3)); }
+  .journey-list { grid-area: list; display: grid; margin: 0; gap: 0; min-height: 5.1em; align-content: start; text-align: center; }
+  .journey-list span { max-width: 32ch; }
+  .journey-list li:not(.on) { display: none; }
+  .journey-list b { font-size: 19px; }
+  .journey-list span { max-height: none; font-size: 15px; }
+  .journey-list button { justify-items: center; }
+  .jdots { display: flex; justify-content: center; gap: 7px; margin-top: 2px; }
+  .jdots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(246,238,226,.22); transition: width 600ms var(--ease), background 600ms var(--ease); }
+  .jdots i.on { width: 18px; border-radius: 3px; background: var(--lamp); }
+
+  /* home: controls first (full-width segmented), a fixed two-line caption, then the phone */
+  .home { padding: 12vh 0 6vh; }
+  .home-stage { padding-top: 26px; gap: 34px; }
+  .window-frame { border-radius: 22px; }
+  .window figcaption { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 14px; }
+  .times { order: -1; width: 100%; }
+  .times button { min-height: 40px; padding: 8px 0; font-size: 15px; }
+  #clockLine { min-height: 3.2em; font-size: 14.5px; line-height: 1.6; }
+  .phone-home { width: min(68vw, 300px); }
+
+  /* days: phone as big as the stage allows */
+  .days .sticky { padding-bottom: 20px; }
+  .days .phone-slot .phone { width: min(70vw, calc((100svh - 260px) / 2.3)); }
+
+  /* swipe rows: centred first card, peeking neighbours, dots */
+  .tiles, .pair, .trio { grid-auto-columns: var(--card) !important; padding-inline: calc((100vw - var(--card)) / 2) !important; scroll-padding-inline: calc((100vw - var(--card)) / 2); gap: 14px; margin-inline: 0; max-width: none; overscroll-behavior-x: contain; }
+  .tiles { --card: 74vw; padding-top: 30px; }
+  .pair { --card: 64vw; padding-top: 6px; }
+  .trio { --card: 64vw; padding-top: 34px; }
+  .isles-more { padding-inline: 0; }
+  .tile { border-radius: 22px; }
+  .sound { width: 44px; height: 44px; right: 8px; bottom: 8px; }
+  .tile figcaption { right: 60px; bottom: 16px; }
+  .dots { display: flex; justify-content: center; gap: 7px; margin-top: 18px; }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(246,238,226,.25); transition: width 500ms var(--ease), background 500ms var(--ease); }
+  .dots i.on { width: 18px; border-radius: 3px; background: var(--lamp); }
+  .dawn-dots i { background: rgba(44,29,62,.2); }
+  .pair figcaption b { font-size: 18px; }
+  .pair figcaption span { font-size: 14.5px; }
+  .trio figcaption { font-size: 15px; }
+
+  /* worlds: taller 4:5 cinema, chapter tabs you can actually hit */
+  .worlds, .sightings, .together { padding: 12vh 0 6vh; }
+  .cinema { padding-top: 26px; }
+  .cinema-frame { border-radius: 22px; }
+  .chapters { gap: 6px; margin-top: 6px; }
+  .chapters button { min-height: 36px; padding: 16px 0 0; font-size: 0; }
+  .chapters button::before, .chapters button i { top: 16px; height: 3px; }
+
+  /* isles */
+  .isles .sticky { gap: 20px; padding-top: calc(env(safe-area-inset-top, 0px) + 70px); }
+  .isles-frame { border-radius: 22px; }
+
+  /* dawn */
+  .dawn { padding-top: 6vh; }
+  .dawn-stage { width: min(82vw, 380px); }
+  .foot { justify-content: center; text-align: center; }
+}
+@media (max-width: 370px) {
+  .journey-list span { font-size: 14px; }
+  .path { grid-template-columns: repeat(15, 7px); gap: 5px 4px; }
+  .path li { width: 7px; height: 7px; }
 }
