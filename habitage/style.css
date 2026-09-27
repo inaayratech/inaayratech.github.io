@@ -422,3 +422,8 @@ body.dialog-open { overflow: hidden; }
   .story-layers picture { transition: none; }
   #lanterns, .glow-follow { display: none; }
 }
+
+/* two store badges side by side; not links until the release */
+.stores { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.stores .store { cursor: default; }
+.stores .store svg { width: 18px; height: 20px; }
