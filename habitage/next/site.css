@@ -136,9 +136,9 @@ section { position: relative; }
 .window figcaption { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px 20px; margin-top: 16px; font-size: 15px; color: var(--ink-soft); }
 /* the line swaps text on every time switch: it owns a fixed box so nothing around it moves */
 #clockLine { display: block; min-height: 1.6em; line-height: 1.6; }
-.times { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-line); }
-.times button { border: 0; background: none; cursor: pointer; padding: 6px 13px; border-radius: 999px; font-size: 14px; color: var(--ink-soft); text-align: center; transition: background 500ms var(--ease), color 500ms var(--ease); }
-.times button.on { background: rgba(246, 238, 226, .16); color: var(--ink); }
+.times, .seg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-line); }
+.times button, .seg button { border: 0; background: none; cursor: pointer; padding: 6px 13px; border-radius: 999px; font-size: 14px; color: var(--ink-soft); text-align: center; transition: background 500ms var(--ease), color 500ms var(--ease); }
+.times button.on, .seg button.on { background: rgba(246, 238, 226, .16); color: var(--ink); }
 .phone-home { width: clamp(200px, 22vw, 300px); }
 
 /* ── 5 · days ── */
@@ -413,4 +413,25 @@ section { position: relative; }
 @media (max-width: 800px) {
   .journeys { height: calc(var(--steps) * 70vh + 145vh); }
   .days { height: 405vh; }
+}
+
+/* ── Home Screen widgets — real screenshots (IMG_9049–9058), cut out with their
+   own rounded corners; the day/night pair cross-fades like the app's sky ── */
+.widgets { padding: 18vh 0 10vh; }
+.wboard { --w: clamp(300px, 30vw, 380px); display: grid; grid-template-columns: var(--w) var(--w);
+  grid-template-rows: auto auto; gap: calc(var(--w) * .0586) calc(var(--w) * .06); justify-content: center; margin-top: 48px; }
+.wslot { position: relative; filter: drop-shadow(0 26px 44px rgba(4, 4, 16, .55)); }
+.wslot img { display: block; width: 100%; height: auto; transition: opacity 1100ms var(--ease); }
+.wslot .w-night { position: absolute; inset: 0; }
+.wboard.day .w-night { opacity: 0; }
+.wboard:not(.day) .w-day { opacity: 0; }
+.w-large { grid-row: 1 / span 2; }
+.seg { grid-template-columns: repeat(2, 1fr); display: inline-grid; }
+.wcap { display: flex; justify-content: center; margin-top: 30px; }
+@media (max-width: 800px) {
+  .widgets { padding: 12vh 0 6vh; }
+  .wboard { --w: min(86vw, 380px); grid-template-columns: var(--w); gap: 18px; margin-top: 30px; }
+  .w-large { grid-row: auto; }
+  .w-medium { display: none; } /* phones: the large Today + the crew — no repeats */
+  .seg button { min-height: 40px; padding: 8px 26px; font-size: 15px; }
 }

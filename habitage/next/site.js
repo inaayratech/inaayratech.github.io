@@ -379,3 +379,12 @@ document.addEventListener('visibilitychange', () => {
   else if (!ticking) { ticking = true; last = performance.now(); requestAnimationFrame(frame); }
 });
 if (RM) setDay(30);
+
+
+// ── Home Screen widgets: day or night by the visitor's clock, switchable ──
+{
+  const board = $('#wboard'), hr = new Date().getHours();
+  const set = w => { board.classList.toggle('day', w === 'day'); $$('.seg button').forEach(b => b.classList.toggle('on', b.dataset.w === w)); };
+  $$('.seg button').forEach(b => b.addEventListener('click', () => set(b.dataset.w)));
+  set(hr >= 6 && hr < 19 ? 'day' : 'night');
+}
