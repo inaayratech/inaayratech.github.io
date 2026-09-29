@@ -26,14 +26,24 @@ function arm(v) {             // the film itself — only once it's about to be 
   const src = (PHONE && v.dataset.srcPhone) || v.dataset.src;
   if (src) { v.src = src; v.preload = 'auto'; }
 }
+// The hero film is the one film that plays even with Reduce Motion on: it is a slow,
+// silent ambient loop, and without it the page opens on a frozen still (on iPhones
+// with Reduce Motion enabled the hero never even loaded its film).
+const HERO = $('.hero-film video');
+// iOS Low Power Mode (and some data-saver modes) reject muted autoplay. The poster
+// stays up as a still; the first tap / key press retries every film that's still wanted.
+const blocked = new Set();
 function play(v) {
-  if (RM) return;
+  if (RM && v !== HERO) return;
   arm(v);
-  const p = v.play(); if (p && p.catch) p.catch(() => {});
+  const p = v.play();
+  if (p && p.catch) p.then(() => blocked.delete(v), e => { if (e && e.name === 'NotAllowedError') blocked.add(v); });
 }
-function pause(v) { if (!v.paused) v.pause(); }
+function pause(v) { blocked.delete(v); if (!v.paused) v.pause(); }
+function retryBlocked() { blocked.forEach(v => { const p = v.play(); if (p && p.then) p.then(() => blocked.delete(v), () => {}); }); }
+['touchend', 'click', 'keydown'].forEach(t => addEventListener(t, retryBlocked, { passive: true, capture: true }));
 // the hero's phone poster immediately, so the desktop poster never paints first
-{ const h = $('.hero-film video'); if (PHONE && h.dataset.posterPhone) h.poster = h.dataset.posterPhone; }
+if (PHONE && HERO.dataset.posterPhone) HERO.poster = HERO.dataset.posterPhone;
 const dressIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { dress(e.target); dressIO.unobserve(e.target); } }), { rootMargin: PHONE ? '600px 0px' : '1400px 0px' });
 $$('video').forEach(v => dressIO.observe(v));
 
@@ -42,7 +52,7 @@ const filmIO = new IntersectionObserver(es => es.forEach(e => (e.isIntersecting 
 const armIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { arm(e.target); armIO.unobserve(e.target); } }), { rootMargin: PHONE ? '350px 0px' : '700px 0px' });
 $$('video.lazy').forEach(v => { filmIO.observe(v); if (!v.hasAttribute('data-eager')) armIO.observe(v); });
 // the hero film starts after the page has painted its poster (first paint stays light)
-addEventListener('load', () => setTimeout(() => { const h = $('.hero-film video'); if (h && !RM) play(h); }, 300));
+addEventListener('load', () => setTimeout(() => play(HERO), 300));
 
 // ── reveals ──
 const revealIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
