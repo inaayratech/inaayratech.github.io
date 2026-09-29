@@ -21,7 +21,10 @@ a { color: inherit; }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; border-radius: 8px; }
 
-#sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+/* The sky is sized to the LARGE viewport (lvh), not inset:0 / 100%: on iOS Safari a
+   fixed inset:0 box resizes whenever the toolbar shows or hides, which stretched
+   the canvas mid-scroll and made the stars and aurora jump. 100lvh never changes. */
+#sky { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100lvh; z-index: -1; pointer-events: none; }
 
 h1, h2 { font-weight: 600; letter-spacing: -0.025em; line-height: 1.04; margin: 0; text-wrap: balance; color: #fff6e8; }
 h1 { font-size: clamp(44px, 7.4vw, 96px); }
@@ -77,7 +80,11 @@ section { position: relative; }
 
 /* ── 1 · hero ── */
 .hero { min-height: 100svh; display: grid; align-items: end; padding: 0 var(--gutter) clamp(56px, 11vh, 120px); }
-.hero-film { position: absolute; inset: 0; overflow: hidden; }
+/* the film dissolves into the sky (a mask), instead of ending on a flat navy
+   floor that met the sky in a visible seam once the hero scrolled up */
+.hero-film { position: absolute; inset: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 100%); }
 .hero-film video { width: 100%; height: 100%; object-fit: cover; }
 .hero-film::after { content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(10,13,28,.55) 0%, rgba(10,13,28,0) 22%, rgba(10,13,28,0) 48%, rgba(10,13,28,.72) 82%, var(--night) 100%); }

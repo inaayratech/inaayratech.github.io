@@ -52,14 +52,24 @@ $$('.reveal').forEach(el => revealIO.observe(el));
 const nav = $('#nav');
 
 // ── the living sky (section 1 of the art direction) ──
+// One calm sky that holds still. What used to make it drift, and what keeps it put:
+//  · the canvas is sized to the LARGE viewport (100lvh in site.css), so the iOS
+//    Safari toolbar showing or hiding never stretches it or resizes it;
+//  · stars, lanterns and aurora live in 0..1 coordinates from a fixed seed — a
+//    resize re-lays the same sky, it never re-rolls it (it used to re-randomise
+//    every star on each iOS toolbar resize, mid-scroll);
+//  · the aurora is painted once, small, into offscreen canvases and scaled up:
+//    soft on every edge and faded out well inside the frame, never cut;
+//  · the scroll colour eases toward its target, so layout shifts (lazy media,
+//    innerHeight changing with the toolbar) glide instead of jumping.
 const sky = (() => {
   const c = $('#sky'), g = c.getContext('2d');
   // dusk at the top of the page → dawn at the bottom (stops = scroll progress)
   const STOPS = [
-    [0.00, ['#070a18', '#0d1030', '#1a1646']],
-    [0.30, ['#0b0d24', '#191447', '#2c1f5e']],
-    [0.58, ['#120f33', '#2a1e5e', '#4a2f6e']],
-    [0.80, ['#1c1440', '#4a2f6e', '#7a4a80']],
+    [0.00, ['#070a18', '#0b0e26', '#141338']],
+    [0.30, ['#0a0c22', '#15123f', '#241c54']],
+    [0.58, ['#110e30', '#241a55', '#3c2966']],
+    [0.80, ['#1a1340', '#402a68', '#6c4479']],
     [0.92, ['#3a2a66', '#a0668e', '#e0a38a']],
     [1.00, ['#8fa3d8', '#f2c6a8', '#fff1d8']],
   ];
@@ -67,74 +77,108 @@ const sky = (() => {
   const S = STOPS.map(([p, cs]) => [p, cs.map(hex)]);
   const mix = (a, b, t) => a.map((v, i) => Math.round(lerp(v, b[i], t)));
   const rgb = (a, al = 1) => `rgba(${a[0]},${a[1]},${a[2]},${al})`;
-  let W = 0, H = 0, dpr = 1, stars = [], lanterns = [], shoot = null, nextShoot = 6;
-  function size() {
-    dpr = Math.min(devicePixelRatio || 1, 1.5);
-    W = innerWidth; H = innerHeight;
-    c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
-    const n = Math.round(W * H / 5200);
-    stars = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H * 0.9, r: Math.random() * 1.1 + 0.25, tw: Math.random() * 6.28, sp: 0.4 + Math.random() * 1.2 }));
-    lanterns = Array.from({ length: PHONE ? 7 : 12 }, () => newLantern(true));
+  const smooth = (a, b, x) => { const k = clamp((x - a) / (b - a)); return k * k * (3 - 2 * k); };
+  const seeded = s => () => { s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+  // stars: a jittered grid, so they spread evenly — no clumps, no empty corner
+  const rnd = seeded(20260926), COLS = 18, ROWS = 26, STARS = [];
+  for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+    const r = rnd();
+    STARS.push({ x: (i + rnd()) / COLS, y: (j + rnd()) / ROWS, r: 0.35 + r * r * 1.05, tw: rnd() * 6.283, sp: 0.25 + rnd() * 0.7, keep: rnd() });
   }
-  function newLantern(anywhere) {
-    return { x: Math.random() * W, y: anywhere ? Math.random() * H : H + 20, v: 6 + Math.random() * 10, r: 2 + Math.random() * 2.6, sw: Math.random() * 6.28, a: 0.35 + Math.random() * 0.4 };
+  // lanterns: slow warm points; their height is a pure function of time (no resets)
+  const NL = PHONE ? 6 : 10;
+  const LANTERNS = Array.from({ length: NL }, (_, i) => ({
+    x: (i + 0.2 + rnd() * 0.6) / NL, y: rnd(), v: 4 + rnd() * 5, r: 1.5 + rnd() * 1.2, sw: rnd() * 6.283, a: 0.28 + rnd() * 0.22,
+  }));
+  // aurora: two ribbons, each symmetric about the centre (one sags, one arches),
+  // so the sky stays balanced left ↔ right with no heavy corner
+  const RIBBONS = [
+    { hue: [168, 188], y: 0.38, amp: 0.028, ph: 0.1, al: 0.26, sway: 0.021, dir: 1 },
+    { hue: [272, 236], y: 0.6, amp: -0.022, ph: 0.62, al: 0.3, sway: 0.017, dir: -1 },
+  ];
+  // aurora box: the top 2/3 of the sky, a little wider than the screen so the slow
+  // sway never shows an end (phones: nearly the full width, so it reads as a ribbon)
+  const BOX = { y: -0.02, h: 0.66, over: PHONE ? 0.06 : 0.14 };
+
+  let W = 0, H = 0, dpr = 1, stars = [], ps = -1;
+  function paintRibbon(rb, bw, bh) {
+    const o = document.createElement('canvas'), w = 320, h = Math.max(60, Math.round(w * bh / bw));
+    o.width = w; o.height = h;
+    const q = o.getContext('2d'); q.globalCompositeOperation = 'lighter';
+    const N = 56;
+    for (let k = 0; k <= N; k++) {
+      const u = k / N;
+      const env = Math.pow(Math.sin(Math.PI * clamp((u - 0.06) / 0.88)), 1.4);   // fades out inside both ends
+      if (env < 0.01) continue;
+      const cx = u * w, cy = rb.y * h + rb.amp * w * Math.cos(6.283 * (u - 0.5));   // amp: a share of the width
+      const rx = w * 0.07, ry = h * (0.14 + 0.06 * Math.sin(u * 9 + rb.ph * 7));
+      const hue = lerp(rb.hue[0], rb.hue[1], u);
+      q.save(); q.translate(cx, cy); q.scale(rx, ry);
+      const gr = q.createRadialGradient(0, -0.15, 0, 0, 0, 1);
+      // painted strong here (8-bit precision), made faint by globalAlpha when drawn
+      gr.addColorStop(0, `hsla(${hue},72%,64%,${0.16 * env})`);
+      gr.addColorStop(0.5, `hsla(${hue},72%,64%,${0.065 * env})`);
+      gr.addColorStop(1, `hsla(${hue},72%,64%,0)`);
+      q.fillStyle = gr; q.beginPath(); q.arc(0, 0, 1, 0, 6.283); q.fill(); q.restore();
+    }
+    return o;
+  }
+  function size() {
+    const w = c.clientWidth, h = c.clientHeight;
+    if (w === W && h <= H) return;   // height-only shrink (a toolbar) changes nothing
+    dpr = Math.min(devicePixelRatio || 1, 1.5);
+    W = w; H = h;
+    c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+    const density = Math.min(1, (W * H / 5600) / STARS.length);
+    stars = STARS.filter(s => s.keep < density * (1 - 0.5 * s.y));
+    const bw = W * (1 + 2 * BOX.over), bh = H * BOX.h;
+    RIBBONS.forEach(rb => { rb.img = paintRibbon(rb, bw, bh); });
   }
   addEventListener('resize', size); size();
   function colors(p) {
     let i = 0; while (i < S.length - 2 && p > S[i + 1][0]) i++;
     const [p0, a] = S[i], [p1, b] = S[i + 1];
-    const t = clamp((p - p0) / (p1 - p0));
-    const e = t * t * (3 - 2 * t);
+    const e = smooth(0, 1, (p - p0) / (p1 - p0));
     return a.map((col, k) => mix(col, b[k], e));
   }
   function draw(p, t, dt) {
+    ps = ps < 0 || !dt ? p : ps + (p - ps) * (1 - Math.exp(-dt * 5));
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const [top, mid, low] = colors(p);
+    g.globalAlpha = 1;
+    const [top, mid, low] = colors(ps);
     const gr = g.createLinearGradient(0, 0, 0, H);
-    gr.addColorStop(0, rgb(top)); gr.addColorStop(0.62, rgb(mid)); gr.addColorStop(1, rgb(low));
+    gr.addColorStop(0, rgb(top)); gr.addColorStop(0.6, rgb(mid)); gr.addColorStop(1, rgb(low));
     g.fillStyle = gr; g.fillRect(0, 0, W, H);
-    const night = clamp(1 - (p - 0.78) / 0.18);          // stars and aurora fade as dawn comes
-    // aurora ribbons: three soft sine bands, very low contrast
-    if (night > 0.02) {
+    const night = 1 - smooth(0.78, 0.96, ps);           // stars and aurora fade as dawn comes
+    if (night > 0.01) {
+      // aurora: whole ribbons, breathing and swaying very slowly
       g.globalCompositeOperation = 'lighter';
-      for (let k = 0; k < 3; k++) {
-        const y0 = H * (0.16 + k * 0.11), amp = H * 0.05, hue = [150, 190, 280][k];
-        g.beginPath();
-        for (let x = 0; x <= W; x += 24) {
-          const y = y0 + Math.sin(x * 0.0035 + t * 0.07 * (k + 1) + k) * amp + Math.sin(x * 0.009 - t * 0.05) * amp * 0.4;
-          x === 0 ? g.moveTo(x, y) : g.lineTo(x, y);
-        }
-        g.lineTo(W, y0 + H * 0.22); g.lineTo(0, y0 + H * 0.22); g.closePath();
-        const ag = g.createLinearGradient(0, y0 - amp, 0, y0 + H * 0.22);
-        ag.addColorStop(0, `hsla(${hue},70%,62%,0)`); ag.addColorStop(0.25, `hsla(${hue},70%,62%,${0.05 * night})`); ag.addColorStop(1, `hsla(${hue},70%,62%,0)`);
-        g.fillStyle = ag; g.fill();
+      const bw = W * (1 + 2 * BOX.over), bh = H * BOX.h;
+      for (const rb of RIBBONS) {
+        g.globalAlpha = night * rb.al * (0.82 + 0.18 * Math.sin(t * 0.11 + rb.ph * 9));
+        g.drawImage(rb.img, -W * BOX.over + rb.dir * Math.sin(t * rb.sway) * W * 0.05, H * BOX.y, bw, bh);
       }
-      g.globalCompositeOperation = 'source-over';
-      // stars
+      g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
+      // stars: fixed in place, softly twinkling, thinning toward the horizon
       for (const s of stars) {
-        const a = night * (0.35 + 0.65 * (0.5 + 0.5 * Math.sin(s.tw + t * s.sp)));
-        g.fillStyle = `rgba(255,246,230,${a * 0.8})`;
-        g.beginPath(); g.arc(s.x, s.y, s.r, 0, 6.283); g.fill();
-      }
-      // a rare, slow shooting star
-      if (!shoot && t > nextShoot) { shoot = { x: Math.random() * W * 0.7 + W * 0.2, y: Math.random() * H * 0.35, life: 0 }; }
-      if (shoot) {
-        shoot.life += dt;
-        const k = shoot.life / 1.4, x = shoot.x - k * 260, y = shoot.y + k * 110;
-        const tg = g.createLinearGradient(x, y, x + 120, y - 50);
-        tg.addColorStop(0, `rgba(255,244,220,${0.7 * night * Math.sin(Math.PI * clamp(k))})`); tg.addColorStop(1, 'rgba(255,244,220,0)');
-        g.strokeStyle = tg; g.lineWidth = 1.4; g.beginPath(); g.moveTo(x, y); g.lineTo(x + 120, y - 50); g.stroke();
-        if (k >= 1) { shoot = null; nextShoot = t + 9 + Math.random() * 14; }
+        const a = night * (1 - smooth(0.7, 1, s.y)) * (0.45 + 0.55 * (0.5 + 0.5 * Math.sin(s.tw + t * s.sp)));
+        if (a < 0.02) continue;
+        g.fillStyle = `rgba(255,246,230,${a * 0.78})`;
+        g.beginPath(); g.arc(s.x * W, s.y * H, s.r, 0, 6.283); g.fill();
       }
     }
-    // drifting lanterns: warm points rising slowly
-    for (const l of lanterns) {
-      l.y -= l.v * dt; l.sw += dt * 0.6;
-      if (l.y < -20) Object.assign(l, newLantern(false));
-      const x = l.x + Math.sin(l.sw) * 12;
-      const lg = g.createRadialGradient(x, l.y, 0, x, l.y, l.r * 7);
-      lg.addColorStop(0, `rgba(255,214,150,${l.a * (0.6 + 0.4 * night)})`); lg.addColorStop(0.25, `rgba(255,190,120,${l.a * 0.35})`); lg.addColorStop(1, 'rgba(255,190,120,0)');
-      g.fillStyle = lg; g.beginPath(); g.arc(x, l.y, l.r * 7, 0, 6.283); g.fill();
+    // lanterns: warm points rising slowly, fading in at the bottom and out at the top
+    for (const l of LANTERNS) {
+      const y = (((l.y - t * l.v / H) % 1) + 1) % 1;            // 0..1, wraps
+      const fade = smooth(0, 0.18, y) * (1 - smooth(0.82, 1, y));
+      if (fade < 0.01) continue;
+      const x = l.x * W + Math.sin(l.sw + t * 0.35) * 10, py = y * H, R = l.r * 5;
+      const lg = g.createRadialGradient(x, py, 0, x, py, R);
+      lg.addColorStop(0, `rgba(255,214,150,${fade * l.a * (0.6 + 0.4 * night)})`);
+      lg.addColorStop(0.3, `rgba(255,190,120,${fade * l.a * 0.3})`);
+      lg.addColorStop(1, 'rgba(255,190,120,0)');
+      g.fillStyle = lg; g.beginPath(); g.arc(x, py, R, 0, 6.283); g.fill();
     }
   }
   return { draw };
